@@ -1,0 +1,28 @@
+.MuiToolbar-regular.flex {
+    justify-content: space-between;
+}
+
+.search-bar {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.search-bar .MuiTextField-root {
+    width: 70%;
+}
+
+.nav-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 20%;
+}
+
+.logo{
+    margin-left: -1.75em;
+}
+
+.logo::first-letter {
+    color: #fff;
+    padding-right: 11px;
+}

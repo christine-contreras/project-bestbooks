@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import theme from './theme/theme'
+import './css/App.css'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Box from '@mui/material/Box'
+
+import Home from './containers/Home'
+import Layout from './containers/Layout'
 
 function App() {
+  const appliedTheme = createTheme(theme)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={appliedTheme}>
+      <Box className='flex column'>
+        <CssBaseline />
+        <Router>
+          <Layout>
+            <Routes>
+              <Route index element={<Home />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </Box>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
