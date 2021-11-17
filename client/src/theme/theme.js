@@ -31,10 +31,16 @@ export const theme = createTheme({
     },
     h2: {
       fontSize: '3.5em',
+      '@media (max-width:600px)': {
+        fontSize: '2.5em',
+      },
       fontFamily: '"Libre Caslon Text", serif',
     },
     h3: {
       fontSize: '3em',
+      '@media (max-width:600px)': {
+        fontSize: '2em',
+      },
       fontFamily: '"Libre Caslon Text", serif',
     },
     h4: {

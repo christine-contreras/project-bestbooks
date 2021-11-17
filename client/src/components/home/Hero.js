@@ -2,7 +2,11 @@ import React from 'react'
 import '../../css/Hero.css'
 import { Grid, Typography, Paper, Button } from '@mui/material'
 
+import { useNavigate } from 'react-router-dom'
+
 const Hero = () => {
+  let navigate = useNavigate()
+
   return (
     <Grid
       container
@@ -20,6 +24,7 @@ const Hero = () => {
           </Typography>
           <div className='padding-top'>
             <Button
+              onClick={() => navigate(`/join-bestbooks`)}
               variant='contained'
               className='b-radius btn'
               color='secondary'>

@@ -5,6 +5,15 @@ body {
   height: 100vh;
 }
 
+a, a:hover, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.img-responsive {
+  width: 100%;
+}
+
 .MuiPaper-rounded.container-paper{
   display: flex;
   flex-direction: column;
@@ -32,6 +41,10 @@ body {
   padding-bottom: 3em;
 }
 
+.padding {
+  padding: 2em;
+}
+
 .flex{
   display: flex;
   align-items: center;
@@ -52,6 +65,12 @@ body {
   font-weight: bold;
 }
 
+.MuiButton-root.btn.btn-lg{
+  min-width: 300px;
+  padding: 20px;
+}
+
 .MuiPaper-root{
   width: 100%;
 }
+

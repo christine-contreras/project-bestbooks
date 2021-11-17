@@ -3,10 +3,10 @@ import Container from '@mui/material/Container'
 
 import Nav from './Nav'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, user }) => {
   return (
     <>
-      <Nav />
+      <Nav user={user} />
       <Container maxWidth='xl' sx={{ pt: 12 }}>
         {children}
       </Container>

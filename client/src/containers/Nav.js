@@ -8,22 +8,25 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import NavLoggedIn from '../components/nav/NavLoggedIn'
 import NavLoggedOut from '../components/nav/NavLoggedOut'
 
-const Nav = () => {
+import { Link } from 'react-router-dom'
+
+const Nav = ({ user }) => {
   return (
     <MuiAppBar color='transparent' position='fixed' elevation={0}>
       <Toolbar className='flex'>
-        <Typography
-          component='h1'
-          variant='h5'
-          color='inherit'
-          noWrap
-          className='flex'
-          align='center'>
-          <BookmarkIcon sx={{ fontSize: '3em' }} color='secondary' />
-          <span className='logo'>Best Books</span>
-        </Typography>
-        <NavLoggedOut />
-        {/* <NavLoggedIn /> */}
+        <Link to='/'>
+          <Typography
+            component='h1'
+            variant='h5'
+            color='inherit'
+            noWrap
+            className='flex'
+            align='center'>
+            <BookmarkIcon sx={{ fontSize: '3em' }} color='secondary' />
+            <span className='logo'>Best Books</span>
+          </Typography>
+        </Link>
+        {!user ? <NavLoggedOut /> : <NavLoggedIn />}
       </Toolbar>
     </MuiAppBar>
   )

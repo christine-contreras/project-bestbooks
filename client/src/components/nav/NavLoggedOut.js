@@ -2,7 +2,11 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import { brown } from '@mui/material/colors'
 
+import { useNavigate } from 'react-router'
+
 const NavLoggedOut = () => {
+  let navigate = useNavigate()
+
   return (
     <>
       <div className='nav-buttons'>
@@ -10,7 +14,10 @@ const NavLoggedOut = () => {
           Log In
         </Button>
 
-        <Button variant='contained' className='b-radius btn'>
+        <Button
+          onClick={() => navigate(`/join-bestbooks`)}
+          variant='contained'
+          className='b-radius btn'>
           Sign Up
         </Button>
       </div>
