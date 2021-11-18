@@ -50,11 +50,15 @@ export const theme = createTheme({
       fontFamily: '"Libre Caslon Text", serif',
     },
     h6: {
-      fontSize: '1.25em',
+      fontSize: '1em',
       fontFamily: '"Libre Caslon Text", serif',
     },
     subtitle1: {
       fontSize: '1.25em',
+      color: grey[700],
+    },
+    subtitle2: {
+      fontSize: '.9em',
       color: grey[700],
     },
   },

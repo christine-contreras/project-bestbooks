@@ -1,0 +1,9 @@
+.book {
+    box-shadow: 18px 13px 10px -4px rgb(189 189 189 / 83%)
+}
+
+@media (min-width: 600px) {
+    .book-info{
+        justify-content: space-between;
+    }
+}
