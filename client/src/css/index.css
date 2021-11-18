@@ -7,7 +7,10 @@ body {
 
 a, a:hover, a:visited {
   color: inherit;
-  text-decoration: none;
+}
+
+a:hover, a:active {
+  opacity: .8;
 }
 
 .img-responsive {
@@ -70,7 +73,18 @@ a, a:hover, a:visited {
   padding: 20px;
 }
 
+.MuiButtonGroup-root .btn {
+  padding: 20px;
+  min-width: 50%;
+}
+
 .MuiPaper-root{
   width: 100%;
 }
 
+@media (min-width: 1200px) {
+  .hero-container {
+      min-height: 50vh;
+  }
+  
+}

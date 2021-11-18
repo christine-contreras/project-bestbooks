@@ -8,7 +8,7 @@ import Box from '@mui/material/Box'
 
 import Layout from './containers/Layout'
 import Home from './containers/Home'
-import SignUp from './containers/SignUp'
+import SignUpLogin from './containers/SignUpLogin'
 
 function App() {
   const appliedTheme = createTheme(theme)
@@ -26,6 +26,15 @@ function App() {
     })
   }, [])
 
+  const HandleLogout = () => {
+    debugger
+    fetch('/api/logout', {
+      method: 'DELETE',
+    }).then((response) => {
+      if (response.ok) setUser(null)
+    })
+  }
+
   return (
     <ThemeProvider theme={appliedTheme}>
       <Box className='flex column'>
@@ -37,7 +46,24 @@ function App() {
 
               <Route
                 path='join-bestbooks'
-                element={<SignUp onLogin={setUser} />}
+                element={
+                  <SignUpLogin
+                    onLogin={setUser}
+                    onLogout={HandleLogout}
+                    user={user}
+                  />
+                }
+              />
+
+              <Route
+                path='login'
+                element={
+                  <SignUpLogin
+                    onLogin={setUser}
+                    onLogout={HandleLogout}
+                    user={user}
+                  />
+                }
               />
             </Routes>
           </Layout>
