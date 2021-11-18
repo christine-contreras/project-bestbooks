@@ -10,7 +10,7 @@ import NavLoggedOut from '../components/nav/NavLoggedOut'
 
 import { Link } from 'react-router-dom'
 
-const Nav = ({ user }) => {
+const Nav = ({ user, onLogout }) => {
   return (
     <MuiAppBar color='transparent' position='fixed' elevation={0}>
       <Toolbar className='flex'>
@@ -26,7 +26,11 @@ const Nav = ({ user }) => {
             <span className='logo'>Best Books</span>
           </Typography>
         </Link>
-        {!user ? <NavLoggedOut /> : <NavLoggedIn />}
+        {!user ? (
+          <NavLoggedOut />
+        ) : (
+          <NavLoggedIn user={user} onLogout={onLogout} />
+        )}
       </Toolbar>
     </MuiAppBar>
   )

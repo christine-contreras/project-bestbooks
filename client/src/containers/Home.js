@@ -2,11 +2,11 @@ import React from 'react'
 import Hero from '../components/home/Hero'
 import HomeRecs from './HomeRecs'
 
-const Home = () => {
+const Home = ({ user }) => {
   return (
     <>
-      <Hero />
-      <HomeRecs />
+      <Hero user={user} />
+      <HomeRecs user={user} />
     </>
   )
 }

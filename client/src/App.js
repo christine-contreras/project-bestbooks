@@ -9,6 +9,9 @@ import Box from '@mui/material/Box'
 import Layout from './containers/Layout'
 import Home from './containers/Home'
 import SignUpLogin from './containers/SignUpLogin'
+import Profile from './containers/Profile'
+import BookClubs from './containers/BookClubs'
+import ProfileInfo from './containers/ProfileInfo'
 
 function App() {
   const appliedTheme = createTheme(theme)
@@ -27,7 +30,6 @@ function App() {
   }, [])
 
   const HandleLogout = () => {
-    debugger
     fetch('/api/logout', {
       method: 'DELETE',
     }).then((response) => {
@@ -40,7 +42,7 @@ function App() {
       <Box className='flex column'>
         <CssBaseline />
         <Router>
-          <Layout user={user}>
+          <Layout user={user} onLogout={HandleLogout}>
             <Routes>
               <Route index path='/' element={<Home user={user} />} />
 
@@ -65,6 +67,11 @@ function App() {
                   />
                 }
               />
+
+              <Route path='profile' element={<Profile user={user} />}>
+                <Route path='my-bookclubs' element={<BookClubs />} />
+                <Route path='my-info' element={<ProfileInfo />} />
+              </Route>
             </Routes>
           </Layout>
         </Router>

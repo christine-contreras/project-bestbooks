@@ -4,7 +4,7 @@ import { Grid, Typography, Paper, Button } from '@mui/material'
 
 import { useNavigate } from 'react-router-dom'
 
-const Hero = () => {
+const Hero = ({ user }) => {
   let navigate = useNavigate()
 
   return (
@@ -24,9 +24,11 @@ const Hero = () => {
           </Typography>
           <div className='padding-top'>
             <Button
-              onClick={() => navigate(`/join-bestbooks`)}
+              onClick={() =>
+                navigate(!user ? `/join-bestbooks` : `/profile/my-bookclubs`)
+              }
               variant='contained'
-              className='b-radius btn'
+              className='b-radius btn btn-lg'
               color='secondary'>
               Start A Book Club
             </Button>

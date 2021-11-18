@@ -78,9 +78,13 @@ a:hover, a:active {
   min-width: 50%;
 }
 
-.MuiPaper-root{
-  width: 100%;
+.MuiButton-containedPrimary.btn{
+  color: #3e2723;
 }
+
+/* .MuiPaper-root{
+  width: 100%;
+} */
 
 @media (min-width: 1200px) {
   .hero-container {

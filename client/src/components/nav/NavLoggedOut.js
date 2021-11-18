@@ -10,7 +10,11 @@ const NavLoggedOut = () => {
   return (
     <>
       <div className='nav-buttons'>
-        <Button variant='text' sx={{ color: brown[900] }} className='link'>
+        <Button
+          variant='text'
+          sx={{ color: brown[900] }}
+          className='link'
+          onClick={() => navigate(`/login`)}>
           Log In
         </Button>
 
