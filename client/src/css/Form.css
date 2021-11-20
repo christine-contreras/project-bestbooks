@@ -21,8 +21,41 @@
 }
 
 
-.form-lists{
+.form-lists {
     width: 100%;
     max-width: 600px;
     
 }
+
+.form-search {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    
+}
+
+.form-search .search-bar{
+    flex-grow: 1;
+}
+
+.form-search .search-bar .MuiInputBase-root{
+    border-radius: 32px;
+    /* background-color: #f8f4ef; */
+    margin-right: 1em;
+}
+
+/* .form-search .search-bar .MuiInputBase-root::before, .form-search .search-bar .MuiInputBase-root::after{
+    width: 96%;
+    left: 2%;
+} */
+
+@media (max-width: 700px) {
+    
+    .form-search .MuiButton-root.btn{
+        min-width: auto;
+    }
+}
+

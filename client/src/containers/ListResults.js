@@ -32,7 +32,12 @@ const ListResults = ({
     handleListSearch(e.target.value)
   }
   return (
-    <Grid item container flexDirection='column' spacing={4}>
+    <Grid item container flexDirection='column' wrap='nowrap' spacing={4}>
+      <Grid item>
+        <Typography component='h2' variant='h4' align='center'>
+          Search Books By Popular Lists
+        </Typography>
+      </Grid>
       <Grid item xs={12} textAlign='center'>
         <FormControl className='form-lists'>
           <InputLabel id='list-recommendations'>Lists</InputLabel>

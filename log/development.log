@@ -1403,3 +1403,95 @@ Processing by Api::UsersController#show as */*
 Completed 200 OK in 12ms (Views: 3.2ms | ActiveRecord: 1.3ms | Allocations: 854)
 
 
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 12:50:11 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.23ms)
+Completed 200 OK in 282ms (Views: 11.2ms | ActiveRecord: 50.4ms | Allocations: 3986)
+
+
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2021-11-20 12:53:23 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 12:53:27 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 13ms (Views: 5.8ms | ActiveRecord: 0.5ms | Allocations: 867)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 12:55:46 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.61ms)
+Completed 200 OK in 40ms (Views: 10.6ms | ActiveRecord: 2.6ms | Allocations: 852)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 12:58:24 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.81ms)
+Completed 200 OK in 20ms (Views: 3.9ms | ActiveRecord: 1.8ms | Allocations: 866)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:03:34 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (29.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.22ms)
+Completed 200 OK in 316ms (Views: 35.6ms | ActiveRecord: 29.5ms | Allocations: 859)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:09:12 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.01ms)
+Completed 200 OK in 239ms (Views: 5.9ms | ActiveRecord: 54.0ms | Allocations: 4006)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:12:47 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.83ms)
+Completed 200 OK in 28ms (Views: 6.5ms | ActiveRecord: 0.6ms | Allocations: 860)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:14:47 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.85ms)
+Completed 200 OK in 22ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 858)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:23:49 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 152ms (Views: 1.0ms | ActiveRecord: 22.3ms | Allocations: 3971)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:24:54 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 33ms (Views: 0.7ms | ActiveRecord: 1.3ms | Allocations: 856)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 13:28:31 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 12ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 860)
+
+

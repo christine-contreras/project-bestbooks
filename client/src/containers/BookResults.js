@@ -1,0 +1,36 @@
+import React from 'react'
+import '../css/Form.css'
+import SearchBar from '../components/search/SearchBar'
+import BookResult from '../components/search/BookResult'
+
+import { Grid, Paper, Typography } from '@mui/material'
+
+const BookResults = () => {
+  return (
+    <Paper elevation={0} sx={{ p: 4 }}>
+      <Grid container flexDirection='column'>
+        <Typography component='h1' variant='h3' align='center'>
+          What Will You Read Next?
+        </Typography>
+
+        <Grid
+          container
+          item
+          flexDirection='column'
+          className='search-container'
+          alignItems='center'>
+          <SearchBar />
+
+          {/* <Grid container item spacing={5} sx={{ pt: 6 }}>
+        {books &&
+          books
+            .sort((a, b) => a.rankingPosition - b.rankingPosition)
+            .map((book) => <BookResult key={book.id} book={book} />)}
+      </Grid> */}
+        </Grid>
+      </Grid>
+    </Paper>
+  )
+}
+
+export default BookResults
