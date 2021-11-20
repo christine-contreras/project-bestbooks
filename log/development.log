@@ -1735,3 +1735,82 @@ Processing by Api::UsersController#show as */*
 Completed 200 OK in 50ms (Views: 1.5ms | ActiveRecord: 11.0ms | Allocations: 3979)
 
 
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_test" ENCODING = 'unicode'[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBookclubs (20211120224134)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (45.5ms)[0m  [1m[35mCREATE TABLE "bookclubs" ("id" bigserial primary key, "isAdmin" boolean, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211120224134"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBookclubProfiles (20211120224427)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "bookclub_profiles" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bookclub_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_a7cfdf7846"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_dc0241fc85"
+FOREIGN KEY ("bookclub_id")
+  REFERENCES "bookclubs" ("id")
+)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE INDEX "index_bookclub_profiles_on_user_id" ON "bookclub_profiles" ("user_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_bookclub_profiles_on_bookclub_id" ON "bookclub_profiles" ("bookclub_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211120224427"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-11-20 17:01:10 -0600
+  
+SyntaxError (/Users/christine.contreras/Development/code/phase-4/project-bestbooks/config/routes.rb:6: syntax error, unexpected [, expecting `do' or '{' or '('
+    resources :users, only [:destroy, :update]
+                           ^
+):
+  
+config/routes.rb:6: syntax error, unexpected [, expecting `do' or '{' or '('
+config/routes.rb:6: syntax error, unexpected [, expecting `do' or '{' or '('
+Started GET "/" for ::1 at 2021-11-20 17:01:36 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.6ms | Allocations: 185)
+Completed 200 OK in 23ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 1566)
+
+
+Started GET "/rails/info/routes" for ::1 at 2021-11-20 17:01:45 -0600
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/layouts/application.html.erb
+  Rendering /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (Duration: 18.1ms | Allocations: 4181)
+  Rendered /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 2.4ms | Allocations: 873)
+  Rendered /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 30.1ms | Allocations: 8392)
+  Rendered layout /Users/christine.contreras/.rvm/gems/ruby-2.7.4/gems/railties-6.1.3.2/lib/rails/templates/layouts/application.html.erb (Duration: 31.3ms | Allocations: 8613)
+Completed 200 OK in 39ms (Views: 34.1ms | ActiveRecord: 0.0ms | Allocations: 9569)
+
+
+Started GET "/api/me" for ::1 at 2021-11-20 17:03:57 -0600
+Processing by Api::UsersController#show as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (3.8ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (107.75ms)
+Completed 200 OK in 185ms (Views: 115.5ms | ActiveRecord: 22.9ms | Allocations: 21334)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAdminToBookclubs (20211120231139)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mALTER TABLE "bookclubs" ADD "admin" character varying[0m
+  [1m[35m (8.0ms)[0m  [1m[35mALTER TABLE "bookclubs" DROP COLUMN "isAdmin"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211120231139"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
