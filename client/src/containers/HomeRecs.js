@@ -1,44 +1,53 @@
 import * as React from 'react'
-import Recommendation from '../components/Recommendation'
-import { Grid, Typography } from '@mui/material'
+import Recommendation from '../components/home/Recommendation'
+import { Grid, Typography, Button } from '@mui/material'
 import { data } from '../helpers/booksrec'
+import { useNavigate } from 'react-router-dom'
 
 const apiKey = process.env.REACT_APP_API_BOOKS
 
-const HomeRecs = ({ user }) => {
-  const [recommendations, setRecommendations] = React.useState(null)
+const HomeRecs = ({ user, recommendationLists, handleListSearch }) => {
+  let navigate = useNavigate()
+  const [recommendations, setRecommendations] = React.useState(
+    recommendationLists
+      ? recommendationLists[Math.floor(Math.random() * data.length)]
+      : null
+  )
 
   React.useEffect(() => {
-    // fetch('https://goodreads-books.p.rapidapi.com/lists?page=1', {
-    //   method: 'GET',
-    //   headers: {
-    //     'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
-    //     'x-rapidapi-key': apiKey,
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setRecommendations(data[Math.floor(Math.random() * data.length)])
-    //   })
-    //   .catch((err) => {
-    //     console.error(err)
-    //   })
+    setRecommendations(
+      recommendationLists
+        ? recommendationLists[Math.floor(Math.random() * data.length)]
+        : null
+    )
+  }, [recommendationLists])
 
-    //fake data
-    setRecommendations(data[Math.floor(Math.random() * data.length)])
-  }, [])
+  const handleViewListClick = () => {
+    handleListSearch(`${recommendations.id}`)
+    navigate('/search')
+  }
 
   return (
     <Grid container direction='column' sx={{ pt: 10 }}>
-      <Typography component='h2' variant='h4' align='center' paddingTop>
-        Recommended Books
-      </Typography>
       {recommendations && (
         <>
-          <Typography component='p' variant='subtitle1' align='center'>
+          <Typography component='h2' variant='h4' align='center' paddingTop>
             A List Of The {recommendations.name}
           </Typography>
-          <Grid container item spacing={3} sx={{ pt: 10 }}>
+          <Typography component='p' variant='subtitle1' align='center'>
+            Explore These Top Picks
+          </Typography>
+          <Grid item className='padding-top' textAlign='center'>
+            <Button
+              onClick={handleViewListClick}
+              variant='outlined'
+              color='secondary'
+              className='b-radius btn'>
+              View All Books
+            </Button>
+          </Grid>
+
+          <Grid container item spacing={3} sx={{ pt: 6 }}>
             {recommendations.preview.slice(0, 4).map((rec) => (
               <Recommendation key={rec.title} book={rec} />
             ))}

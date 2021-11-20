@@ -36,6 +36,10 @@ a:hover, a:active {
   padding-top: 2em;
 }
 
+.padding-top-sm {
+  padding-top: 1em;
+}
+
 .padding-bottom{
   padding-bottom: 2em;
 }
