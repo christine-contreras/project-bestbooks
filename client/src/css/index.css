@@ -82,7 +82,7 @@ a:hover, a:active {
   min-width: 50%;
 }
 
-.MuiButton-containedPrimary.btn{
+.MuiButton-containedSecondary.btn{
   color: #3e2723;
 }
 

@@ -4,7 +4,7 @@ import { Grid, Paper } from '@mui/material'
 
 const BookPage = () => {
   return (
-    <Paper>
+    <Paper sx={{ p: 5 }}>
       <Outlet />
     </Paper>
   )

@@ -27,19 +27,11 @@ const NavLoggedIn = ({ user, onLogout }) => {
 
   return (
     <>
-      {/* <div className='search-bar b-radius'>
-        <TextField
-          label='Search'
-          variant='standard'
-          // value={search}
-          // onChange={(event) => setSearch(event.target.value)}
-        />
-        <SearchIcon />
-      </div> */}
       <Grid container alignItems='center' justifyContent='flex-end' spacing={3}>
         <Grid item xs='auto'>
           <Button
             variant='contained'
+            color='secondary'
             className='btn b-radius'
             startIcon={<BookmarkIcon />}
             onClick={() => navigate(`/profile/my-bookclubs`)}>

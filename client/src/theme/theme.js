@@ -7,10 +7,10 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: orange[400],
+      main: teal[900],
     },
     secondary: {
-      main: teal[900],
+      main: orange[400],
     },
     text: {
       primary: brown[900],

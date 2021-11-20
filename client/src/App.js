@@ -21,14 +21,16 @@ import Search from './containers/Search'
 import BookPage from './containers/BookPage'
 import BookInfo from './containers/BookInfo'
 
+//dummy data
 import { data } from './helpers/booksrec'
+import { bookinfo } from './helpers/bookinfo'
 const apiKey = process.env.REACT_APP_API_BOOKS
 
 function App() {
   const appliedTheme = createTheme(theme)
   const [user, setUser] = React.useState(null)
   const [bookResults, setBookResults] = React.useState(null)
-  // const [currentbook, setCurrentBook] = React.useState(null)
+  const [currentbook, setCurrentBook] = React.useState(null)
   const [recommendationLists, setRecommendationLists] = React.useState(null)
   const [currentList, setCurrentList] = React.useState(null)
 
@@ -112,11 +114,29 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setBookResults(data)
-        console.log(data)
       })
       .catch((err) => {
         console.error(err)
       })
+  }
+
+  const handleFetchBook = (bookId) => {
+    // fetch(`https://goodreads-books.p.rapidapi.com/books/${bookId}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
+    //     'x-rapidapi-key': apiKey,
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setCurrentBook(data)
+    //     console.log(data)
+    //   })
+    //   .catch((err) => {
+    //     console.error(err)
+    //   })
+    setCurrentBook(bookinfo)
   }
 
   return (
@@ -174,11 +194,12 @@ function App() {
                     handleListSearch={handleListSearch}
                     bookResults={bookResults}
                     handleBookSearch={handleBookSearch}
+                    handleFetchBook={handleFetchBook}
                   />
                 }></Route>
 
               <Route path='book' element={<BookPage />}>
-                <Route path=':id' element={<BookInfo />} />
+                <Route path=':id' element={<BookInfo book={currentbook} />} />
               </Route>
             </Routes>
           </Layout>

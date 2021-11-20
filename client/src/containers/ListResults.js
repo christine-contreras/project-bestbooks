@@ -14,6 +14,7 @@ const ListResults = ({
   recommendationLists,
   handleListSearch,
   currentList,
+  handleFetchBook,
 }) => {
   const [listValue, setListValue] = React.useState(
     currentList ? currentList.id : null
@@ -56,7 +57,13 @@ const ListResults = ({
         {books &&
           books
             .sort((a, b) => a.rankingPosition - b.rankingPosition)
-            .map((book) => <ListResult key={book.id} book={book} />)}
+            .map((book) => (
+              <ListResult
+                key={book.id}
+                book={book}
+                handleFetchBook={handleFetchBook}
+              />
+            ))}
       </Grid>
     </Grid>
   )

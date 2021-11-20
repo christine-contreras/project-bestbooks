@@ -12,11 +12,16 @@ const Search = ({
   handleListSearch,
   bookResults,
   handleBookSearch,
+  handleFetchBook,
 }) => {
   return (
     <Grid container maxWidth='xl' spacing={6}>
       <Grid item sx={{ width: '100%' }}>
-        <BookResults books={bookResults} handleBookSearch={handleBookSearch} />
+        <BookResults
+          books={bookResults}
+          handleBookSearch={handleBookSearch}
+          handleFetchBook={handleFetchBook}
+        />
       </Grid>
 
       {recommendationLists && (
@@ -24,6 +29,7 @@ const Search = ({
           currentList={currentList}
           recommendationLists={recommendationLists}
           handleListSearch={handleListSearch}
+          handleFetchBook={handleFetchBook}
         />
       )}
       {/* <Grid container item>

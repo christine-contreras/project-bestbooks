@@ -41,7 +41,7 @@ const HomeRecs = ({ user, recommendationLists, handleListSearch }) => {
             <Button
               onClick={handleViewListClick}
               variant='outlined'
-              color='secondary'
+              color='primary'
               className='b-radius btn'>
               View All Books
             </Button>

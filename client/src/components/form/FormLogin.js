@@ -60,7 +60,7 @@ const FormLogin = ({ onLogin }) => {
         type='submit'
         variant='contained'
         className='b-radius btn btn-lg'
-        color='secondary'>
+        color='primary'>
         Sign In
       </Button>
 

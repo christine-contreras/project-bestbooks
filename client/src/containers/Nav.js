@@ -22,7 +22,7 @@ const Nav = ({ user, onLogout }) => {
             noWrap
             className='flex'
             align='center'>
-            <BookmarkIcon sx={{ fontSize: '3em' }} color='secondary' />
+            <BookmarkIcon sx={{ fontSize: '3em' }} color='primary' />
             <span className='logo'>Best Books</span>
           </Typography>
         </Link>

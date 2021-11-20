@@ -21,7 +21,7 @@ const SearchBar = ({ handleBookSearch }) => {
         <TextField
           className='search-bar'
           variant='outlined'
-          color='secondary'
+          color='primary'
           placeholder='search books by title or author'
           InputProps={{
             startAdornment: (
@@ -37,7 +37,7 @@ const SearchBar = ({ handleBookSearch }) => {
           type='submit'
           variant='contained'
           className='b-radius btn'
-          color='secondary'>
+          color='primary'>
           Search
         </Button>
       </form>

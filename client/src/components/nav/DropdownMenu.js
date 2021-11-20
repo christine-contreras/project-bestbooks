@@ -25,6 +25,7 @@ const DropdownMenu = ({
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
+      <MenuItem onClick={() => navigate(`/search`)}>Search Books</MenuItem>
       <MenuItem onClick={() => navigate(`/profile/my-info`)}>Profile</MenuItem>
       <MenuItem onClick={() => navigate(`/profile/my-bookclubs`)}>
         My Book Clubs

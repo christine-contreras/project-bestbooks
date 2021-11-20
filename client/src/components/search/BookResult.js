@@ -3,8 +3,13 @@ import '../../css/Book.css'
 import { useNavigate } from 'react-router'
 import { Typography, Grid, Button } from '@mui/material'
 
-const BookResult = ({ book }) => {
+const BookResult = ({ book, handleFetchBook }) => {
   let navigate = useNavigate()
+
+  const handleButtonClick = () => {
+    handleFetchBook(book.id)
+    navigate(`/book/${book.id}`)
+  }
 
   return (
     <Grid container item xs={12} md={6} lg={4}>
@@ -31,9 +36,9 @@ const BookResult = ({ book }) => {
         </Typography>
         <div className='padding-top-sm'>
           <Button
-            onClick={() => navigate(`/book/${book.id}`)}
+            onClick={handleButtonClick}
             variant='outlined'
-            color='secondary'
+            color='primary'
             className='b-radius'>
             View Book
           </Button>

@@ -4,7 +4,7 @@ import SearchBar from '../components/search/SearchBar'
 import BookResult from '../components/search/BookResult'
 import { Grid, Paper, Typography } from '@mui/material'
 
-const BookResults = ({ handleBookSearch, books }) => {
+const BookResults = ({ handleBookSearch, handleFetchBook, books }) => {
   return (
     <Paper elevation={0} sx={{ p: 4 }}>
       <Grid container flexDirection='column'>
@@ -22,7 +22,13 @@ const BookResults = ({ handleBookSearch, books }) => {
 
           <Grid container item spacing={5} sx={{ pt: 6 }}>
             {books &&
-              books.map((book) => <BookResult key={book.id} book={book} />)}
+              books.map((book) => (
+                <BookResult
+                  key={book.id}
+                  book={book}
+                  handleFetchBook={handleFetchBook}
+                />
+              ))}
           </Grid>
         </Grid>
       </Grid>
