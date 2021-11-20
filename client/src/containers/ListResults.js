@@ -9,12 +9,14 @@ import {
   MenuItem,
 } from '@mui/material'
 import ListResult from '../components/search/ListResult'
+import Loading from '../components/Loading'
 
 const ListResults = ({
   recommendationLists,
   handleListSearch,
   currentList,
   handleFetchBook,
+  loading,
 }) => {
   const [listValue, setListValue] = React.useState(
     currentList ? currentList.id : null
@@ -53,8 +55,17 @@ const ListResults = ({
         </FormControl>
       </Grid>
 
-      <Grid container item spacing={5} sx={{ pt: 6 }}>
-        {books &&
+      <Grid
+        container
+        item
+        spacing={5}
+        sx={{ pt: 6 }}
+        alignItems='center'
+        justifyContent='center'>
+        {loading ? (
+          <Loading />
+        ) : (
+          books &&
           books
             .sort((a, b) => a.rankingPosition - b.rankingPosition)
             .map((book) => (
@@ -63,7 +74,8 @@ const ListResults = ({
                 book={book}
                 handleFetchBook={handleFetchBook}
               />
-            ))}
+            ))
+        )}
       </Grid>
     </Grid>
   )

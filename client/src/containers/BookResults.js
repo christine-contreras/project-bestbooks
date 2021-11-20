@@ -1,10 +1,11 @@
 import * as React from 'react'
 import '../css/Form.css'
+import Loading from '../components/Loading'
 import SearchBar from '../components/search/SearchBar'
 import BookResult from '../components/search/BookResult'
 import { Grid, Paper, Typography } from '@mui/material'
 
-const BookResults = ({ handleBookSearch, handleFetchBook, books }) => {
+const BookResults = ({ handleBookSearch, handleFetchBook, books, loading }) => {
   return (
     <Paper elevation={0} sx={{ p: 4 }}>
       <Grid container flexDirection='column'>
@@ -20,15 +21,25 @@ const BookResults = ({ handleBookSearch, handleFetchBook, books }) => {
           alignItems='center'>
           <SearchBar handleBookSearch={handleBookSearch} />
 
-          <Grid container item spacing={5} sx={{ pt: 6 }}>
-            {books &&
+          <Grid
+            container
+            item
+            spacing={5}
+            sx={{ pt: 6 }}
+            alignItems='center'
+            justifyContent='center'>
+            {loading ? (
+              <Loading />
+            ) : (
+              books &&
               books.map((book) => (
                 <BookResult
                   key={book.id}
                   book={book}
                   handleFetchBook={handleFetchBook}
                 />
-              ))}
+              ))
+            )}
           </Grid>
         </Grid>
       </Grid>

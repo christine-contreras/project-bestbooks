@@ -29,6 +29,7 @@ const apiKey = process.env.REACT_APP_API_BOOKS
 function App() {
   const appliedTheme = createTheme(theme)
   const [user, setUser] = React.useState(null)
+  const [loading, setLoading] = React.useState(false)
   const [bookResults, setBookResults] = React.useState(null)
   const [currentbook, setCurrentBook] = React.useState(null)
   const [recommendationLists, setRecommendationLists] = React.useState(null)
@@ -81,6 +82,8 @@ function App() {
   }
 
   const handleListSearch = (listId) => {
+    setLoading(true)
+
     fetch(`https://goodreads-books.p.rapidapi.com/lists/${listId}`, {
       method: 'GET',
       headers: {
@@ -94,6 +97,8 @@ function App() {
           id: listId,
           list: data,
         })
+        setLoading(false)
+        setBookResults(null)
       })
       .catch((err) => {
         console.error(err)
@@ -101,6 +106,7 @@ function App() {
   }
 
   const handleBookSearch = (searchPhrase) => {
+    setLoading(true)
     fetch(
       `https://goodreads-books.p.rapidapi.com/search?q=${searchPhrase}&page=1`,
       {
@@ -114,6 +120,8 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setBookResults(data)
+        setLoading(false)
+        setCurrentList(null)
       })
       .catch((err) => {
         console.error(err)
@@ -121,22 +129,24 @@ function App() {
   }
 
   const handleFetchBook = (bookId) => {
-    // fetch(`https://goodreads-books.p.rapidapi.com/books/${bookId}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
-    //     'x-rapidapi-key': apiKey,
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setCurrentBook(data)
-    //     console.log(data)
-    //   })
-    //   .catch((err) => {
-    //     console.error(err)
-    //   })
-    setCurrentBook(bookinfo)
+    setCurrentBook(null)
+    setLoading(true)
+    fetch(`https://goodreads-books.p.rapidapi.com/books/${bookId}`, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
+        'x-rapidapi-key': apiKey,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCurrentBook(data)
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+    // setCurrentBook(bookinfo)
   }
 
   return (
@@ -195,11 +205,15 @@ function App() {
                     bookResults={bookResults}
                     handleBookSearch={handleBookSearch}
                     handleFetchBook={handleFetchBook}
+                    loading={loading}
                   />
                 }></Route>
 
               <Route path='book' element={<BookPage />}>
-                <Route path=':id' element={<BookInfo book={currentbook} />} />
+                <Route
+                  path=':id'
+                  element={<BookInfo book={currentbook} loading={loading} />}
+                />
               </Route>
             </Routes>
           </Layout>

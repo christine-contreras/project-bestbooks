@@ -13,6 +13,7 @@ const Search = ({
   bookResults,
   handleBookSearch,
   handleFetchBook,
+  loading,
 }) => {
   return (
     <Grid container maxWidth='xl' spacing={6}>
@@ -21,6 +22,7 @@ const Search = ({
           books={bookResults}
           handleBookSearch={handleBookSearch}
           handleFetchBook={handleFetchBook}
+          loading={loading}
         />
       </Grid>
 
@@ -30,6 +32,7 @@ const Search = ({
           recommendationLists={recommendationLists}
           handleListSearch={handleListSearch}
           handleFetchBook={handleFetchBook}
+          loading={loading}
         />
       )}
       {/* <Grid container item>
