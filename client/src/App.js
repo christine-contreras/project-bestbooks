@@ -18,6 +18,8 @@ import Profile from './containers/Profile'
 import BookClubs from './containers/BookClubs'
 import ProfileInfo from './containers/ProfileInfo'
 import Search from './containers/Search'
+import BookPage from './containers/BookPage'
+import BookInfo from './containers/BookInfo'
 
 import { data } from './helpers/booksrec'
 const apiKey = process.env.REACT_APP_API_BOOKS
@@ -173,8 +175,10 @@ function App() {
                     bookResults={bookResults}
                     handleBookSearch={handleBookSearch}
                   />
-                }>
-                {/* <Route path=':id' element={<BookPage />} /> */}
+                }></Route>
+
+              <Route path='book' element={<BookPage />}>
+                <Route path=':id' element={<BookInfo />} />
               </Route>
             </Routes>
           </Layout>

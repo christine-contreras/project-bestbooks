@@ -1,8 +1,11 @@
 import React from 'react'
 import '../../css/Book.css'
+import { useNavigate } from 'react-router'
 import { Typography, Grid, Button } from '@mui/material'
 
 const ListResult = ({ book }) => {
+  let navigate = useNavigate()
+
   return (
     <Grid container item xs={12} md={6} lg={4}>
       <Grid item container xs={2} justifyContent='center'>
@@ -33,7 +36,7 @@ const ListResult = ({ book }) => {
         </Typography>
         <div className='padding-top-sm'>
           <Button
-            // onClick={handleViewListClick}
+            onClick={() => navigate(`/book/${book.id}`)}
             variant='outlined'
             color='secondary'
             className='b-radius'>
