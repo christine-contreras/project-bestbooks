@@ -6,18 +6,20 @@ import BookResults from './BookResults'
 //dummy data
 import { list } from '../helpers/list'
 
-const Search = ({ recommendationLists, currentList, handleListSearch }) => {
+const Search = ({
+  recommendationLists,
+  currentList,
+  handleListSearch,
+  bookResults,
+  handleBookSearch,
+}) => {
   return (
     <Grid container maxWidth='xl' spacing={6}>
       <Grid item sx={{ width: '100%' }}>
-        <BookResults />
+        <BookResults books={bookResults} handleBookSearch={handleBookSearch} />
       </Grid>
 
-      {!recommendationLists ? (
-        <Typography component='h1' variant='h3' align='center'>
-          Loading...
-        </Typography>
-      ) : (
+      {recommendationLists && (
         <ListResults
           currentList={currentList}
           recommendationLists={recommendationLists}

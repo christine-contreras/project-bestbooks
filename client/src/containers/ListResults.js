@@ -8,7 +8,7 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import BookResult from '../components/search/BookResult'
+import ListResult from '../components/search/ListResult'
 
 const ListResults = ({
   recommendationLists,
@@ -56,7 +56,7 @@ const ListResults = ({
         {books &&
           books
             .sort((a, b) => a.rankingPosition - b.rankingPosition)
-            .map((book) => <BookResult key={book.id} book={book} />)}
+            .map((book) => <ListResult key={book.id} book={book} />)}
       </Grid>
     </Grid>
   )

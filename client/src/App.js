@@ -25,6 +25,7 @@ const apiKey = process.env.REACT_APP_API_BOOKS
 function App() {
   const appliedTheme = createTheme(theme)
   const [user, setUser] = React.useState(null)
+  const [bookResults, setBookResults] = React.useState(null)
   // const [currentbook, setCurrentBook] = React.useState(null)
   const [recommendationLists, setRecommendationLists] = React.useState(null)
   const [currentList, setCurrentList] = React.useState(null)
@@ -89,10 +90,27 @@ function App() {
           id: listId,
           list: data,
         })
-        console.log({
-          id: listId,
-          list: data,
-        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  const handleBookSearch = (searchPhrase) => {
+    fetch(
+      `https://goodreads-books.p.rapidapi.com/search?q=${searchPhrase}&page=1`,
+      {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
+          'x-rapidapi-key': apiKey,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setBookResults(data)
+        console.log(data)
       })
       .catch((err) => {
         console.error(err)
@@ -152,6 +170,8 @@ function App() {
                     recommendationLists={recommendationLists}
                     currentList={currentList}
                     handleListSearch={handleListSearch}
+                    bookResults={bookResults}
+                    handleBookSearch={handleBookSearch}
                   />
                 }>
                 {/* <Route path=':id' element={<BookPage />} /> */}

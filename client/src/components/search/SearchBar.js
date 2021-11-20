@@ -1,8 +1,15 @@
-import React from 'react'
+import * as React from 'react'
 import { Grid, TextField, Button, InputAdornment } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
-const SearchBar = () => {
+const SearchBar = ({ handleBookSearch }) => {
+  const [search, setSearch] = React.useState(null)
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    handleBookSearch(search)
+  }
+
   return (
     <Grid
       item
@@ -10,7 +17,7 @@ const SearchBar = () => {
       sx={{ pt: 4 }}
       justifyContent='center'
       alignItems='stretch'>
-      <form className='form-search'>
+      <form className='form-search' onSubmit={handleSearch}>
         <TextField
           className='search-bar'
           variant='outlined'
@@ -23,8 +30,8 @@ const SearchBar = () => {
               </InputAdornment>
             ),
           }}
-          // value={search}
-          // onChange={(event) => setSearch(event.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
         />
         <Button
           type='submit'

@@ -2,16 +2,21 @@ import React from 'react'
 import '../../css/Book.css'
 import { Typography, Grid, Button } from '@mui/material'
 
-const BookResult = ({ book }) => {
+const ListResult = ({ book }) => {
   return (
     <Grid container item xs={12} md={6} lg={4}>
+      <Grid item container xs={2} justifyContent='center'>
+        <Typography component='p' variant='h4' align='center'>
+          {book.rankingPosition}.
+        </Typography>
+      </Grid>
       <Grid item xs={2} textAlign='center'>
-        <img src={book.smallImageURL} alt={book.title} className='book' />
+        <img src={book.imageURL} alt={book.title} className='book' />
       </Grid>
       <Grid
         item
         container
-        xs={10}
+        xs={8}
         flexDirection='column'
         alignItems='flex-start'
         justifyContent='center'>
@@ -35,4 +40,4 @@ const BookResult = ({ book }) => {
   )
 }
 
-export default BookResult
+export default ListResult
