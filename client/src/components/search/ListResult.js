@@ -10,16 +10,21 @@ const ListResult = ({ book }) => {
           {book.rankingPosition}.
         </Typography>
       </Grid>
-      <Grid item xs={2} textAlign='center'>
-        <img src={book.imageURL} alt={book.title} className='book' />
+      <Grid item xs={4} textAlign='center'>
+        <img
+          src={`${book.imageURL.split(/\._\D{2}\d{2}_/).join('')}`}
+          alt={book.title}
+          className='book'
+        />
       </Grid>
       <Grid
         item
         container
-        xs={8}
+        xs={6}
         flexDirection='column'
         alignItems='flex-start'
-        justifyContent='center'>
+        justifyContent='center'
+        sx={{ pl: 2 }}>
         <Typography component='h3' variant='h6' align='left'>
           {book.title}
         </Typography>

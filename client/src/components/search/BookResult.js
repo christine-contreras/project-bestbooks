@@ -5,16 +5,21 @@ import { Typography, Grid, Button } from '@mui/material'
 const BookResult = ({ book }) => {
   return (
     <Grid container item xs={12} md={6} lg={4}>
-      <Grid item xs={2} textAlign='center'>
-        <img src={book.smallImageURL} alt={book.title} className='book' />
+      <Grid item xs={4} textAlign='center'>
+        <img
+          src={`${book.smallImageURL.split(/\._\D{2}\d{2}_/).join('')}`}
+          alt={book.title}
+          className='book'
+        />
       </Grid>
       <Grid
         item
         container
-        xs={10}
+        xs={8}
         flexDirection='column'
         alignItems='flex-start'
-        justifyContent='center'>
+        justifyContent='center'
+        sx={{ pl: 2 }}>
         <Typography component='h3' variant='h6' align='left'>
           {book.title}
         </Typography>

@@ -1535,3 +1535,15 @@ Processing by Api::UsersController#show as */*
 Completed 200 OK in 102ms (Views: 1.0ms | ActiveRecord: 25.8ms | Allocations: 3969)
 
 
+Started GET "/api/me" for 127.0.0.1 at 2021-11-20 14:17:44 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.91ms)
+Completed 200 OK in 106ms (Views: 1.4ms | ActiveRecord: 26.5ms | Allocations: 3970)
+
+
+Started GET "/function%20join()%20%7B%20[native%20code]%20%7D.jpg" for 127.0.0.1 at 2021-11-20 14:25:49 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/function%20join()%20%7B%20[native%20code]%20%7D.jpg"):
+  

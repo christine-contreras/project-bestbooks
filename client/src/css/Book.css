@@ -1,5 +1,6 @@
 .book {
-    box-shadow: 18px 13px 10px -4px rgb(189 189 189 / 83%)
+    box-shadow: 18px 13px 10px -4px rgb(189 189 189 / 83%);
+    width: 100%;
 }
 
 @media (min-width: 600px) {
