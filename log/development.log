@@ -2329,3 +2329,624 @@ Processing by Api::UsersController#show as */*
 Completed 200 OK in 70ms (Views: 8.6ms | ActiveRecord: 22.4ms | Allocations: 5102)
 
 
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:02:15 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 65ms (ActiveRecord: 12.9ms | Allocations: 3758)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:03:03 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"alicejones@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"alicejones@gmail.com"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alicejones@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (1.4ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (24.9ms)
+Completed 201 Created in 255ms (Views: 27.5ms | ActiveRecord: 2.4ms | Allocations: 1991)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:05:41 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (1.7ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (32.49ms)
+Completed 200 OK in 57ms (Views: 39.4ms | ActiveRecord: 4.2ms | Allocations: 1972)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:18:58 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (3.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (25.25ms)
+Completed 200 OK in 100ms (Views: 22.4ms | ActiveRecord: 34.0ms | Allocations: 5130)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:19:20 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (0.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.71ms)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 1.0ms | Allocations: 1982)
+
+
+Started DELETE "/api/users/2" for 127.0.0.1 at 2021-11-22 15:30:53 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 19.6ms | Allocations: 4326)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/api/users_controller.rb:28:in `destroy'
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:31:15 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (6.7ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (66.1ms)
+Completed 200 OK in 160ms (Views: 86.0ms | ActiveRecord: 7.3ms | Allocations: 1970)
+
+
+Started DELETE "/api/users/2" for 127.0.0.1 at 2021-11-22 15:31:40 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.2ms | Allocations: 1191)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/api/users_controller.rb:28:in `destroy'
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:33:21 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 10ms (ActiveRecord: 0.9ms | Allocations: 626)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:34:36 -0600
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"alicejones@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"alicejones@gmail.com"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alicejones@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (1.2ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (26.21ms)
+Completed 201 Created in 291ms (Views: 32.6ms | ActiveRecord: 13.9ms | Allocations: 19250)
+
+
+Started DELETE "/api/users/2" for 127.0.0.1 at 2021-11-22 15:34:47 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 500 Internal Server Error in 56151ms (ActiveRecord: 6.0ms | Allocations: 41507)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/api/users_controller.rb:29:in `destroy'
+Started DELETE "/api/users/2" for 127.0.0.1 at 2021-11-22 15:35:43 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 500 Internal Server Error in 21321ms (ActiveRecord: 0.5ms | Allocations: 2956)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/api/users_controller.rb:29:in `destroy'
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:37:05 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 18ms (ActiveRecord: 5.9ms | Allocations: 6000)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:39:08 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"alicejones@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"alicejones@gmail.com"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alicejones@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (0.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (22.09ms)
+Completed 201 Created in 230ms (Views: 22.5ms | ActiveRecord: 8.7ms | Allocations: 6545)
+
+
+Started DELETE "/api/users/2" for 127.0.0.1 at 2021-11-22 15:39:15 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `destroy'
+  [1m[36mUser Destroy (3.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ (byebug):1:in `destroy'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 51518ms (Views: 14.1ms | ActiveRecord: 5.9ms | Allocations: 9580)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:40:34 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 18ms (Views: 1.6ms | ActiveRecord: 5.0ms | Allocations: 3008)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:41:47 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 0.8ms | ActiveRecord: 1.6ms | Allocations: 757)
+
+
+Started POST "/api/signup" for 127.0.0.1 at 2021-11-22 15:43:12 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"first_name"=>"Rosie", "last_name"=>"Busby", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "location"=>"", "profile_color"=>"#004d40", "user"=>{"email"=>"rbusby@gmail.com", "first_name"=>"Rosie", "last_name"=>"Busby", "location"=>"", "profile_color"=>"#004d40"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Create (4.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "first_name", "last_name", "location", "profile_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "rbusby@gmail.com"], ["password_digest", "$2a$12$8Z20rIl.4P.SYT0tpcnmMehjM9KwCETiBenLsuulxYZLL1hveFYJC"], ["first_name", "Rosie"], ["last_name", "Busby"], ["location", ""], ["profile_color", "#004d40"], ["created_at", "2021-11-22 21:43:12.589775"], ["updated_at", "2021-11-22 21:43:12.589775"]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "rbusby@gmail.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (0.4ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:10:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (14.25ms)
+Completed 201 Created in 309ms (Views: 16.2ms | ActiveRecord: 17.9ms | Allocations: 12779)
+
+
+Started DELETE "/api/users/3" for 127.0.0.1 at 2021-11-22 15:43:20 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+  [1m[36mUser Destroy (1.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+Completed 204 No Content in 23134ms (ActiveRecord: 2.7ms | Allocations: 3983)
+
+
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:43:58 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 10ms (Views: 1.3ms | ActiveRecord: 3.0ms | Allocations: 792)
+
+
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:44:42 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 1.3ms | ActiveRecord: 1.3ms | Allocations: 758)
+
+
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:45:18 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 11ms (Views: 1.0ms | ActiveRecord: 3.6ms | Allocations: 2996)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:45:24 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 0.8ms | ActiveRecord: 1.2ms | Allocations: 776)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:46:02 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 226ms (Views: 0.4ms | ActiveRecord: 6.5ms | Allocations: 3987)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:46:33 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 216ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 650)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:46:50 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 224ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 651)
+
+
+Started POST "/api/signup" for 127.0.0.1 at 2021-11-22 15:47:18 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"first_name"=>"Rosie", "last_name"=>"Busby", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "location"=>"", "profile_color"=>"#004d40", "user"=>{"email"=>"rbusby@gmail.com", "first_name"=>"Rosie", "last_name"=>"Busby", "location"=>"", "profile_color"=>"#004d40"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "first_name", "last_name", "location", "profile_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "rbusby@gmail.com"], ["password_digest", "$2a$12$HMHJSv3svyTf3OtxCfbx3u/Ty566kB.4Kv0oJjWTsFA3W0nmBQ5SW"], ["first_name", "Rosie"], ["last_name", "Busby"], ["location", ""], ["profile_color", "#004d40"], ["created_at", "2021-11-22 21:47:19.071866"], ["updated_at", "2021-11-22 21:47:19.071866"]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "rbusby@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (0.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:10:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (18.18ms)
+Completed 201 Created in 245ms (Views: 18.3ms | ActiveRecord: 10.5ms | Allocations: 9415)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:47:53 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 276460ms (ActiveRecord: 0.3ms | Allocations: 2448)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:52:29 -0600
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:52:29 -0600
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:52:29 -0600
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:52:29 -0600
+Processing by Api::UsersController#show as */*
+Processing by Api::SessionsController#create as */*
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:52:29 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Processing by Api::UsersController#show as */*
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+Processing by Api::UsersController#show as */*
+[active_model_serializers]   [1m[36mBookclub Load (3.0ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.47ms)
+Completed 200 OK in 20ms (Views: 8.3ms | ActiveRecord: 4.0ms | Allocations: 4541)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:52:29 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (5.3ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.6ms)
+Completed 201 Created in 233ms (Views: 3.0ms | ActiveRecord: 5.8ms | Allocations: 3707)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:52:30 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mUser Load (267.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mUser Load (268.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mBookclub Load (8.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (2.9ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (284.1ms)
+[active_model_serializers]   [1m[36mBookclub Load (237.3ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (242.79ms)
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (244.96ms)
+[active_model_serializers]   [1m[36mBookclub Load (10.2ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 797ms (Views: 6.2ms | ActiveRecord: 749.9ms | Allocations: 24428)
+
+
+[active_model_serializers]   [1m[36mBookclub Load (2.1ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+Completed 200 OK in 802ms (Views: 245.1ms | ActiveRecord: 523.8ms | Allocations: 26116)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:52:30 -0600
+Completed 200 OK in 804ms (Views: 514.2ms | ActiveRecord: 263.5ms | Allocations: 26005)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.9ms)
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:52:30 -0600
+Processing by Api::SessionsController#create as */*
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+Completed 201 Created in 806ms (Views: 11.7ms | ActiveRecord: 255.3ms | Allocations: 27563)
+
+
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (267.78ms)
+Completed 201 Created in 543ms (Views: 261.9ms | ActiveRecord: 10.9ms | Allocations: 12233)
+
+
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (204.3ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (207.24ms)
+[active_model_serializers]   [1m[36mBookclub Load (1.0ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+Completed 201 Created in 473ms (Views: 3.6ms | ActiveRecord: 205.7ms | Allocations: 3470)
+
+
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (3.12ms)
+Completed 201 Created in 476ms (Views: 3.4ms | ActiveRecord: 2.7ms | Allocations: 4793)
+
+
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:52:51 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 16033ms (ActiveRecord: 5.4ms | Allocations: 2393)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:53:33 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (0.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.01ms)
+Completed 201 Created in 221ms (Views: 1.9ms | ActiveRecord: 0.9ms | Allocations: 1978)
+
+
+Started DELETE "/api/users/4" for 127.0.0.1 at 2021-11-22 15:53:42 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+  [1m[36mUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+Completed 204 No Content in 12239ms (ActiveRecord: 3.4ms | Allocations: 3689)
+
+
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:54:12 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 762)
+
+
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2021-11-22 15:56:28 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:56:31 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 767)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:56:42 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 608)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:57:17 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 217ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 652)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (1.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/signup" for 127.0.0.1 at 2021-11-22 15:57:57 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"first_name"=>"Christine", "last_name"=>"Contreras", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "location"=>"Austin, TX", "profile_color"=>"#004d40", "user"=>{"email"=>"christineec23@yahoo.com", "first_name"=>"Christine", "last_name"=>"Contreras", "location"=>"Austin, TX", "profile_color"=>"#004d40"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "first_name", "last_name", "location", "profile_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "christineec23@yahoo.com"], ["password_digest", "$2a$12$iR8wjgzAzaQvvVKnmH9ryONTTrGH1IMomaAuF6OJefPObP93reMma"], ["first_name", "Christine"], ["last_name", "Contreras"], ["location", "Austin, TX"], ["profile_color", "#004d40"], ["created_at", "2021-11-22 21:57:57.751535"], ["updated_at", "2021-11-22 21:57:57.751535"]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "christineec23@yahoo.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (0.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:10:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.95ms)
+Completed 201 Created in 224ms (Views: 4.9ms | ActiveRecord: 2.6ms | Allocations: 4835)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 15:58:47 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 39997ms (ActiveRecord: 1.4ms | Allocations: 2433)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:59:27 -0600
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:59:27 -0600
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:59:27 -0600
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 15:59:27 -0600
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 15:59:27 -0600
+Processing by Api::UsersController#show as */*
+Processing by Api::SessionsController#create as */*
+Processing by Api::SessionsController#create as */*
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  Parameters: {"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com", "session"=>{"password"=>"[FILTERED]", "email"=>"christineec23@yahoo.com"}}
+[active_model_serializers]   [1m[36mBookclub Load (1.0ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.16ms)
+Completed 200 OK in 19ms (Views: 9.8ms | ActiveRecord: 2.2ms | Allocations: 4454)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "christineec23@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (211.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   [1m[36mBookclub Load (419.1ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (422.09ms)
+Completed 200 OK in 699ms (Views: 3.3ms | ActiveRecord: 439.3ms | Allocations: 20390)
+
+
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (424.42ms)
+Completed 201 Created in 698ms (Views: 213.9ms | ActiveRecord: 232.6ms | Allocations: 20219)
+
+
+[active_model_serializers]   [1m[36mBookclub Load (1.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.31ms)
+Completed 201 Created in 704ms (Views: 5.2ms | ActiveRecord: 26.5ms | Allocations: 22432)
+
+
+[active_model_serializers]   [1m[36mBookclub Load (1.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.23ms)
+Completed 201 Created in 696ms (Views: 9.2ms | ActiveRecord: 19.9ms | Allocations: 21634)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-11-22 16:01:22 -0600
+Processing by Api::UsersController#show as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (0.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:18:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (18.27ms)
+Completed 200 OK in 47ms (Views: 13.6ms | ActiveRecord: 17.1ms | Allocations: 10657)
+
+
+Started DELETE "/api/logout" for 127.0.0.1 at 2021-11-22 16:01:49 -0600
+Processing by Api::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+Completed 204 No Content in 2ms (ActiveRecord: 0.3ms | Allocations: 667)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2021-11-22 16:02:00 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "session"=>{"password"=>"[FILTERED]", "email"=>"rbusby@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:5:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 864)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/signup" for 127.0.0.1 at 2021-11-22 16:03:09 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"first_name"=>"rosie", "last_name"=>"busby", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"rbusby@gmail.com", "location"=>"", "profile_color"=>"#004d40", "user"=>{"email"=>"rbusby@gmail.com", "first_name"=>"rosie", "last_name"=>"busby", "location"=>"", "profile_color"=>"#004d40"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rbusby@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "first_name", "last_name", "location", "profile_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "rbusby@gmail.com"], ["password_digest", "$2a$12$BchafTAgvi19OPDPNXKp8.dPiJkIPttnGOWzJ3p/Ew.F18qcHY8rq"], ["first_name", "rosie"], ["last_name", "busby"], ["location", ""], ["profile_color", "#004d40"], ["created_at", "2021-11-22 22:03:09.658168"], ["updated_at", "2021-11-22 22:03:09.658168"]]
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "rbusby@gmail.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:8:in `create'
+[active_model_serializers]   [1m[36mBookclub Load (0.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_profiles" ON "bookclubs"."id" = "bookclub_profiles"."bookclub_id" WHERE "bookclub_profiles"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:10:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.94ms)
+Completed 201 Created in 240ms (Views: 2.9ms | ActiveRecord: 4.9ms | Allocations: 5013)
+
+
+Started DELETE "/api/users/6" for 127.0.0.1 at 2021-11-22 16:03:20 -0600
+Processing by Api::UsersController#destroy as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authorize'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+  [1m[36mUser Destroy (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:29:in `destroy'
+Completed 204 No Content in 19596ms (ActiveRecord: 2.7ms | Allocations: 4144)
+
+

@@ -200,7 +200,8 @@ function App() {
                   element={
                     <ProfileInfo
                       user={user}
-                      handleCheckLogin={handleCheckLogin}
+                      onLogout={handleLogout}
+                      setUser={setUser}
                     />
                   }
                 />

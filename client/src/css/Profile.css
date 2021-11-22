@@ -27,3 +27,22 @@
     }
 
 }
+
+
+.modal {
+    position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .modal-body{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-30%, -50%);
+        width: 90%;
+        background-color: #f8f4ef;
+        max-width: 500px;
+        padding: 2em;
+    }
+    

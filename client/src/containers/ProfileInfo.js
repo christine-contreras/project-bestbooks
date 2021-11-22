@@ -1,9 +1,30 @@
 import React from 'react'
 import '../css/Form.css'
+import '../css/Profile.css'
 import FormProfile from '../components/form/FormProfile'
-import { Grid, Typography } from '@mui/material'
+import DeleteModal from '../components/form/DeleteModal'
+import { Grid, Typography, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
-const ProfileInfo = ({ user, handleCheckLogin }) => {
+const ProfileInfo = ({ user, handleCheckLogin, setUser }) => {
+  let navigate = useNavigate()
+
+  //handle modal
+  const [openModal, setOpenModal] = React.useState(false)
+  const handleOpenModel = () => setOpenModal(true)
+  const handleCloseModel = () => setOpenModal(false)
+
+  const handleDeleteProfile = () => {
+    fetch(`/api/users/${user.id}`, {
+      method: 'DELETE',
+    }).then((response) => {
+      if (response.ok) {
+        setUser(null)
+        navigate('/')
+      }
+    })
+  }
+
   return (
     <>
       <Grid item>
@@ -14,6 +35,21 @@ const ProfileInfo = ({ user, handleCheckLogin }) => {
       <Grid item>
         <FormProfile user={user} handleCheckLogin={handleCheckLogin} />
       </Grid>
+      <Grid item textAlign='right' sx={{ pt: 10 }}>
+        <Button
+          variant='text'
+          className='b-radius btn btn-lg'
+          color='error'
+          onClick={handleOpenModel}>
+          Delete Profile
+        </Button>
+      </Grid>
+
+      <DeleteModal
+        openModal={openModal}
+        handleCloseModel={handleCloseModel}
+        handleDeleteProfile={handleDeleteProfile}
+      />
     </>
   )
 }
