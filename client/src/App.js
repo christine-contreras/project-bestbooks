@@ -191,8 +191,19 @@ function App() {
               />
 
               <Route path='profile' element={<Profile user={user} />}>
-                <Route path='my-bookclubs' element={<BookClubs />} />
-                <Route path='my-info' element={<ProfileInfo />} />
+                <Route
+                  path='my-bookclubs'
+                  element={<BookClubs user={user} />}
+                />
+                <Route
+                  path='my-info'
+                  element={
+                    <ProfileInfo
+                      user={user}
+                      handleCheckLogin={handleCheckLogin}
+                    />
+                  }
+                />
               </Route>
 
               <Route
@@ -212,7 +223,13 @@ function App() {
               <Route path='book' element={<BookPage />}>
                 <Route
                   path=':id'
-                  element={<BookInfo book={currentbook} loading={loading} />}
+                  element={
+                    <BookInfo
+                      book={currentbook}
+                      loading={loading}
+                      user={user}
+                    />
+                  }
                 />
               </Route>
             </Routes>

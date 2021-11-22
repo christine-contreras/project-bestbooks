@@ -18,6 +18,17 @@ class Api::UsersController < ApplicationController
         render json: user
     end
 
+    def update 
+        user = @current_user
+        user.update(user_params)
+        render json: user, status: :accepted
+    end
+
+    def destroy
+        @user.destroy 
+        render json: {message: 'user deleted'}
+    end
+
     private 
 
     def user_params

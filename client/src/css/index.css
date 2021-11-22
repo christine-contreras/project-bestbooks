@@ -96,3 +96,7 @@ a:hover, a:active {
   }
   
 }
+
+.hidden {
+  display: none;
+}

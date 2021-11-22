@@ -47,7 +47,7 @@ const HomeRecs = ({ user, recommendationLists, handleListSearch }) => {
             </Button>
           </Grid>
 
-          <Grid container item spacing={3} sx={{ pt: 6 }}>
+          <Grid container item spacing={3} sx={{ pt: 6, pb: 6 }}>
             {recommendations.preview.slice(0, 4).map((rec) => (
               <Recommendation key={rec.title} book={rec} />
             ))}

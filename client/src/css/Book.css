@@ -4,6 +4,10 @@
     max-width: 400px;
 }
 
+.recommendation .book {
+    max-width: 150px;
+}
+
 @media (min-width: 600px) {
     .book-info{
         justify-content: space-between;
