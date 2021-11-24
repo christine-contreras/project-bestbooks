@@ -7,14 +7,16 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 
 import Layout from './containers/Layout'
-import Home from './containers/Home'
+import Home from './containers/home/Home'
 import SignUpLogin from './containers/SignUpLogin'
-import Profile from './containers/Profile'
-import BookClubs from './containers/BookClubs'
-import ProfileInfo from './containers/ProfileInfo'
-import Search from './containers/Search'
-import BookPage from './containers/BookPage'
-import BookInfo from './containers/BookInfo'
+import Profile from './containers/profile/Profile'
+import BookClubs from './containers/profile/BookClubs'
+import ProfileInfo from './containers/profile/ProfileInfo'
+import Search from './containers/search/Search'
+import BookPage from './containers/books/BookPage'
+import BookInfo from './containers/books/BookInfo'
+import BookClubPage from './containers/bookclubs/BookClubPage'
+import BookClub from './containers/bookclubs/BookClub'
 //dummy data
 import { data } from './helpers/booksrec'
 import { bookinfo } from './helpers/bookinfo'
@@ -28,6 +30,7 @@ function App() {
   const [currentbook, setCurrentBook] = React.useState(null)
   const [recommendationLists, setRecommendationLists] = React.useState(null)
   const [currentList, setCurrentList] = React.useState(null)
+  const [currentBookclub, setCurrentBookclub] = React.useState(null)
 
   React.useEffect(() => {
     // auto-login
@@ -187,7 +190,9 @@ function App() {
               <Route path='profile' element={<Profile user={user} />}>
                 <Route
                   path='my-bookclubs'
-                  element={<BookClubs user={user} />}
+                  element={
+                    <BookClubs user={user} fetchUser={handleCheckLogin} />
+                  }
                 />
                 <Route
                   path='my-info'
@@ -216,6 +221,7 @@ function App() {
                   />
                 }></Route>
 
+              {/* still need to make functionality of adding book to book club */}
               <Route path='book' element={<BookPage />}>
                 <Route
                   path=':id'
@@ -227,6 +233,10 @@ function App() {
                     />
                   }
                 />
+              </Route>
+
+              <Route path='bookclub' element={<BookClubPage />}>
+                <Route path=':id' element={<BookClub user={user} />}></Route>
               </Route>
             </Routes>
           </Layout>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Hero from '../components/home/Hero'
+import Hero from '../../components/home/Hero'
 import HomeRecs from './HomeRecs'
 
 const Home = ({ user, recommendationLists, handleListSearch }) => {

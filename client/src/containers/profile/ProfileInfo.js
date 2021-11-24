@@ -1,8 +1,8 @@
 import React from 'react'
-import '../css/Form.css'
-import '../css/Profile.css'
-import FormProfile from '../components/form/FormProfile'
-import DeleteModal from '../components/form/DeleteModal'
+import '../../css/Form.css'
+import '../../css/Profile.css'
+import FormProfile from '../../components/form/FormProfile'
+import DeleteModal from '../../components/form/DeleteModal'
 import { Grid, Typography, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 

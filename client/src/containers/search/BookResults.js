@@ -1,8 +1,8 @@
 import * as React from 'react'
-import '../css/Form.css'
-import Loading from '../components/Loading'
-import SearchBar from '../components/search/SearchBar'
-import BookResult from '../components/search/BookResult'
+import '../../css/Form.css'
+import Loading from '../../components/Loading'
+import SearchBar from '../../components/search/SearchBar'
+import BookResult from '../../components/search/BookResult'
 import { Grid, Paper, Typography } from '@mui/material'
 
 const BookResults = ({ handleBookSearch, handleFetchBook, books, loading }) => {

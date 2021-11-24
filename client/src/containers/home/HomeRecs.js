@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Recommendation from '../components/home/Recommendation'
+import Recommendation from '../../components/home/Recommendation'
 import { Grid, Typography, Button } from '@mui/material'
-import { data } from '../helpers/booksrec'
+import { data } from '../../helpers/booksrec'
 import { useNavigate } from 'react-router-dom'
 
 const apiKey = process.env.REACT_APP_API_BOOKS

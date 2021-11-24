@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { Outlet } from 'react-router-dom'
 import { Typography, Grid, Paper, Container } from '@mui/material'
 import ListResults from './ListResults'
 import BookResults from './BookResults'
 //dummy data
-import { list } from '../helpers/list'
+import { list } from '../../helpers/list'
 
 const Search = ({
   recommendationLists,
@@ -35,9 +34,6 @@ const Search = ({
           loading={loading}
         />
       )}
-      {/* <Grid container item>
-        <Outlet />
-      </Grid> */}
     </Grid>
   )
 }

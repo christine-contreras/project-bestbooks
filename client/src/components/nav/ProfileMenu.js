@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../css/Nav.css'
 import { changeToInitials } from '../../helpers/helpers'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -33,7 +34,7 @@ const ProfileMenu = ({ user }) => {
       </Grid>
 
       <Grid item>
-        <MenuList className='profile-menu'>
+        <MenuList className='side-menu'>
           <MenuItem
             className={
               location.pathname === '/profile/my-info' ? 'active' : null

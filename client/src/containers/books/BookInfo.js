@@ -1,7 +1,7 @@
 import * as React from 'react'
-import '../css/Book.css'
-import NotFound from './NotFound'
-import Loading from '../components/Loading'
+import '../../css/Book.css'
+import NotFound from '../NotFound'
+import Loading from '../../components/Loading'
 import { Grid, Typography, Button, Link } from '@mui/material'
 
 const BookInfo = ({ book, loading }) => {

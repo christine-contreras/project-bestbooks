@@ -1,5 +1,5 @@
 import * as React from 'react'
-import '../css/Form.css'
+import '../../css/Form.css'
 import {
   Grid,
   Typography,
@@ -8,8 +8,8 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import ListResult from '../components/search/ListResult'
-import Loading from '../components/Loading'
+import ListResult from '../../components/search/ListResult'
+import Loading from '../../components/Loading'
 
 const ListResults = ({
   recommendationLists,

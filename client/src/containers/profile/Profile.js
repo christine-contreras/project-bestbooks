@@ -1,10 +1,10 @@
 import React from 'react'
-import '../css/Profile.css'
+import '../../css/Profile.css'
 import { Outlet } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { Grid } from '@mui/material'
 
-import ProfileMenu from '../components/nav/ProfileMenu'
+import ProfileMenu from '../../components/nav/ProfileMenu'
 
 const Profile = ({ user }) => {
   let navigate = useNavigate()
