@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import BookclubInfo from '../bookclub/BookclubInfo'
@@ -8,6 +8,12 @@ import { Grid, Paper, MenuList, MenuItem } from '@mui/material'
 const BookclubMenu = ({ user, bookclub }) => {
   let navigate = useNavigate()
   let location = useLocation()
+  const [admin, setAdmin] = React.useState(false)
+
+  React.useEffect(() => {
+    setAdmin(user.id === bookclub.admin.id ? true : false)
+  }, [])
+
   return (
     <Paper sx={{ p: 4 }}>
       <Grid
@@ -42,12 +48,14 @@ const BookclubMenu = ({ user, bookclub }) => {
             <Link to='/profile/my-bookclubs'>Book History</Link>
           </MenuItem>
 
-          <MenuItem
-            className={
-              location.pathname === '/profile/my-bookclubs' ? 'active' : null
-            }>
-            <Link to='/profile/my-bookclubs'>Admin Dashboard</Link>
-          </MenuItem>
+          {admin && (
+            <MenuItem
+              className={
+                location.pathname === '/profile/my-bookclubs' ? 'active' : null
+              }>
+              <Link to='/profile/my-bookclubs'>Admin Dashboard </Link>
+            </MenuItem>
+          )}
         </MenuList>
       </Grid>
     </Paper>
