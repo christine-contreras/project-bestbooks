@@ -1,4 +1,5 @@
 class Api::BookclubsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index 
         bookclubs = Bookclub.all 
@@ -6,7 +7,7 @@ class Api::BookclubsController < ApplicationController
     end
 
     def show 
-        bookclub = Bookclub.find_by(id: params[:id])
+        bookclub = Bookclub.find(params[:id])
         render json: bookclub
     end
 
@@ -25,4 +26,10 @@ class Api::BookclubsController < ApplicationController
     def bookclub_params
         params.permit(:name)
     end
+
+    def render_not_found_response
+        render json: { error: 'Book Club Not Found' }, status: :not_found
+    end
+
+
 end

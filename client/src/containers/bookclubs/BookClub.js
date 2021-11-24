@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { Grid } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import BookclubMenu from '../../components/nav/BookclubMenu'
+import Loading from '../../components/Loading'
 import { useParams } from 'react-router'
 
 const Bookclub = ({ user }) => {
@@ -8,24 +9,40 @@ const Bookclub = ({ user }) => {
 
   const [bookclub, setBookclub] = React.useState(null)
   const [loading, setLoading] = React.useState(null)
+  const [error, setError] = React.useState(null)
 
   React.useEffect(() => {
     setLoading(true)
     fetch(`/api/bookclubs/${params.id}`).then((response) => {
+      console.log(response)
       setLoading(false)
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data)
           setBookclub(data)
         })
       } else {
-        response.json().then((err) => console.log(err))
+        response.json().then((error) => setError(error.error))
       }
     })
   }, [])
 
-  return (
+  return loading ? (
+    <Grid container alignItems='center' justifyContent='center'>
+      <Loading />
+    </Grid>
+  ) : (
     <>
+      {error && (
+        <Grid
+          container
+          flexDirection='column'
+          wrap='nowrap'
+          alignItems='center'>
+          <Typography component='h1' variant='h4' align='center'>
+            {error}
+          </Typography>
+        </Grid>
+      )}
       {bookclub && (
         <>
           <Grid item xs={12} md={4} lg={3}>
