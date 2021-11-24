@@ -2,8 +2,8 @@ import * as React from 'react'
 import { Grid, Typography, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-import CreateBookclubModal from '../../components/form/CreateBookclubModal'
-import BookclubCard from '../../components/bookclub/BookclubCard'
+import CreateBookClubModal from '../../components/form/CreateBookClubModal'
+import BookClubCard from '../../components/bookclub/BookClubCard'
 
 const BookClubs = ({ user, fetchUser }) => {
   let navigate = useNavigate()
@@ -50,7 +50,7 @@ const BookClubs = ({ user, fetchUser }) => {
             alignItems='stretch'
             justifyContent='flex-start'>
             {bookclubs.map((bookclub) => (
-              <BookclubCard
+              <BookClubCard
                 bookclub={bookclub}
                 key={`bookclub-${bookclub.id}`}
                 user={user}
@@ -69,7 +69,7 @@ const BookClubs = ({ user, fetchUser }) => {
         </Button>
       </Grid>
 
-      <CreateBookclubModal
+      <CreateBookClubModal
         openModal={openModal}
         handleCloseModel={handleCloseModel}
         setBookClubs={setBookClubs}

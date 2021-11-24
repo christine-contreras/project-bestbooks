@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
-import BookclubInfo from '../bookclub/BookclubInfo'
+import BookClubInfo from '../bookclub/BookClubInfo'
 
 import { Grid, Paper, MenuList, MenuItem } from '@mui/material'
 
@@ -23,7 +23,7 @@ const BookclubMenu = ({ user, bookclub }) => {
         wrap='nowrap'
         alignItems='center'
         justifyContent='center'>
-        <BookclubInfo name={bookclub.name} members={bookclub.users} />
+        <BookClubInfo name={bookclub.name} members={bookclub.users} />
       </Grid>
 
       <Grid item>

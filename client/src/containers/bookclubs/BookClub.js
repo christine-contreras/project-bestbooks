@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Grid, Typography } from '@mui/material'
-import BookclubMenu from '../../components/nav/BookclubMenu'
+import BookClubMenu from '../../components/nav/BookClubMenu'
 import Loading from '../../components/Loading'
 import { useParams } from 'react-router'
 
@@ -46,7 +46,7 @@ const Bookclub = ({ user }) => {
       {bookclub && (
         <>
           <Grid item xs={12} md={4} lg={3}>
-            <BookclubMenu user={user} bookclub={bookclub} />
+            <BookClubMenu user={user} bookclub={bookclub} />
           </Grid>
 
           <Grid

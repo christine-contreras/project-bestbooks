@@ -12,7 +12,7 @@ import {
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { useNavigate } from 'react-router-dom'
 
-const BookclubCard = ({ bookclub, user }) => {
+const BookClubCard = ({ bookclub, user }) => {
   let navigate = useNavigate()
   return (
     <Grid item xs={12} sm={6} lg={4} alignSelf='stretch'>
@@ -60,4 +60,4 @@ const BookclubCard = ({ bookclub, user }) => {
   )
 }
 
-export default BookclubCard
+export default BookClubCard

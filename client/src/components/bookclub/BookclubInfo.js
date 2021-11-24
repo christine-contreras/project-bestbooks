@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Avatar, Typography } from '@mui/material'
 import { changeToInitials } from '../../helpers/helpers'
 
-const BookclubInfo = ({ name, members }) => {
+const BookClubInfo = ({ name, members }) => {
   return (
     <>
       <Typography
@@ -22,4 +22,4 @@ const BookclubInfo = ({ name, members }) => {
   )
 }
 
-export default BookclubInfo
+export default BookClubInfo
