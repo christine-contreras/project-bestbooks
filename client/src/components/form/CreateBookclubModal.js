@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { useNavigate } from 'react-router'
 
-const CreateBookclubModal = ({ openModal, handleCloseModel }) => {
+const CreateBookclubModal = ({ openModal, handleCloseModel, setBookClubs }) => {
   const [name, setName] = React.useState('')
   const [loading, setLoading] = React.useState(false)
   const [errors, setErrors] = React.useState([])
@@ -32,13 +32,13 @@ const CreateBookclubModal = ({ openModal, handleCloseModel }) => {
     }).then((response) => {
       setLoading(false)
       if (response.ok) {
-        response.json()
-        // .then((user) => onLogin(user))
-        // .then(navigate('/'))
+        response.json().then((bookclub) => {
+          setBookClubs((prevBookClubs) => [...prevBookClubs, bookclub])
+          handleCloseModel()
+        })
       } else {
         response.json().then((err) => {
-          console.log(err)
-          // setErrors(err.errors)
+          setErrors(err.errors)
         })
       }
     })

@@ -5,6 +5,11 @@ class Api::BookclubsController < ApplicationController
         render json: bookclubs
     end
 
+    def show 
+        bookclub = Bookclub.find_by(id: params[:id])
+        render json: bookclub
+    end
+
     def create 
         user = @current_user
         bookclub = user.bookclubs.create(bookclub_params)

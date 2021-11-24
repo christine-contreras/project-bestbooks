@@ -26,7 +26,7 @@ const Profile = ({ user }) => {
             xs={12}
             md={8}
             lg={9}
-            sx={{ pt: 4 }}>
+            sx={{ p: 4 }}>
             <Outlet />
           </Grid>
         </>

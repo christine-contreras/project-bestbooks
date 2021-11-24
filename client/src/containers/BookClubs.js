@@ -3,10 +3,13 @@ import { Grid, Typography, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 import CreateBookclubModal from '../components/form/CreateBookclubModal'
+import Bookclub from '../components/bookclub/Bookclub'
 
 const BookClubs = ({ user }) => {
   let navigate = useNavigate()
-  const [bookclubs, setBookClubs] = React.useState([])
+  const [bookclubs, setBookClubs] = React.useState(
+    user.bookclubs ? user.bookclubs : []
+  )
   //handle modal
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModel = () => setOpenModal(true)
@@ -40,14 +43,15 @@ const BookClubs = ({ user }) => {
             </Typography>
           </Grid>
         ) : (
-          <Grid item>
-            <Typography
-              component='p'
-              variant='subtitle1'
-              align='center'
-              paddingTop>
-              You have bookclubs
-            </Typography>
+          <Grid
+            item
+            container
+            spacing={3}
+            alignItems='stretch'
+            justifyContent='center'>
+            {bookclubs.map((bookclub) => (
+              <Bookclub bookclub={bookclub} key={`bookclub-${bookclub.id}`} />
+            ))}
           </Grid>
         )}
       </Grid>
@@ -64,6 +68,7 @@ const BookClubs = ({ user }) => {
       <CreateBookclubModal
         openModal={openModal}
         handleCloseModel={handleCloseModel}
+        setBookClubs={setBookClubs}
       />
     </>
   )
