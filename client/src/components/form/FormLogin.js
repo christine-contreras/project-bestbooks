@@ -41,7 +41,6 @@ const FormLogin = ({ onLogin }) => {
         value={email}
         label='Email'
         variant='outlined'
-        color='secondary'
         fullWidth
       />
 
@@ -51,7 +50,6 @@ const FormLogin = ({ onLogin }) => {
         value={password}
         label='Password'
         variant='outlined'
-        color='secondary'
         type='password'
         fullWidth
       />

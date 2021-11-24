@@ -22,6 +22,7 @@ const Profile = ({ user }) => {
             item
             container
             flexDirection='column'
+            spacing={3}
             xs={12}
             md={8}
             lg={9}

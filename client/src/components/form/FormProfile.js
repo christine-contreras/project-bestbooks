@@ -1,5 +1,6 @@
 import * as React from 'react'
 import '../../css/Form.css'
+import { colors } from '../../helpers/colors'
 import {
   Button,
   TextField,
@@ -10,8 +11,6 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import { useNavigate } from 'react-router'
-import { colors } from '../../helpers/colors'
 
 const FormProfile = ({ user, handleCheckLogin }) => {
   const [color, setColor] = React.useState(
@@ -33,8 +32,6 @@ const FormProfile = ({ user, handleCheckLogin }) => {
   const [updated, setUpdated] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const [togglePassword, setTogglePassword] = React.useState(false)
-
-  let navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()

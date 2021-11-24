@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Modal, Alert, Grid, Button, Paper } from '@mui/material'
+import { Typography, Modal, Alert, Grid, Button } from '@mui/material'
 
 const DeleteModal = ({ openModal, handleCloseModel, handleDeleteProfile }) => {
   return (

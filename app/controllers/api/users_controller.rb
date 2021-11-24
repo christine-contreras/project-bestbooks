@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
 
     def show 
         user = @current_user
+        # render json: user, include: ['bookclubs', 'bookclubs.users']
         render json: user
     end
 
@@ -32,6 +33,6 @@ class Api::UsersController < ApplicationController
     private 
 
     def user_params
-        params.permit(:email, :first_name, :last_name, :location, :profile_color, :password, :password_confirmation)
+        params.permit(:email, :first_name, :last_name, :location, :profile_color, :password, :password_confirmation, :bookclubs)
     end
 end

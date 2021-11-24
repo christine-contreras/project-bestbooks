@@ -50,7 +50,6 @@ const FormSignup = ({ onLogin }) => {
         value={firstName}
         label='First Name'
         variant='outlined'
-        color='secondary'
         fullWidth
       />
 
@@ -60,7 +59,6 @@ const FormSignup = ({ onLogin }) => {
         value={lastName}
         label='Last Name'
         variant='outlined'
-        color='secondary'
         fullWidth
       />
 
@@ -69,7 +67,6 @@ const FormSignup = ({ onLogin }) => {
         value={location}
         label='Location'
         variant='outlined'
-        color='secondary'
         fullWidth
       />
 
@@ -79,7 +76,6 @@ const FormSignup = ({ onLogin }) => {
         value={email}
         label='Email'
         variant='outlined'
-        color='secondary'
         fullWidth
       />
 
@@ -89,7 +85,6 @@ const FormSignup = ({ onLogin }) => {
         value={password}
         label='Password'
         variant='outlined'
-        color='secondary'
         type='password'
         fullWidth
       />
@@ -100,7 +95,6 @@ const FormSignup = ({ onLogin }) => {
         value={passwordConfirmation}
         label='Confirm Password'
         variant='outlined'
-        color='secondary'
         type='password'
         fullWidth
       />

@@ -12,8 +12,9 @@ const NavLoggedOut = () => {
       <div className='nav-buttons'>
         <Button
           variant='text'
-          sx={{ color: brown[900] }}
-          className='link'
+          color='secondary'
+          sx={{ color: brown[900], marginRight: 2 }}
+          className='link b-radius'
           onClick={() => navigate(`/login`)}>
           Log In
         </Button>

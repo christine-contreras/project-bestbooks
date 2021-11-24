@@ -1,16 +1,11 @@
 import * as React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import theme from './theme/theme'
 import './css/App.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-
 import Box from '@mui/material/Box'
+
 import Layout from './containers/Layout'
 import Home from './containers/Home'
 import SignUpLogin from './containers/SignUpLogin'
@@ -20,7 +15,6 @@ import ProfileInfo from './containers/ProfileInfo'
 import Search from './containers/Search'
 import BookPage from './containers/BookPage'
 import BookInfo from './containers/BookInfo'
-
 //dummy data
 import { data } from './helpers/booksrec'
 import { bookinfo } from './helpers/bookinfo'
@@ -202,6 +196,7 @@ function App() {
                       user={user}
                       onLogout={handleLogout}
                       setUser={setUser}
+                      handleCheckLogin={handleCheckLogin}
                     />
                   }
                 />

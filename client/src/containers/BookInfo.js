@@ -2,12 +2,9 @@ import * as React from 'react'
 import '../css/Book.css'
 import NotFound from './NotFound'
 import Loading from '../components/Loading'
-import { useParams, useNavigate } from 'react-router'
 import { Grid, Typography, Button, Link } from '@mui/material'
 
 const BookInfo = ({ book, loading }) => {
-  let params = useParams()
-
   return loading ? (
     <Loading />
   ) : book && book.error ? (
