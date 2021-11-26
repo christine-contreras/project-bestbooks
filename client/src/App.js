@@ -272,7 +272,6 @@ function App() {
                         bookclub={currentBookclub}
                         setCurrentBookclub={setCurrentBookclub}
                         fetchUser={handleCheckLogin}
-                        loading={loading}
                         user={user}
                       />
                     }

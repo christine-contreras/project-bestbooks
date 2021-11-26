@@ -8,7 +8,6 @@ import FormBookClub from '../../components/form/FormBookClub'
 const BookClubDashboard = ({
   bookclub,
   user,
-  loading,
   setCurrentBookclub,
   fetchUser,
 }) => {
@@ -33,6 +32,39 @@ const BookClubDashboard = ({
     <>
       {!user ? (
         navigate('/')
+      ) : user.id !== bookclub.admin.id ? (
+        <Grid item container spacing={3} flexDirection='column'>
+          <Grid item>
+            <Typography component='h1' variant='h4' align='center' paddingTop>
+              Access Denied
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              component='p'
+              variant='subtitle1'
+              align='center'
+              paddingTop>
+              You don't have admin access. Please contact your admin for further
+              help.
+            </Typography>
+          </Grid>
+          <Grid item container flexDirection='column'>
+            <Typography component='h1' variant='h5' align='center' paddingTop>
+              Contact Admin
+            </Typography>
+            <Typography
+              component='p'
+              variant='subtitle1'
+              align='center'
+              paddingTop>
+              name: {`${bookclub.admin.first_name} ${bookclub.admin.last_name}`}
+            </Typography>
+            <Typography component='p' variant='subtitle1' align='center'>
+              email: {bookclub.admin.email}
+            </Typography>
+          </Grid>
+        </Grid>
       ) : (
         <>
           <Grid item>
