@@ -16,8 +16,10 @@ import {
 } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person'
 import PersonOffIcon from '@mui/icons-material/PersonOff'
+import { useNavigate } from 'react-router-dom'
 
-const FormBookClub = ({ bookclub, setCurrentBookclub }) => {
+const FormBookClub = ({ bookclub, setCurrentBookclub, fetchUser }) => {
+  let navigate = useNavigate()
   const [name, setName] = React.useState(bookclub ? bookclub.name : '')
   const [adminId, setAdminId] = React.useState(
     bookclub ? bookclub.admin.id : null
@@ -69,15 +71,23 @@ const FormBookClub = ({ bookclub, setCurrentBookclub }) => {
       }),
     }).then((response) => {
       setLoading(false)
-      deleteUsers([])
+      setDeleteUsers([])
       setNewUsers([])
       if (response.ok) {
         setUpdated(true)
         response.json().then((data) => {
           setCurrentBookclub(data)
+          fetchUser()
         })
       } else {
-        response.json().then((err) => setErrors(err.errors))
+        response.json().then((err) => {
+          if (err.exception) {
+            fetchUser()
+            navigate('/profile/my-bookclubs')
+          } else {
+            setErrors(err)
+          }
+        })
       }
     })
   }
@@ -164,7 +174,7 @@ const FormBookClub = ({ bookclub, setCurrentBookclub }) => {
           justifyContent='center'>
           {currentUsers.map((user) => (
             <Grid item key={`user-profile-${user.id}`}>
-              {adminId === user.id ? (
+              {bookclub.admin.id === user.id ? (
                 <Tooltip title='cannot remove admin'>
                   <Button
                     variant='contained'

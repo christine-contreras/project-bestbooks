@@ -17,7 +17,8 @@ import BookPage from './containers/books/BookPage'
 import BookInfo from './containers/books/BookInfo'
 import BookClubPage from './containers/bookclubs/BookClubPage'
 import BookClub from './containers/bookclubs/BookClub'
-import BookClubInfo from './containers/bookclubs/BookClubInfo'
+import BookClubDashboard from './containers/bookclubs/BookClubDashboard'
+import BookClubCurrenBook from './containers/bookclubs/BookClubCurrenBook'
 
 //dummy data
 import { data } from './helpers/booksrec'
@@ -45,7 +46,9 @@ function App() {
   const handleCheckLogin = () => {
     fetch('/api/me').then((response) => {
       if (response.ok) {
-        response.json().then((user) => setUser(user))
+        response.json().then((user) => {
+          setUser(user)
+        })
       } else {
         response.json().then((err) => console.log(err))
       }
@@ -265,9 +268,21 @@ function App() {
                   <Route
                     path='admin-dashboard'
                     element={
-                      <BookClubInfo
+                      <BookClubDashboard
                         bookclub={currentBookclub}
                         setCurrentBookclub={setCurrentBookclub}
+                        fetchUser={handleCheckLogin}
+                        loading={loading}
+                        user={user}
+                      />
+                    }
+                  />
+                  <Route
+                    path='current-book'
+                    element={
+                      <BookClubCurrenBook
+                        bookclub={currentBookclub}
+                        fetchUser={handleCheckLogin}
                         loading={loading}
                         user={user}
                       />

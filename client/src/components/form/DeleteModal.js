@@ -1,7 +1,14 @@
 import React from 'react'
 import { Typography, Modal, Alert, Grid, Button } from '@mui/material'
+import { useLocation } from 'react-router-dom'
 
-const DeleteModal = ({ openModal, handleCloseModel, handleDeleteProfile }) => {
+const DeleteModal = ({
+  openModal,
+  handleCloseModel,
+  handleDeleteProfile,
+  handleDeleteBookclub,
+}) => {
+  let location = useLocation()
   return (
     <Modal
       className='modal'
@@ -16,12 +23,14 @@ const DeleteModal = ({ openModal, handleCloseModel, handleDeleteProfile }) => {
         spacing={2}>
         <Grid item>
           <Typography component='h1' variant='h4' align='center' paddingTop>
-            Delete Profile
+            Delete{' '}
+            {location.pathname.includes('/my-info') ? 'Profile' : 'Book Club'}
           </Typography>
         </Grid>
         <Grid item>
           <Alert severity='error'>
-            Are you sure you want to delete your profile?
+            Are you sure you want to delete your{' '}
+            {location.pathname.includes('/my-info') ? 'profile' : 'book club'}?
           </Alert>
         </Grid>
         <Grid item textAlign='center'>
@@ -29,7 +38,11 @@ const DeleteModal = ({ openModal, handleCloseModel, handleDeleteProfile }) => {
             variant='outlined'
             className='b-radius btn btn-lg'
             color='error'
-            onClick={handleDeleteProfile}>
+            onClick={
+              location.pathname.includes('/my-info')
+                ? handleDeleteProfile
+                : handleDeleteBookclub
+            }>
             Yes, I'm Sure
           </Button>
         </Grid>

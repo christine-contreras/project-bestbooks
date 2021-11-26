@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import '../../css/Bookclub.css'
 import {
   Typography,
@@ -50,7 +50,7 @@ const BookClubCard = ({ bookclub, user }) => {
         </CardContent>
         <CardActions>
           <Button
-            onClick={() => navigate(`/bookclub/${bookclub.id}`)}
+            onClick={() => navigate(`/bookclub/${bookclub.id}/current-book`)}
             endIcon={<ArrowForwardIosIcon />}>
             View Club
           </Button>

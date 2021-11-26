@@ -5,7 +5,13 @@ import { useNavigate } from 'react-router-dom'
 import DeleteModal from '../../components/form/DeleteModal'
 import FormBookClub from '../../components/form/FormBookClub'
 
-const BookClubInfo = ({ bookclub, user, loading, setCurrentBookclub }) => {
+const BookClubDashboard = ({
+  bookclub,
+  user,
+  loading,
+  setCurrentBookclub,
+  fetchUser,
+}) => {
   let navigate = useNavigate()
   //handle modal
   const [openModal, setOpenModal] = React.useState(false)
@@ -17,6 +23,7 @@ const BookClubInfo = ({ bookclub, user, loading, setCurrentBookclub }) => {
       method: 'DELETE',
     }).then((response) => {
       if (response.ok) {
+        fetchUser()
         navigate('/profile/my-bookclubs')
       }
     })
@@ -36,6 +43,7 @@ const BookClubInfo = ({ bookclub, user, loading, setCurrentBookclub }) => {
           <Grid item>
             <FormBookClub
               bookclub={bookclub}
+              fetchUser={fetchUser}
               setCurrentBookclub={setCurrentBookclub}
             />
           </Grid>
@@ -60,4 +68,4 @@ const BookClubInfo = ({ bookclub, user, loading, setCurrentBookclub }) => {
   )
 }
 
-export default BookClubInfo
+export default BookClubDashboard
