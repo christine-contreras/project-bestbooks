@@ -2,28 +2,13 @@ import * as React from 'react'
 import { Grid, Typography } from '@mui/material'
 import BookClubMenu from '../../components/nav/BookClubMenu'
 import Loading from '../../components/Loading'
-import { useParams } from 'react-router'
+import { useParams, Outlet } from 'react-router'
 
-const Bookclub = ({ user }) => {
+const Bookclub = ({ user, handleFetchBookClub, loading, bookclub }) => {
   let params = useParams()
 
-  const [bookclub, setBookclub] = React.useState(null)
-  const [loading, setLoading] = React.useState(null)
-  const [error, setError] = React.useState(null)
-
   React.useEffect(() => {
-    setLoading(true)
-    fetch(`/api/bookclubs/${params.id}`).then((response) => {
-      console.log(response)
-      setLoading(false)
-      if (response.ok) {
-        response.json().then((data) => {
-          setBookclub(data)
-        })
-      } else {
-        response.json().then((error) => setError(error.error))
-      }
-    })
+    handleFetchBookClub(params.id)
   }, [])
 
   return loading ? (
@@ -32,34 +17,36 @@ const Bookclub = ({ user }) => {
     </Grid>
   ) : (
     <>
-      {error && (
-        <Grid
-          container
-          flexDirection='column'
-          wrap='nowrap'
-          alignItems='center'>
-          <Typography component='h1' variant='h4' align='center'>
-            {error}
-          </Typography>
-        </Grid>
-      )}
-      {bookclub && (
-        <>
-          <Grid item xs={12} md={4} lg={3}>
-            <BookClubMenu user={user} bookclub={bookclub} />
-          </Grid>
-
+      {bookclub &&
+        (bookclub.error ? (
           <Grid
-            item
             container
             flexDirection='column'
-            spacing={3}
-            xs={12}
-            md={8}
-            lg={9}
-            sx={{ p: 4 }}></Grid>
-        </>
-      )}
+            wrap='nowrap'
+            alignItems='center'>
+            <Typography component='h1' variant='h4' align='center'>
+              {bookclub.error}
+            </Typography>
+          </Grid>
+        ) : (
+          <>
+            <Grid item xs={12} md={4} lg={3}>
+              <BookClubMenu user={user} bookclub={bookclub} />
+            </Grid>
+
+            <Grid
+              item
+              container
+              flexDirection='column'
+              spacing={3}
+              xs={12}
+              md={8}
+              lg={9}
+              sx={{ p: 4 }}>
+              <Outlet />
+            </Grid>
+          </>
+        ))}
     </>
   )
 }

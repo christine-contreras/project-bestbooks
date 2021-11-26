@@ -1,5 +1,6 @@
 class Api::BookclubsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    before_action :set_bookclub, only: [:show, :update, :destroy]
 
     def index 
         bookclubs = Bookclub.all 
@@ -7,8 +8,7 @@ class Api::BookclubsController < ApplicationController
     end
 
     def show 
-        bookclub = Bookclub.find(params[:id])
-        render json: bookclub
+        render json: @bookclub
     end
 
     def create 
@@ -21,10 +21,55 @@ class Api::BookclubsController < ApplicationController
 
     end
 
+    def destroy 
+        @bookclub.destroy
+        head :no_content
+    end
+
+    def update 
+        @bookclub.update(bookclub_params)
+
+        #check if admin is changed
+        admin = @bookclub.bookclub_users.find {|user| user.isAdmin == true }
+        admin_id = admin.user_id
+
+        if params[:admin_id] != admin_id
+            byebug
+        end
+
+
+        
+        # delete users if needed
+        if !params[:delete_users].empty?
+            byebug
+            users = params[:delete_users].each do |user_id|
+                bookclub_user = @bookclub.bookclub_users.find_by(user_id: user_id)
+                bookclub_user.destroy
+            end
+        end
+
+        # add users if needed
+        if !params[:add_users].empty?
+            params[:add_users].each do |user_id|
+                @bookclub.bookclub_users.create(user_id: user_id, isAdmin: false)
+            end
+        end
+
+        render json: @bookclub, status: :accepted
+    end
+
     private 
 
     def bookclub_params
         params.permit(:name)
+    end
+
+    def bookclub_edit_users_params
+        params.permit(:name, :admin_id, :delete_users, :add_users)
+    end
+
+    def set_bookclub 
+        @bookclub = Bookclub.find(params[:id])
     end
 
     def render_not_found_response

@@ -7,9 +7,7 @@ import BookClubCard from '../../components/bookclub/BookClubCard'
 
 const BookClubs = ({ user, fetchUser }) => {
   let navigate = useNavigate()
-  const [bookclubs, setBookClubs] = React.useState(
-    user.bookclubs ? user.bookclubs : []
-  )
+  const [bookclubs, setBookClubs] = React.useState(user ? user.bookclubs : [])
   //handle modal
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModel = () => setOpenModal(true)

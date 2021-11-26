@@ -5,23 +5,55 @@ import {
   TextField,
   Alert,
   Stack,
+  Grid,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
+  Autocomplete,
+  Tooltip,
+  Typography,
 } from '@mui/material'
+import PersonIcon from '@mui/icons-material/Person'
+import PersonOffIcon from '@mui/icons-material/PersonOff'
 
-const FormBookClub = ({ bookclub }) => {
-  const [name, setName] = React.useState(bookclub.name)
+const FormBookClub = ({ bookclub, setCurrentBookclub }) => {
+  const [name, setName] = React.useState(bookclub ? bookclub.name : '')
+  const [adminId, setAdminId] = React.useState(
+    bookclub ? bookclub.admin.id : null
+  )
+  const [currentUsers, setCurrentUsers] = React.useState(
+    bookclub ? bookclub.users : []
+  )
+  const [deleteUsers, setDeleteUsers] = React.useState([])
+  const [allUsers, setAllUsers] = React.useState([])
+
+  const [newUsers, setNewUsers] = React.useState([])
   const [errors, setErrors] = React.useState([])
   const [updated, setUpdated] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
+
+  React.useEffect(() => {
+    setName(bookclub ? bookclub.name : '')
+    setAdminId(bookclub ? bookclub.admin.id : null)
+    setCurrentUsers(bookclub ? bookclub.users : [])
+
+    fetch('/api/users')
+      .then((response) => response.json())
+      .then((data) => setAllUsers(data))
+      .catch((err) => {
+        console.error(err)
+      })
+  }, [bookclub])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setErrors([])
     setLoading(true)
     setUpdated(false)
+
+    const deleteUserIds = deleteUsers ? deleteUsers.map((user) => user.id) : []
+    const addUserIds = newUsers ? newUsers.map((user) => user.id) : []
 
     fetch(`/api/bookclubs/${bookclub.id}`, {
       method: 'PATCH',
@@ -31,13 +63,18 @@ const FormBookClub = ({ bookclub }) => {
       },
       body: JSON.stringify({
         name,
+        admin_id: adminId,
+        delete_users: deleteUserIds,
+        add_users: addUserIds,
       }),
     }).then((response) => {
       setLoading(false)
+      deleteUsers([])
+      setNewUsers([])
       if (response.ok) {
-        response.json().then(() => {
-          setUpdated(true)
-          // handleCheckLogin()
+        setUpdated(true)
+        response.json().then((data) => {
+          setCurrentBookclub(data)
         })
       } else {
         response.json().then((err) => setErrors(err.errors))
@@ -45,8 +82,29 @@ const FormBookClub = ({ bookclub }) => {
     })
   }
 
-  const handlePasswordChangeClick = () => {
-    setTogglePassword((prevToggle) => !prevToggle)
+  const handleDeleteCurrentMemberClick = (user) => {
+    setDeleteUsers((prevUsers) => [...prevUsers, user])
+  }
+
+  const handleAddCurrentMemberClick = (user) => {
+    const newDeltedUsers = deleteUsers.filter((u) => u.id !== user.id)
+    setDeleteUsers(newDeltedUsers)
+  }
+
+  let filteredOptions = () => {
+    const currentUserIds = currentUsers
+      ? currentUsers.map((user) => user.id)
+      : []
+
+    const allUserIds = allUsers ? allUsers.map((user) => user.id) : []
+
+    const filteredIds = allUserIds.filter((id) => currentUserIds.includes(id))
+
+    const filteredUsers =
+      filteredIds.length === 0
+        ? []
+        : allUsers.filter((user) => !filteredIds.includes(user.id))
+    return filteredUsers
   }
 
   return (
@@ -59,19 +117,88 @@ const FormBookClub = ({ bookclub }) => {
         fullWidth
       />
 
-      {/* <FormControl>
-        <InputLabel id='profile-colors'>Profile Color</InputLabel>
+      <FormControl>
+        <InputLabel id='bookclub-admin'>Admin</InputLabel>
         <Select
-          labelId='profile-colors'
-          onChange={(e) => setColor(e.target.value)}
-          value={color}>
-          {colors.map((color) => (
-            <MenuItem value={color.value} key={color.name} sx={{ pt: 3 }}>
-              {color.name}
+          labelId='bookclub-admin'
+          onChange={(e) => setAdminId(e.target.value)}
+          value={adminId}>
+          {currentUsers.map((user) => (
+            <MenuItem value={user.id} key={`user-${user.id}`} sx={{ pt: 3 }}>
+              {user.full_name}
             </MenuItem>
           ))}
         </Select>
-      </FormControl> */}
+      </FormControl>
+
+      <Autocomplete
+        multiple
+        id='members-outlined'
+        options={filteredOptions()}
+        getOptionLabel={(option) => option.full_name}
+        value={newUsers}
+        onChange={(e, value) => {
+          setNewUsers(value)
+        }}
+        filterSelectedOptions
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label='Add Members'
+            placeholder='Add Members'
+          />
+        )}
+      />
+
+      <Grid container spacing={3} flexDirection='column' sx={{ p: 4 }}>
+        <Grid item>
+          <Typography component='p' variant='subtitle1'>
+            Current Members
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          container
+          spacing={1}
+          alignItems='center'
+          justifyContent='center'>
+          {currentUsers.map((user) => (
+            <Grid item key={`user-profile-${user.id}`}>
+              {adminId === user.id ? (
+                <Tooltip title='cannot remove admin'>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    disabled
+                    startIcon={<PersonIcon />}>
+                    {user.full_name}
+                  </Button>
+                </Tooltip>
+              ) : deleteUsers.find((u) => u.id === user.id) ? (
+                <Tooltip title='add member'>
+                  <Button
+                    onClick={() => handleAddCurrentMemberClick(user)}
+                    variant='contained'
+                    color='error'
+                    startIcon={<PersonOffIcon />}>
+                    {user.full_name}
+                  </Button>
+                </Tooltip>
+              ) : (
+                <Tooltip title='remove member'>
+                  <Button
+                    onClick={() => handleDeleteCurrentMemberClick(user)}
+                    variant='contained'
+                    color='secondary'
+                    startIcon={<PersonIcon />}>
+                    {user.full_name}
+                  </Button>
+                </Tooltip>
+              )}
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
 
       <Button
         type='submit'

@@ -8,10 +8,10 @@ import { Grid, Paper, MenuList, MenuItem } from '@mui/material'
 const BookclubMenu = ({ user, bookclub }) => {
   let navigate = useNavigate()
   let location = useLocation()
-  const [admin, setAdmin] = React.useState(false)
+  // const [admin, setAdmin] = React.useState(false)
 
   React.useEffect(() => {
-    setAdmin(user.id === bookclub.admin.id ? true : false)
+    // setAdmin(user.id === bookclub.admin.id ? true : false)
   }, [])
 
   return (
@@ -48,12 +48,14 @@ const BookclubMenu = ({ user, bookclub }) => {
             <Link to='/profile/my-bookclubs'>Book History</Link>
           </MenuItem>
 
-          {admin && (
+          {user && bookclub && user.id === bookclub.admin.id && (
             <MenuItem
               className={
                 location.pathname === '/profile/my-bookclubs' ? 'active' : null
               }>
-              <Link to='/profile/my-bookclubs'>Admin Dashboard </Link>
+              <Link to={`/bookclub/${bookclub.id}/admin-dashboard`}>
+                Admin Dashboard{' '}
+              </Link>
             </MenuItem>
           )}
         </MenuList>

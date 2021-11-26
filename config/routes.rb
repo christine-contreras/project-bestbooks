@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   namespace :api do
-    resources :users, only: [:destroy, :update]
+    resources :users, only: [:index, :destroy, :update]
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
 
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
 
     resources :bookclubs
+
+    resources :bookclub_users, only: [:create, :destroy, :update]
 
 
   end

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Avatar, Typography } from '@mui/material'
+import { AvatarGroup, Avatar, Typography } from '@mui/material'
 import { changeToInitials } from '../../helpers/helpers'
 
 const BookClubInfo = ({ name, members }) => {
@@ -13,11 +13,15 @@ const BookClubInfo = ({ name, members }) => {
         paddingBottom>
         {name}
       </Typography>
-      {members.map((user) => (
-        <Avatar sx={{ bgcolor: user.profile_color, width: 45, height: 45 }}>
-          {changeToInitials(user.full_name)}
-        </Avatar>
-      ))}
+      <AvatarGroup max={4}>
+        {members.map((user) => (
+          <Avatar
+            sx={{ bgcolor: user.profile_color, width: 45, height: 45 }}
+            key={`bookclub-admin-${user.id}`}>
+            {changeToInitials(user.full_name)}
+          </Avatar>
+        ))}
+      </AvatarGroup>
     </>
   )
 }

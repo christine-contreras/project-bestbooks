@@ -17,6 +17,7 @@ import BookPage from './containers/books/BookPage'
 import BookInfo from './containers/books/BookInfo'
 import BookClubPage from './containers/bookclubs/BookClubPage'
 import BookClub from './containers/bookclubs/BookClub'
+import BookClubInfo from './containers/bookclubs/BookClubInfo'
 
 //dummy data
 import { data } from './helpers/booksrec'
@@ -147,6 +148,20 @@ function App() {
     // setCurrentBook(bookinfo)
   }
 
+  const handleFetchBookClub = (bookClubId) => {
+    setCurrentBookclub(null)
+    setLoading(true)
+    fetch(`/api/bookclubs/${bookClubId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false)
+        setCurrentBookclub(data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
   return (
     <ThemeProvider theme={appliedTheme}>
       <Box className='flex column'>
@@ -237,7 +252,28 @@ function App() {
               </Route>
 
               <Route path='bookclub' element={<BookClubPage />}>
-                <Route path=':id' element={<BookClub user={user} />}></Route>
+                <Route
+                  path=':id'
+                  element={
+                    <BookClub
+                      user={user}
+                      loading={loading}
+                      bookclub={currentBookclub}
+                      handleFetchBookClub={handleFetchBookClub}
+                    />
+                  }>
+                  <Route
+                    path='admin-dashboard'
+                    element={
+                      <BookClubInfo
+                        bookclub={currentBookclub}
+                        setCurrentBookclub={setCurrentBookclub}
+                        loading={loading}
+                        user={user}
+                      />
+                    }
+                  />
+                </Route>
               </Route>
             </Routes>
           </Layout>
