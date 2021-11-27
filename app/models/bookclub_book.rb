@@ -5,6 +5,5 @@ class BookclubBook < ApplicationRecord
   validates :book_id, {presence: true }
   validates :bookclub_id, {presence: true }
   validates :wishlist, {presence: true }
-  validates :suggested_by, {presence: true }
   validates :status, inclusion: { in: ['Not Started', 'In Progress', 'Finished']}
 end

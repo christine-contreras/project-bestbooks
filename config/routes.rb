@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :bookclubs
 
     resources :books, only: [:show, :create, :destroy]
+
+    resources :bookclub_books, only: [:index]
   end
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

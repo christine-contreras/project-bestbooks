@@ -33,7 +33,7 @@ const FormAddToWishlist = ({ fetchUser, bookclubs, book }) => {
       body: JSON.stringify({
         title: book.title,
         series: book.series,
-        author: book.author,
+        author: book.author.name,
         pages: book.pages,
         description: book.description,
         publicationDate: book.publicationDate,

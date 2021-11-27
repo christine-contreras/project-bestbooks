@@ -4,11 +4,12 @@ class Api::BookclubsController < ApplicationController
 
     def index 
         bookclubs = Bookclub.all 
-        render json: bookclubs
+        render json: bookclubs, status: :ok
     end
 
     def show 
-        render json: @bookclub
+        render json: @bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book'], status: :ok
+        # render json: @bookclub, status: :ok
     end
 
     def create 
@@ -17,6 +18,7 @@ class Api::BookclubsController < ApplicationController
         bookclub_user = user.bookclub_users.find_by(bookclub_id: bookclub.id)
         bookclub_user.isAdmin = true
         bookclub_user.save
+        
         render json: bookclub, status: :created
 
     end
