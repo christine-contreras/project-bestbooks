@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
 
     resources :bookclubs
+
+    resources :books, only: [:show, :create, :destroy]
   end
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

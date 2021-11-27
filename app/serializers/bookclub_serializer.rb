@@ -2,6 +2,7 @@ class BookclubSerializer < ActiveModel::Serializer
   attributes :id, :name, :admin
 
   has_many :users
+  has_many :books
   
   
   def admin

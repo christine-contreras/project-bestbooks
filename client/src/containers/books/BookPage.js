@@ -1,12 +1,29 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import { Grid, Paper } from '@mui/material'
+import { Grid, Paper, Button } from '@mui/material'
+import { brown } from '@mui/material/colors'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import { useNavigate } from 'react-router'
 
 const BookPage = () => {
+  let navigate = useNavigate()
   return (
-    <Paper sx={{ p: 5 }}>
-      <Outlet />
-    </Paper>
+    <>
+      <Grid container spacing={2}>
+        <Button
+          variant='text'
+          color='secondary'
+          sx={{ color: brown[900], p: 2 }}
+          className='link b-radius'
+          startIcon={<ArrowBackIosIcon />}
+          onClick={() => navigate(-1)}>
+          Go Back
+        </Button>
+      </Grid>
+      <Paper sx={{ p: 5 }}>
+        <Outlet />
+      </Paper>
+    </>
   )
 }
 

@@ -19,6 +19,8 @@ import BookClubPage from './containers/bookclubs/BookClubPage'
 import BookClub from './containers/bookclubs/BookClub'
 import BookClubDashboard from './containers/bookclubs/BookClubDashboard'
 import BookClubCurrenBook from './containers/bookclubs/BookClubCurrenBook'
+import BookClubWishlist from './containers/bookclubs/BookClubWishlist'
+import BookClubHistory from './containers/bookclubs/BookClubHistory'
 
 //dummy data
 import { data } from './helpers/booksrec'
@@ -249,6 +251,7 @@ function App() {
                       book={currentbook}
                       loading={loading}
                       user={user}
+                      fetchUser={handleCheckLogin}
                     />
                   }
                 />
@@ -282,6 +285,26 @@ function App() {
                       <BookClubCurrenBook
                         bookclub={currentBookclub}
                         fetchUser={handleCheckLogin}
+                        loading={loading}
+                        user={user}
+                      />
+                    }
+                  />
+                  <Route
+                    path='wishlist'
+                    element={
+                      <BookClubWishlist
+                        bookclub={currentBookclub}
+                        loading={loading}
+                        user={user}
+                      />
+                    }
+                  />
+                  <Route
+                    path='history'
+                    element={
+                      <BookClubCurrenBook
+                        bookclub={currentBookclub}
                         loading={loading}
                         user={user}
                       />

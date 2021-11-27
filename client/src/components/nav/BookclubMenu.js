@@ -30,28 +30,28 @@ const BookclubMenu = ({ user, bookclub }) => {
         <MenuList className='side-menu'>
           <MenuItem
             className={
-              location.pathname === '/profile/my-info' ? 'active' : null
+              location.pathname.includes('current-book') ? 'active' : null
             }>
-            <Link to='/profile/my-info'>Currently Reading</Link>
+            <Link to={`/bookclub/${bookclub.id}/current-book`}>
+              Currently Reading
+            </Link>
           </MenuItem>
           <MenuItem
             className={
-              location.pathname === '/profile/my-bookclubs' ? 'active' : null
+              location.pathname.includes('wishlist') ? 'active' : null
             }>
-            <Link to='/profile/my-bookclubs'>Book Wishlist</Link>
+            <Link to={`/bookclub/${bookclub.id}/wishlist`}>Book Wishlist</Link>
           </MenuItem>
 
           <MenuItem
-            className={
-              location.pathname === '/profile/my-bookclubs' ? 'active' : null
-            }>
-            <Link to='/profile/my-bookclubs'>Book History</Link>
+            className={location.pathname.includes('history') ? 'active' : null}>
+            <Link to={`/bookclub/${bookclub.id}/history`}>Book History</Link>
           </MenuItem>
 
           {user && bookclub && user.id === bookclub.admin.id && (
             <MenuItem
               className={
-                location.pathname === '/profile/my-bookclubs' ? 'active' : null
+                location.pathname.includes('admin-dashboard') ? 'active' : null
               }>
               <Link to={`/bookclub/${bookclub.id}/admin-dashboard`}>
                 Admin Dashboard{' '}

@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_180646) do
+ActiveRecord::Schema.define(version: 2021_11_27_183631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookclub_books", force: :cascade do |t|
+    t.bigint "bookclub_id", null: false
+    t.bigint "book_id", null: false
+    t.boolean "wishlist"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "suggested_by"
+    t.index ["book_id"], name: "index_bookclub_books_on_book_id"
+    t.index ["bookclub_id"], name: "index_bookclub_books_on_bookclub_id"
+  end
 
   create_table "bookclub_users", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -31,6 +43,19 @@ ActiveRecord::Schema.define(version: 2021_11_24_180646) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "books", force: :cascade do |t|
+    t.string "imageURL"
+    t.string "title"
+    t.string "series"
+    t.string "description"
+    t.integer "pages"
+    t.string "publicationDate"
+    t.string "genres", array: true
+    t.text "author"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -42,6 +67,8 @@ ActiveRecord::Schema.define(version: 2021_11_24_180646) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "bookclub_books", "bookclubs"
+  add_foreign_key "bookclub_books", "books"
   add_foreign_key "bookclub_users", "bookclubs"
   add_foreign_key "bookclub_users", "users"
 end

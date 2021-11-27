@@ -38,7 +38,7 @@ const BookClubs = ({ user, fetchUser }) => {
               variant='subtitle1'
               align='center'
               paddingTop>
-              You don't have any bookclubs right now
+              You don't have any book clubs right now
             </Typography>
           </Grid>
         ) : (

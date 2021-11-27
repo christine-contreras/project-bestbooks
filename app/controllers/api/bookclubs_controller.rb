@@ -65,9 +65,9 @@ class Api::BookclubsController < ApplicationController
         params.permit(:name)
     end
 
-    def bookclub_edit_users_params
-        params.permit(:name, :admin_id, :delete_users, :add_users)
-    end
+    # def bookclub_edit_users_params
+    #     params.permit(:name, :admin_id, :delete_users, :add_users)
+    # end
 
     def set_bookclub 
         @bookclub = Bookclub.find(params[:id])
