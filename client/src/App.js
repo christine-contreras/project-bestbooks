@@ -251,7 +251,6 @@ function App() {
                       book={currentbook}
                       loading={loading}
                       user={user}
-                      fetchUser={handleCheckLogin}
                     />
                   }
                 />

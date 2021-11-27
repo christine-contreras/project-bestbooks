@@ -1,6 +1,6 @@
 import * as React from 'react'
 import '../../css/Form.css'
-import { colors } from '../../helpers/colors'
+import { useNavigate } from 'react-router'
 import {
   Button,
   TextField,
@@ -11,8 +11,12 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import { brown } from '@mui/material/colors'
 
-const FormAddToWishlist = ({ fetchUser, bookclubs, book }) => {
+const FormAddToWishlist = ({ bookclubs, book }) => {
+  let navigate = useNavigate()
+
   const [bookClubId, setBookClubId] = React.useState(null)
   const [errors, setErrors] = React.useState([])
   const [updated, setUpdated] = React.useState(false)
@@ -46,9 +50,9 @@ const FormAddToWishlist = ({ fetchUser, bookclubs, book }) => {
     }).then((response) => {
       setLoading(false)
       if (response.ok) {
-        response.json().then(() => {
+        response.json().then((data) => {
           setUpdated(true)
-          // fetchUser()
+          console.log(data)
         })
       } else {
         response.json().then((err) => {
@@ -96,7 +100,20 @@ const FormAddToWishlist = ({ fetchUser, bookclubs, book }) => {
           <Alert severity='info'>Updating... Do Not Refresh Page</Alert>
         )}
 
-        {updated && <Alert severity='success'>Profile Updated</Alert>}
+        {updated && (
+          <>
+            <Alert severity='success'>Book Added To Wishlist.</Alert>
+            <Button
+              variant='text'
+              color='secondary'
+              sx={{ color: brown[900], p: 2 }}
+              className='link b-radius'
+              endIcon={<ArrowForwardIosIcon />}
+              onClick={() => navigate(`/bookclub/${bookClubId}/wishlist`)}>
+              View Wishlist
+            </Button>
+          </>
+        )}
       </Stack>
     </form>
   )

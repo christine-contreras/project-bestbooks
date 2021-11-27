@@ -19,7 +19,7 @@ class Api::BookclubsController < ApplicationController
         bookclub_user.isAdmin = true
         bookclub_user.save
         
-        render json: bookclub, status: :created
+        render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book'], status: :created
 
     end
 

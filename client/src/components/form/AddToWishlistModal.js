@@ -8,7 +8,6 @@ const AddToWishlistModal = ({
   handleCloseModel,
   bookclubs,
   book,
-  fetchUser,
 }) => {
   let navigate = useNavigate()
   return (
@@ -32,11 +31,7 @@ const AddToWishlistModal = ({
         {bookclubs && bookclubs.length !== 0 ? (
           <>
             <Grid item>
-              <FormAddToWishlist
-                bookclubs={bookclubs}
-                book={book}
-                fetchUser={fetchUser}
-              />
+              <FormAddToWishlist bookclubs={bookclubs} book={book} />
             </Grid>
           </>
         ) : (

@@ -4,13 +4,16 @@ import { useNavigate } from 'react-router-dom'
 
 const BookClubWishlist = ({ bookclub, loading, user }) => {
   let navigate = useNavigate()
-  const [wishListBooks, setWishListBooks] = React.useState(
-    bookclub ? bookclub.books.filter((book) => book.wishlist === true) : []
-  )
+  //   const [wishListBooks, setWishListBooks] = React.useState(
+  //     bookclub ? bookclub.book_books.filter((book) => book.wishlist === true) : []
+  //   )
+  const [wishListBooks, setWishListBooks] = React.useState([])
 
   React.useEffect(() => {
     setWishListBooks(
-      bookclub ? bookclub.books.filter((book) => book.wishlist === true) : []
+      bookclub
+        ? bookclub.bookclub_books.filter((book) => book.wishlist === true)
+        : []
     )
   }, [bookclub])
 
