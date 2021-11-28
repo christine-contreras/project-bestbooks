@@ -4,6 +4,10 @@
     max-width: 400px;
 }
 
+.book.book-sm{
+    max-width: 250px;
+}
+
 .recommendation .book {
     max-width: 150px;
 }

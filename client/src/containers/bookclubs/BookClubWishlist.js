@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Grid, Typography, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import WishlistBook from '../books/WishlistBook'
 
 const BookClubWishlist = ({ bookclub, loading, user }) => {
   let navigate = useNavigate()
@@ -18,9 +19,14 @@ const BookClubWishlist = ({ bookclub, loading, user }) => {
   }, [bookclub])
 
   return (
-    <>
+    <Grid item container flexDirection='column' spacing={6}>
       <Grid item>
-        <Typography component='h1' variant='h4' align='center' paddingTop>
+        <Typography
+          component='h1'
+          variant='h4'
+          align='center'
+          paddingTop
+          paddingBottom>
           Book Wish List
         </Typography>
       </Grid>
@@ -35,14 +41,19 @@ const BookClubWishlist = ({ bookclub, loading, user }) => {
           </Typography>
         </Grid>
       ) : (
-        <Grid item>
-          <Typography
-            component='p'
-            variant='subtitle1'
-            align='center'
-            paddingTop>
-            Books In Wishlist
-          </Typography>
+        <Grid item container flexDirection='column' spacing={4}>
+          {wishListBooks.map((item) => {
+            return (
+              <WishlistBook
+                key={`wishlist-bookitem-${item.id}`}
+                book={item.book}
+                recommender={item.suggested_by}
+                status={item.status}
+                adminId={bookclub.admin.id}
+                user={user}
+              />
+            )
+          })}
         </Grid>
       )}
       <Grid item textAlign='center'>
@@ -54,7 +65,7 @@ const BookClubWishlist = ({ bookclub, loading, user }) => {
           Add Book To Wishlist
         </Button>
       </Grid>
-    </>
+    </Grid>
   )
 }
 

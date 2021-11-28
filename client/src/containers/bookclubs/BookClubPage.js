@@ -5,7 +5,11 @@ import { Grid } from '@mui/material'
 
 const BookClubPage = () => {
   return (
-    <Grid container className='bookclub-container' justifyContent='stretch'>
+    <Grid
+      container
+      className='bookclub-container'
+      justifyContent='stretch'
+      spacing={4}>
       <Outlet />
     </Grid>
   )
