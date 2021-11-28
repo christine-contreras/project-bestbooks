@@ -5,9 +5,6 @@ import WishlistBook from '../books/WishlistBook'
 
 const BookClubWishlist = ({ bookclub, loading, user }) => {
   let navigate = useNavigate()
-  //   const [wishListBooks, setWishListBooks] = React.useState(
-  //     bookclub ? bookclub.book_books.filter((book) => book.wishlist === true) : []
-  //   )
   const [wishListBooks, setWishListBooks] = React.useState([])
 
   React.useEffect(() => {

@@ -18483,3 +18483,24 @@ Completed 200 OK in 93ms (Views: 41.4ms | ActiveRecord: 33.2ms | Allocations: 24
 Completed 200 OK in 100ms (Views: 49.7ms | ActiveRecord: 34.5ms | Allocations: 26017)
 
 
+Started GET "/api/bookclubs/15" for 127.0.0.1 at 2021-11-28 14:02:56 -0600
+Processing by Api::BookclubsController#show as */*
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mBookclub Load (0.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" WHERE "bookclubs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/api/bookclubs_controller.rb:75:in `set_bookclub'
+[active_model_serializers]   [1m[36mBookclubUser Load (4.3ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:11:in `show'
+[active_model_serializers]   [1m[36mBookclubBook Load (1.4ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:11:in `show'
+[active_model_serializers]   [1m[36mBook Load (2.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:11:in `show'
+[active_model_serializers] Rendered BookclubSerializer with ActiveModelSerializers::Adapter::Attributes (33.49ms)
+Completed 200 OK in 40ms (Views: 21.2ms | ActiveRecord: 14.1ms | Allocations: 6217)
+
+
