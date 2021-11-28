@@ -41,7 +41,7 @@ const BookClubWishlist = ({ bookclub, loading, user }) => {
           </Typography>
         </Grid>
       ) : (
-        <Grid item container flexDirection='column' spacing={4}>
+        <Grid item container flexDirection='column' spacing={6}>
           {wishListBooks.map((item) => {
             return (
               <WishlistBook
@@ -51,6 +51,7 @@ const BookClubWishlist = ({ bookclub, loading, user }) => {
                 status={item.status}
                 adminId={bookclub.admin.id}
                 user={user}
+                id={item.id}
               />
             )
           })}

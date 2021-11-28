@@ -9,10 +9,14 @@ import NavLoggedIn from '../components/nav/NavLoggedIn'
 import NavLoggedOut from '../components/nav/NavLoggedOut'
 
 import { Link } from 'react-router-dom'
+import { brown } from '@mui/material/colors'
 
 const Nav = ({ user, onLogout }) => {
   return (
-    <MuiAppBar color='transparent' position='fixed' elevation={0}>
+    <MuiAppBar
+      position='fixed'
+      elevation={0}
+      sx={{ backgroundColor: '#eee6d2', color: brown[900] }}>
       <Toolbar className='flex'>
         <Link to='/'>
           <Typography

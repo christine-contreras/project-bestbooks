@@ -1,17 +1,9 @@
 import * as React from 'react'
 import '../../css/Book.css'
 import { Grid, Typography, Button } from '@mui/material'
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd'
 import { useLocation } from 'react-router-dom'
 
-const BookOverview = ({
-  book,
-  handleOpenModel,
-  recommender,
-  status,
-  adminId,
-  user,
-}) => {
+const BookOverview = ({ book, handleOpenModel }) => {
   let location = useLocation()
   const [readMore, setReadMore] = React.useState(false)
 
@@ -19,23 +11,16 @@ const BookOverview = ({
     setReadMore((prevRead) => !prevRead)
   }
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={2}>
       <Grid
         item
         container
         xs={12}
-        md={6}
+        md={location.pathname.includes('/book/') ? 6 : 12}
+        lg={location.pathname.includes('/book/') ? 6 : 4}
         spacing={2}
         alignItems='center'
         flexDirection='column'>
-        {location.pathname.includes('wishlist') && (
-          <Grid item textAlign='center'>
-            <Typography component='p' variant='subtitle2' align='center'>
-              Suggested By:
-              <br /> {recommender}
-            </Typography>
-          </Grid>
-        )}
         <Grid item>
           <img
             src={`${book.imageURL.split(/\._\D{2}\d{2}_/).join('')}`}
@@ -45,41 +30,15 @@ const BookOverview = ({
             }
           />
         </Grid>
-
-        {location.pathname.includes('wishlist') && (
-          <Grid
-            item
-            container
-            flexDirection='column'
-            spacing={2}
-            alignItems='center'>
-            {adminId === user.id && (
-              <Grid item>
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  className='btn b-radius'
-                  startIcon={<BookmarkAddIcon />}>
-                  Select For Book Club
-                </Button>
-              </Grid>
-            )}
-            {adminId === user.id || user.name === recommender ? (
-              <Grid item>
-                <Button
-                  variant='text'
-                  className='b-radius btn'
-                  color='error'
-                  //   onClick={handleOpenModel}
-                >
-                  Remove From Wishlist
-                </Button>
-              </Grid>
-            ) : null}
-          </Grid>
-        )}
       </Grid>
-      <Grid item container xs={12} md={6} flexDirection='column' wrap='nowrap'>
+      <Grid
+        item
+        container
+        xs={12}
+        md={location.pathname.includes('/book/') ? 6 : 12}
+        lg={location.pathname.includes('/book/') ? 6 : 8}
+        flexDirection='column'
+        wrap='nowrap'>
         <Grid item sx={{ pb: 3 }}>
           <Typography component='h1' variant='h4' align='left'>
             {book.title}
@@ -121,9 +80,8 @@ const BookOverview = ({
             </Grid>
           ))}
         </Grid>
-
-        <Grid item sx={{ pt: 3 }}>
-          {location.pathname.includes('/book/') && (
+        {location.pathname.includes('/book/') && (
+          <Grid item sx={{ pt: 3 }}>
             <Button
               onClick={handleOpenModel}
               variant='contained'
@@ -131,8 +89,8 @@ const BookOverview = ({
               color='primary'>
               Add To Book Club
             </Button>
-          )}
-        </Grid>
+          </Grid>
+        )}
       </Grid>
     </Grid>
   )
