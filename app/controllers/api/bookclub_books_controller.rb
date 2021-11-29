@@ -16,10 +16,12 @@ class Api::BookclubBooksController < ApplicationController
         render @bookclub_book, status: :accepted
     end
 
+    
+
     private 
 
     def bookclub_book_params 
-        params.permit(:bookclub_id, :book_id, :archived, :status, :suggested_by)
+        params.permit(:bookclub_id, :book_id, :archived, :status, :current, :suggested_by)
     end
 
     def set_bookclub_book

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import BookLoading from '../../components/book/BookLoading'
 import { Grid, Typography, Button } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
 import ClearIcon from '@mui/icons-material/Clear'
@@ -10,6 +11,7 @@ const ArchivedBook = ({
   status,
   adminId,
   user,
+  loading,
   bookClubBookId,
   handleDeleteBook,
   handleMoveBookToWishlist,
@@ -24,55 +26,61 @@ const ArchivedBook = ({
   }
 
   return (
-    <Grid item container spacing={2} flexDirection='column' wrap='nowrap'>
-      <Grid item container xs={12} lg={4} justifyContent='center'>
-        <Typography component='p' variant='subtitle2' align='center'>
-          Status: {status}
-        </Typography>
-      </Grid>
-      <Grid item>
-        <BookOverview book={book} />
-      </Grid>
-      <Grid
-        item
-        container
-        flexDirection='column'
-        spacing={2}
-        xs={12}
-        lg={4}
-        alignItems='center'>
-        {adminId === user.id && (
-          <>
-            <Grid item>
-              <Button
-                variant='contained'
-                color='secondary'
-                className='btn b-radius'
-                startIcon={<StarIcon />}
-                onClick={() => handleMoveBookToWishlist(bookClubBookId)}>
-                Add To Wishlist
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                variant='text'
-                className='b-radius btn'
-                color='error'
-                startIcon={<ClearIcon />}
-                onClick={handleOpenModel}>
-                Delete Book
-              </Button>
-            </Grid>
-          </>
-        )}
-      </Grid>
+    <>
+      {loading ? (
+        <BookLoading />
+      ) : (
+        <Grid item container spacing={2} flexDirection='column' wrap='nowrap'>
+          <Grid item container xs={12} lg={4} justifyContent='center'>
+            <Typography component='p' variant='subtitle2' align='center'>
+              Status: {status}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <BookOverview book={book} />
+          </Grid>
+          <Grid
+            item
+            container
+            flexDirection='column'
+            spacing={2}
+            xs={12}
+            lg={4}
+            alignItems='center'>
+            {adminId === user.id && (
+              <>
+                <Grid item>
+                  <Button
+                    variant='contained'
+                    color='secondary'
+                    className='btn b-radius'
+                    startIcon={<StarIcon />}
+                    onClick={() => handleMoveBookToWishlist(bookClubBookId)}>
+                    Add To Wishlist
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    variant='text'
+                    className='b-radius btn'
+                    color='error'
+                    startIcon={<ClearIcon />}
+                    onClick={handleOpenModel}>
+                    Delete Book
+                  </Button>
+                </Grid>
+              </>
+            )}
+          </Grid>
 
-      <DeleteModal
-        openModal={openModal}
-        handleCloseModel={handleCloseModel}
-        handleDelete={handleDeleteFromModal}
-      />
-    </Grid>
+          <DeleteModal
+            openModal={openModal}
+            handleCloseModel={handleCloseModel}
+            handleDelete={handleDeleteFromModal}
+          />
+        </Grid>
+      )}
+    </>
   )
 }
 

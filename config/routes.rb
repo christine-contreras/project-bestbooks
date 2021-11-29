@@ -11,10 +11,13 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
 
     resources :bookclubs
+    patch "/bookclubs/:id/current-book", to: "bookclubs#current_book"
 
     resources :books, only: [:show, :create, :destroy]
+    
 
     resources :bookclub_books, only: [:index, :destroy, :update]
+    
   end
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

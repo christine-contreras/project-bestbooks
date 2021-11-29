@@ -7,6 +7,7 @@ class Api::BooksController < ApplicationController
 
         bookclub_book = book.bookclub_books.create(bookclub_book_params)
         bookclub_book.archived = false
+        bookclub_book.current = false
         bookclub_book.suggested_by = "#{@current_user.first_name} #{@current_user.last_name}"
         bookclub_book.save
 
@@ -22,6 +23,8 @@ class Api::BooksController < ApplicationController
         head :no_content
     end
 
+   
+
 
 
     private 
@@ -31,7 +34,7 @@ class Api::BooksController < ApplicationController
     end
 
     def bookclub_book_params
-        params.permit(:bookclub_id, :status, :archived)
+        params.permit(:bookclub_id, :status, :archived, :current)
     end
 
     def set_book

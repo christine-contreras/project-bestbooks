@@ -1,6 +1,6 @@
 class Api::BookclubsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    before_action :set_bookclub, only: [:show, :update, :destroy]
+    before_action :set_bookclub, only: [:show, :update, :destroy, :current_book]
 
     def index 
         bookclubs = Bookclub.all 
@@ -58,7 +58,21 @@ class Api::BookclubsController < ApplicationController
             end
         end
 
-        render json: @bookclub, status: :accepted
+        render json: @bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book'], status: :accepted
+    end
+
+
+    def current_book
+        new_current_book = @bookclub.bookclub_books.find(params[:new_bookclub_book_id])
+        old_current_book = @bookclub.bookclub_books.find_by(current: true)
+
+        if old_current_book
+            old_current_book.update(current: false, archived: true)
+        end
+
+        new_current_book.update(current: true)
+
+        render @bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book'], status: :accepted
     end
 
     private 

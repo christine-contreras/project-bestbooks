@@ -6,6 +6,7 @@ import ArchivedBook from '../books/ArchivedBook'
 const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
   let navigate = useNavigate()
   const [archivedBooks, setArchivedBooks] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
     setArchivedBooks(
@@ -16,19 +17,21 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
   }, [bookclub])
 
   const handleDeleteBook = (bookId, bookClubBookId) => {
-    filterOutBook(bookClubBookId)
+    setLoading(true)
 
     fetch(`/api/books/${bookId}`, {
       method: 'DELETE',
     }).then((response) => {
+      setLoading(false)
       if (response.ok) {
+        filterOutBook(bookClubBookId)
         handleFetchBookClub(bookclub.id)
       }
     })
   }
 
   const handleMoveBookToWishlist = (bookClubBookId) => {
-    filterOutBook(bookClubBookId)
+    setLoading(true)
 
     fetch(`/api/bookclub_books/${bookClubBookId}`, {
       method: 'PATCH',
@@ -40,7 +43,9 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
         archived: false,
       }),
     }).then((response) => {
+      setLoading(false)
       if (response.ok) {
+        filterOutBook(bookClubBookId)
         handleFetchBookClub(bookclub.id)
       }
     })
@@ -50,6 +55,8 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
     const newArchivedBooks = archivedBooks.filter(
       (item) => item.id !== bookClubBookId
     )
+
+    debugger
     setArchivedBooks(newArchivedBooks)
   }
 
@@ -85,6 +92,7 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
                 status={item.status}
                 adminId={bookclub.admin.id}
                 user={user}
+                loading={loading}
                 bookClubBookId={item.id}
                 handleDeleteBook={handleDeleteBook}
                 handleMoveBookToWishlist={handleMoveBookToWishlist}

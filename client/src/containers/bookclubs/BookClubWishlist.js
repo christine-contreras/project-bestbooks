@@ -3,25 +3,28 @@ import { Grid, Typography, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import WishlistBook from '../books/WishlistBook'
 
-const BookClubWishlist = ({ bookclub, user, handleFetchBookClub }) => {
+const BookClubWishlist = ({
+  bookclub,
+  user,
+  handleFetchBookClub,
+  setCurrentBook,
+}) => {
   let navigate = useNavigate()
   const [wishListBooks, setWishListBooks] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
     setWishListBooks(
       bookclub
         ? bookclub.bookclub_books.filter(
-            (book) => book.status === 'Not Started' && book.archived === false
+            (book) => book.current === false && book.archived === false
           )
         : []
     )
   }, [bookclub])
 
   const handleRemoveBookFromWishlist = (bookClubBookId) => {
-    const newWishlistBooks = wishListBooks.filter(
-      (item) => item.id !== bookClubBookId
-    )
-    setWishListBooks(newWishlistBooks)
+    setLoading(true)
 
     fetch(`/api/bookclub_books/${bookClubBookId}`, {
       method: 'PATCH',
@@ -33,10 +36,43 @@ const BookClubWishlist = ({ bookclub, user, handleFetchBookClub }) => {
         archived: true,
       }),
     }).then((response) => {
+      setLoading(false)
       if (response.ok) {
+        filterOutBook(bookClubBookId)
         handleFetchBookClub(bookclub.id)
       }
     })
+  }
+
+  const handleMakeCurrentBook = (bookClubBookId) => {
+    setLoading(true)
+
+    fetch(`/api/bookclubs/${bookclub.id}/current-book`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        new_bookclub_book_id: bookClubBookId,
+      }),
+    }).then((response) => {
+      setLoading(false)
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data)
+          filterOutBook(bookClubBookId)
+          setCurrentBook(data)
+        })
+      }
+    })
+  }
+
+  const filterOutBook = (bookClubBookId) => {
+    const newWishlistBooks = wishListBooks.filter(
+      (item) => item.id !== bookClubBookId
+    )
+    setWishListBooks(newWishlistBooks)
   }
 
   return (
@@ -72,8 +108,10 @@ const BookClubWishlist = ({ bookclub, user, handleFetchBookClub }) => {
                 status={item.status}
                 adminId={bookclub.admin.id}
                 user={user}
+                loading={loading}
                 BookclubBookId={item.id}
                 handleRemoveBook={handleRemoveBookFromWishlist}
+                handleMakeCurrentBook={handleMakeCurrentBook}
               />
             )
           })}

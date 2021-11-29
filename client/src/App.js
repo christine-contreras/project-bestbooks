@@ -295,6 +295,7 @@ function App() {
                       <BookClubWishlist
                         bookclub={currentBookclub}
                         user={user}
+                        setCurrentBook={setCurrentBook}
                         handleFetchBookClub={handleFetchBookClub}
                       />
                     }
