@@ -1,14 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 import { Typography, Modal, Alert, Grid, Button } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
-const DeleteModal = ({
-  openModal,
-  handleCloseModel,
-  handleDeleteProfile,
-  handleDeleteBookclub,
-}) => {
+const DeleteModal = ({ openModal, handleCloseModel, handleDelete }) => {
   let location = useLocation()
+
   return (
     <Modal
       className='modal'
@@ -23,14 +19,19 @@ const DeleteModal = ({
         spacing={2}>
         <Grid item>
           <Typography component='h1' variant='h4' align='center' paddingTop>
-            Delete{' '}
-            {location.pathname.includes('/my-info') ? 'Profile' : 'Book Club'}
+            Delete {location.pathname.includes('/my-info') && 'Profile'}
+            {location.pathname.includes('/admin-dashboard') && 'Book Club'}
+            {location.pathname.includes('/history') && 'Book'}
           </Typography>
         </Grid>
         <Grid item>
           <Alert severity='error'>
-            Are you sure you want to delete your{' '}
-            {location.pathname.includes('/my-info') ? 'profile' : 'book club'}?
+            Are you sure you want to delete{' '}
+            {location.pathname.includes('/my-info') && 'your profile?'}
+            {location.pathname.includes('/admin-dashboard') &&
+              'your book club?'}
+            {location.pathname.includes('/history') &&
+              'this book? All book information will be deleted (including goals, guide questions, and comments)'}
           </Alert>
         </Grid>
         <Grid item textAlign='center'>
@@ -38,11 +39,7 @@ const DeleteModal = ({
             variant='outlined'
             className='b-radius btn btn-lg'
             color='error'
-            onClick={
-              location.pathname.includes('/my-info')
-                ? handleDeleteProfile
-                : handleDeleteBookclub
-            }>
+            onClick={handleDelete}>
             Yes, I'm Sure
           </Button>
         </Grid>

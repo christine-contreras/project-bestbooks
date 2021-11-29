@@ -62,7 +62,7 @@ const BookClubDashboard = ({
           <DeleteModal
             openModal={openModal}
             handleCloseModel={handleCloseModel}
-            handleDeleteBookclub={handleDeleteBookclub}
+            handleDelete={handleDeleteBookclub}
           />
         </>
       )}

@@ -45,7 +45,6 @@ const FormAddToWishlist = ({ bookclubs, book }) => {
         genres: book.genres,
         bookclub_id: bookClubId,
         status: 'Not Started',
-        wishlist: true,
       }),
     }).then((response) => {
       setLoading(false)

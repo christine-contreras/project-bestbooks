@@ -48,7 +48,7 @@ const ProfileInfo = ({ user, handleCheckLogin, setUser }) => {
       <DeleteModal
         openModal={openModal}
         handleCloseModel={handleCloseModel}
-        handleDeleteProfile={handleDeleteProfile}
+        handleDelete={handleDeleteProfile}
       />
     </>
   )

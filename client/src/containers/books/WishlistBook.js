@@ -1,10 +1,17 @@
-import React from 'react'
+import * as React from 'react'
 import { Grid, Typography, Button } from '@mui/material'
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd'
 import ClearIcon from '@mui/icons-material/Clear'
 import BookOverview from '../../components/book/BookOverview'
 
-const WishlistBook = ({ book, recommender, status, adminId, user, id }) => {
+const WishlistBook = ({
+  book,
+  recommender,
+  adminId,
+  user,
+  BookclubBookId,
+  handleRemoveBook,
+}) => {
   return (
     <Grid item container spacing={2} flexDirection='column' wrap='nowrap'>
       <Grid item container xs={12} lg={4} justifyContent='center'>
@@ -41,8 +48,7 @@ const WishlistBook = ({ book, recommender, status, adminId, user, id }) => {
               className='b-radius btn'
               color='error'
               startIcon={<ClearIcon />}
-              //   onClick={handleOpenModel}
-            >
+              onClick={() => handleRemoveBook(BookclubBookId)}>
               Remove From Wishlist
             </Button>
           </Grid>

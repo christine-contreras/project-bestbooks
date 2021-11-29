@@ -294,18 +294,18 @@ function App() {
                     element={
                       <BookClubWishlist
                         bookclub={currentBookclub}
-                        loading={loading}
                         user={user}
+                        handleFetchBookClub={handleFetchBookClub}
                       />
                     }
                   />
                   <Route
                     path='history'
                     element={
-                      <BookClubCurrenBook
+                      <BookClubHistory
                         bookclub={currentBookclub}
-                        loading={loading}
                         user={user}
+                        handleFetchBookClub={handleFetchBookClub}
                       />
                     }
                   />

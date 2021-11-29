@@ -3,17 +3,41 @@ import { Grid, Typography, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import WishlistBook from '../books/WishlistBook'
 
-const BookClubWishlist = ({ bookclub, loading, user }) => {
+const BookClubWishlist = ({ bookclub, user, handleFetchBookClub }) => {
   let navigate = useNavigate()
   const [wishListBooks, setWishListBooks] = React.useState([])
 
   React.useEffect(() => {
     setWishListBooks(
       bookclub
-        ? bookclub.bookclub_books.filter((book) => book.wishlist === true)
+        ? bookclub.bookclub_books.filter(
+            (book) => book.status === 'Not Started' && book.archived === false
+          )
         : []
     )
   }, [bookclub])
+
+  const handleRemoveBookFromWishlist = (bookClubBookId) => {
+    const newWishlistBooks = wishListBooks.filter(
+      (item) => item.id !== bookClubBookId
+    )
+    setWishListBooks(newWishlistBooks)
+
+    fetch(`/api/bookclub_books/${bookClubBookId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        archived: true,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        handleFetchBookClub(bookclub.id)
+      }
+    })
+  }
 
   return (
     <Grid item container flexDirection='column' spacing={6}>
@@ -48,7 +72,8 @@ const BookClubWishlist = ({ bookclub, loading, user }) => {
                 status={item.status}
                 adminId={bookclub.admin.id}
                 user={user}
-                id={item.id}
+                BookclubBookId={item.id}
+                handleRemoveBook={handleRemoveBookFromWishlist}
               />
             )
           })}
