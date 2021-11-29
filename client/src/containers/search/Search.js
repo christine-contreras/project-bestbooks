@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Typography, Grid, Paper, Container } from '@mui/material'
+import { Grid } from '@mui/material'
 import ListResults from './ListResults'
 import BookResults from './BookResults'
 //dummy data
-import { list } from '../../helpers/list'
+// import { list } from '../../helpers/list'
 
 const Search = ({
   recommendationLists,

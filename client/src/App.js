@@ -283,9 +283,9 @@ function App() {
                     element={
                       <BookClubCurrenBook
                         bookclub={currentBookclub}
-                        fetchUser={handleCheckLogin}
-                        loading={loading}
                         user={user}
+                        loading={loading}
+                        handleFetchBookClub={handleFetchBookClub}
                       />
                     }
                   />

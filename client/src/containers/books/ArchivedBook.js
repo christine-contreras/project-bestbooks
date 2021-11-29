@@ -1,8 +1,9 @@
 import * as React from 'react'
 import BookLoading from '../../components/book/BookLoading'
-import { Grid, Typography, Button } from '@mui/material'
+import { Grid, Button } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
 import ClearIcon from '@mui/icons-material/Clear'
+
 import BookOverview from '../../components/book/BookOverview'
 import DeleteModal from '../../components/form/DeleteModal'
 
@@ -31,13 +32,8 @@ const ArchivedBook = ({
         <BookLoading />
       ) : (
         <Grid item container spacing={2} flexDirection='column' wrap='nowrap'>
-          <Grid item container xs={12} lg={4} justifyContent='center'>
-            <Typography component='p' variant='subtitle2' align='center'>
-              Status: {status}
-            </Typography>
-          </Grid>
           <Grid item>
-            <BookOverview book={book} />
+            <BookOverview book={book} status={status} />
           </Grid>
           <Grid
             item
@@ -47,7 +43,7 @@ const ArchivedBook = ({
             xs={12}
             lg={4}
             alignItems='center'>
-            {adminId === user.id && (
+            {user && adminId === user.id && (
               <>
                 <Grid item>
                   <Button

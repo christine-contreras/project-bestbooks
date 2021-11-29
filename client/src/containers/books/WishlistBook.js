@@ -2,7 +2,7 @@ import * as React from 'react'
 import BookLoading from '../../components/book/BookLoading'
 import { Grid, Typography, Button } from '@mui/material'
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd'
-import ClearIcon from '@mui/icons-material/Clear'
+import BeenhereIcon from '@mui/icons-material/Beenhere'
 import BookOverview from '../../components/book/BookOverview'
 
 const WishlistBook = ({
@@ -49,15 +49,15 @@ const WishlistBook = ({
                 </Button>
               </Grid>
             )}
-            {user.full_name == recommender || adminId === user.id ? (
+            {user.full_name === recommender || adminId === user.id ? (
               <Grid item>
                 <Button
                   variant='text'
                   className='b-radius btn'
                   color='error'
-                  startIcon={<ClearIcon />}
+                  startIcon={<BeenhereIcon />}
                   onClick={() => handleRemoveBook(BookclubBookId)}>
-                  Remove From Wishlist
+                  Archive Book
                 </Button>
               </Grid>
             ) : null}

@@ -4,7 +4,6 @@ import NotFound from '../NotFound'
 import Loading from '../../components/Loading'
 import AddToWishlistModal from '../../components/form/AddToWishlistModal'
 import BookOverview from '../../components/book/BookOverview'
-import { Grid, Typography, Button } from '@mui/material'
 
 const BookInfo = ({ book, loading, user }) => {
   //handle modal

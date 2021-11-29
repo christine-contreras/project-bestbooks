@@ -8,7 +8,6 @@ import {
   Grid,
   Typography,
 } from '@mui/material'
-import { useNavigate } from 'react-router'
 
 const CreateBookclubModal = ({
   openModal,
@@ -19,8 +18,6 @@ const CreateBookclubModal = ({
   const [name, setName] = React.useState('')
   const [loading, setLoading] = React.useState(false)
   const [errors, setErrors] = React.useState([])
-
-  let navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()

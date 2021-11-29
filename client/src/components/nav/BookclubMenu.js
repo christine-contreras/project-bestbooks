@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 import BookClubInfo from '../bookclub/BookClubInfo'
 
 import { Grid, Paper, MenuList, MenuItem } from '@mui/material'
 
 const BookclubMenu = ({ user, bookclub }) => {
-  let navigate = useNavigate()
   let location = useLocation()
   // const [admin, setAdmin] = React.useState(false)
 

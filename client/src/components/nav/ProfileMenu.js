@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../css/Nav.css'
 import { changeToInitials } from '../../helpers/helpers'
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import {
@@ -14,7 +14,6 @@ import {
 } from '@mui/material'
 
 const ProfileMenu = ({ user }) => {
-  let navigate = useNavigate()
   let location = useLocation()
   return (
     <Paper sx={{ p: 4 }}>

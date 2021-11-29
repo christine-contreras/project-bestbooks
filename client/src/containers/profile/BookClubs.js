@@ -1,12 +1,10 @@
 import * as React from 'react'
 import { Grid, Typography, Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 
 import CreateBookClubModal from '../../components/form/CreateBookClubModal'
 import BookClubCard from '../../components/bookclub/BookClubCard'
 
 const BookClubs = ({ user, fetchUser }) => {
-  let navigate = useNavigate()
   const [bookclubs, setBookClubs] = React.useState(user ? user.bookclubs : [])
 
   //handle modal

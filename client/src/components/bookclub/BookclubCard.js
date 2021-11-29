@@ -40,7 +40,7 @@ const BookClubCard = ({ bookclub, user }) => {
           </Grid>
           <Typography component='p' variant='subtitle2' align='left' paddingTop>
             {bookclub.users.length}{' '}
-            {bookclub.users.length == 1 ? 'member' : 'members'}
+            {bookclub.users.length === 1 ? 'member' : 'members'}
           </Typography>
 
           <Typography component='p' variant='subtitle2' align='left' paddingTop>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Modal, Alert, Grid, Button } from '@mui/material'
+import { Typography, Modal, Grid, Button } from '@mui/material'
 import FormAddToWishlist from './FormAddToWishlist'
 import { useNavigate } from 'react-router-dom'
 

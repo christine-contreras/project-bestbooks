@@ -1,10 +1,8 @@
 import * as React from 'react'
-import { Grid, Typography, Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { Grid, Typography } from '@mui/material'
 import ArchivedBook from '../books/ArchivedBook'
 
 const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
-  let navigate = useNavigate()
   const [archivedBooks, setArchivedBooks] = React.useState([])
   const [loading, setLoading] = React.useState(false)
 
