@@ -53,8 +53,6 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
     const newArchivedBooks = archivedBooks.filter(
       (item) => item.id !== bookClubBookId
     )
-
-    debugger
     setArchivedBooks(newArchivedBooks)
   }
 

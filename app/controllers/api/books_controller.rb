@@ -15,7 +15,8 @@ class Api::BooksController < ApplicationController
     end
 
     def show 
-        render json: @book
+        book = @book
+        render json: book
     end
 
     def destroy 

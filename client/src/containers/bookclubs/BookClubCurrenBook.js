@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Grid, Typography } from '@mui/material'
 import BookOverview from '../../components/book/BookOverview'
 import Loading from '../../components/Loading'
+import Goals from '../books/Goals'
 
 const BookClubCurrenBook = ({
   bookclub,
@@ -10,35 +11,17 @@ const BookClubCurrenBook = ({
   loading,
 }) => {
   const [currentBook, setCurrentBook] = React.useState(null)
+  const [goals, setGoals] = React.useState(null)
 
   React.useEffect(() => {
-    setCurrentBook(
-      bookclub
-        ? bookclub.bookclub_books.find((book) => book.current === true)
-        : []
+    const current = bookclub.bookclub_books.find(
+      (book) => book.current === true
     )
+
+    setCurrentBook(bookclub ? current : [])
+
+    setGoals(bookclub ? current.goals : [])
   }, [bookclub])
-
-  // const handleRemoveBookFromWishlist = (bookClubBookId) => {
-  //   setLoading(true)
-
-  //   fetch(`/api/bookclub_books/${bookClubBookId}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       archived: true,
-  //     }),
-  //   }).then((response) => {
-  //     setLoading(false)
-  //     if (response.ok) {
-  //       filterOutBook(bookClubBookId)
-  //       handleFetchBookClub(bookclub.id)
-  //     }
-  //   })
-  // }
 
   return (
     <>
@@ -72,6 +55,15 @@ const BookClubCurrenBook = ({
                   book={currentBook.book}
                   status={currentBook.status}
                   isCurrentBook={currentBook.current}
+                />
+              </Grid>
+              <Grid item>
+                <Goals
+                  isAdmin={user && user.id === bookclub.admin.id}
+                  goals={goals}
+                  setGoals={setGoals}
+                  pagecount={currentBook.book.pages}
+                  bookClubBookId={currentBook.id}
                 />
               </Grid>
             </Grid>

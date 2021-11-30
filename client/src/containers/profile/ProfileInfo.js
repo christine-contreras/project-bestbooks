@@ -49,6 +49,8 @@ const ProfileInfo = ({ user, handleCheckLogin, setUser }) => {
         openModal={openModal}
         handleCloseModel={handleCloseModel}
         handleDelete={handleDeleteProfile}
+        item='Profile'
+        warningMessage='Are you sure you want to delete your profile?'
       />
     </>
   )

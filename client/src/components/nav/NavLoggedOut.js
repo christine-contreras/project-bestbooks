@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '@mui/material/Button'
-import { brown } from '@mui/material/colors'
 
 import { useNavigate } from 'react-router'
 
@@ -13,7 +12,7 @@ const NavLoggedOut = () => {
         <Button
           variant='text'
           color='secondary'
-          sx={{ color: brown[900], marginRight: 2 }}
+          sx={{ color: 'text.primary', marginRight: 2 }}
           className='link b-radius'
           onClick={() => navigate(`/login`)}>
           Log In

@@ -1,6 +1,6 @@
 class Api::BookclubBooksController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    before_action :set_bookclub_book, only: [:update, :destroy]
+    before_action :set_bookclub_book, only: [:destroy]
 
     def index 
         render json: BookclubBook.all
@@ -12,8 +12,10 @@ class Api::BookclubBooksController < ApplicationController
     end
 
     def update
-        @bookclub_book.update(bookclub_book_params)
-        render @bookclub_book, status: :accepted
+        bookclub_book = BookclubBook.find(params[:id])
+        bookclub_book.update(bookclub_book_params)
+
+        render bookclub_book, status: :accepted
     end
 
     

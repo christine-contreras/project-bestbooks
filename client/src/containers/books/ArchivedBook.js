@@ -73,6 +73,8 @@ const ArchivedBook = ({
             openModal={openModal}
             handleCloseModel={handleCloseModel}
             handleDelete={handleDeleteFromModal}
+            item='Book'
+            warningMessage='Are you sure you want to delete this book? All book information will be deleted (including goals, guide questions, and comments)'
           />
         </Grid>
       )}

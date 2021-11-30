@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
     resources :books, only: [:show, :create, :destroy]
     
-
     resources :bookclub_books, only: [:index, :destroy, :update]
+
+    resources :goals, only: [:show, :create, :update, :destroy]
     
   end
 

@@ -36,7 +36,7 @@ const BookClubDashboard = ({
       ) : user.id !== bookclub.admin.id ? (
         <NotAdminMessage admin={bookclub.admin} />
       ) : (
-        <>
+        <Grid item container flexDirection='column' spacing={6}>
           <Grid item>
             <Typography component='h1' variant='h4' align='center' paddingTop>
               Edit Book Club
@@ -63,8 +63,10 @@ const BookClubDashboard = ({
             openModal={openModal}
             handleCloseModel={handleCloseModel}
             handleDelete={handleDeleteBookclub}
+            item='Book Club'
+            warningMessage='Are you sure you want to delete your book club?'
           />
-        </>
+        </Grid>
       )}
     </>
   )

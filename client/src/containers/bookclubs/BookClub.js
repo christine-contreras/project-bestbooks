@@ -42,7 +42,7 @@ const Bookclub = ({ user, handleFetchBookClub, loading, bookclub }) => {
               xs={12}
               md={8}
               lg={9}
-              sx={{ p: 4 }}>
+              sx={{ pl: 4 }}>
               <Outlet />
             </Grid>
           </>

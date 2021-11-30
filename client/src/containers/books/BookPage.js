@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router'
 import { Grid, Paper, Button } from '@mui/material'
-import { brown } from '@mui/material/colors'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import { useNavigate } from 'react-router'
 
@@ -13,7 +12,7 @@ const BookPage = () => {
         <Button
           variant='text'
           color='secondary'
-          sx={{ color: brown[900], p: 2 }}
+          sx={{ color: 'text.primary', p: 2 }}
           className='link b-radius'
           startIcon={<ArrowBackIosIcon />}
           onClick={() => navigate(-1)}>
