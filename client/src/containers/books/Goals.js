@@ -4,6 +4,7 @@ import { Grid, Typography, Button } from '@mui/material'
 import { Timeline } from '@mui/lab'
 import Goal from '../../components/book/Goal'
 import GoalModal from '../../components/form/GoalModal'
+import GuideQuestions from './GuideQuestions'
 
 const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
   //handle modal
@@ -80,6 +81,7 @@ const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
         pagecount={pagecount}
         setGoals={setGoals}
         bookClubBookId={bookClubBookId}
+        newGoal={true}
       />
     </Grid>
   )

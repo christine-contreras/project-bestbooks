@@ -5,5 +5,6 @@ class BookclubBookSerializer < ActiveModel::Serializer
   belongs_to :book
   # belongs_to :bookclub
   has_many :goals
+  has_many :guide_questions
 
 end

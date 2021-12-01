@@ -139,6 +139,7 @@ const Goal = ({
         bookClubBookId={bookClubBookId}
         goal={goal}
         goals={goals}
+        newGoal={false}
       />
     </TimelineItem>
   )

@@ -2,24 +2,15 @@ import * as React from 'react'
 import '../../css/Form.css'
 import {
   Button,
-  TextField,
   Alert,
   Stack,
-  Grid,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  Autocomplete,
-  Tooltip,
-  Typography,
 } from '@mui/material'
-import PersonIcon from '@mui/icons-material/Person'
-import PersonOffIcon from '@mui/icons-material/PersonOff'
-import { useNavigate } from 'react-router-dom'
 
 const FormStatusChange = ({ currentBook, setStatus }) => {
-  let navigate = useNavigate()
   const [newStatus, setNewStatus] = React.useState('Not Started')
 
   const [errors, setErrors] = React.useState([])

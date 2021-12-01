@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn'
 import BookOverview from '../../components/book/BookOverview'
 import BookStatusModal from '../../components/form/BookStatusModal'
+import GuideQuestions from '../books/GuideQuestions'
 
 import Loading from '../../components/Loading'
 import Goals from '../books/Goals'
@@ -15,7 +16,8 @@ const BookClubCurrenBook = ({
   loading,
 }) => {
   const [currentBook, setCurrentBook] = React.useState(null)
-  const [goals, setGoals] = React.useState(null)
+  const [goals, setGoals] = React.useState([])
+  const [guideQuestions, setGuideQuestions] = React.useState([])
   const [bookStatus, setBookStatus] = React.useState(null)
   const [edit, setEdit] = React.useState(false)
 
@@ -28,8 +30,8 @@ const BookClubCurrenBook = ({
 
     setCurrentBook(bookclub ? current : [])
     setBookStatus(bookclub && current ? current.status : null)
-
     setGoals(bookclub && current ? current.goals : [])
+    setGuideQuestions(bookclub && current ? current.guide_questions : [])
   }, [bookclub])
 
   //handle current book status modal
@@ -93,6 +95,15 @@ const BookClubCurrenBook = ({
                   goals={goals}
                   setGoals={setGoals}
                   pagecount={currentBook.book.pages}
+                  bookClubBookId={currentBook.id}
+                />
+              </Grid>
+
+              <Grid item>
+                <GuideQuestions
+                  edit={edit}
+                  guideQuestions={guideQuestions}
+                  setGuideQuestions={setGuideQuestions}
                   bookClubBookId={currentBook.id}
                 />
               </Grid>
