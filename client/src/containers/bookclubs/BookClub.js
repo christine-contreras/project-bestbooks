@@ -18,14 +18,15 @@ const Bookclub = ({ user, handleFetchBookClub, loading, bookclub }) => {
   ) : (
     <>
       {bookclub &&
-        (bookclub.error ? (
+        (bookclub.error || bookclub.errors ? (
           <Grid
+            item
             container
             flexDirection='column'
             wrap='nowrap'
             alignItems='center'>
             <Typography component='h1' variant='h4' align='center'>
-              {bookclub.error}
+              {bookclub.error ? bookclub.error : bookclub.errors}
             </Typography>
           </Grid>
         ) : (

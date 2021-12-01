@@ -249,6 +249,7 @@ function App() {
                   element={
                     <BookInfo
                       book={currentbook}
+                      handleFetchBook={handleFetchBook}
                       loading={loading}
                       user={user}
                     />

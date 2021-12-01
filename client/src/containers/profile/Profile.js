@@ -11,7 +11,7 @@ const Profile = ({ user }) => {
   return (
     <Grid container className='profile-container' justifyContent='stretch'>
       {!user ? (
-        navigate('/')
+        navigate('/login')
       ) : (
         <>
           <Grid item className='profile-menu' xs={12} md={4} lg={3}>

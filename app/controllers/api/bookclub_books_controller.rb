@@ -15,7 +15,7 @@ class Api::BookclubBooksController < ApplicationController
         bookclub_book = BookclubBook.find(params[:id])
         bookclub_book.update(bookclub_book_params)
 
-        render bookclub_book, status: :accepted
+        render json: bookclub_book, status: :accepted
     end
 
     

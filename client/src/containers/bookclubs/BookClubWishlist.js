@@ -13,6 +13,8 @@ const BookClubWishlist = ({
   const [wishListBooks, setWishListBooks] = React.useState([])
   const [loading, setLoading] = React.useState(false)
 
+  const access = !user ? false : bookclub.users.find((u) => u.id === user.id)
+  console.log(access)
   React.useEffect(() => {
     setWishListBooks(
       bookclub
@@ -117,15 +119,17 @@ const BookClubWishlist = ({
           })}
         </Grid>
       )}
-      <Grid item textAlign='center'>
-        <Button
-          onClick={() => navigate('/search')}
-          variant='contained'
-          className='b-radius btn btn-lg'
-          color='primary'>
-          Add Book To Wishlist
-        </Button>
-      </Grid>
+      {access && (
+        <Grid item textAlign='center'>
+          <Button
+            onClick={() => navigate('/search')}
+            variant='contained'
+            className='b-radius btn btn-lg'
+            color='primary'>
+            Add Book To Wishlist
+          </Button>
+        </Grid>
+      )}
     </Grid>
   )
 }

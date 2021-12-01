@@ -110,6 +110,7 @@ const GoalModal = ({
         setUpdated(true)
       })
       .catch((err) => {
+        setLoading(false)
         setErrors(err.errors || [err.error])
       })
   }

@@ -1,6 +1,10 @@
 import * as React from 'react'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Button } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn'
 import BookOverview from '../../components/book/BookOverview'
+import BookStatusModal from '../../components/form/BookStatusModal'
+
 import Loading from '../../components/Loading'
 import Goals from '../books/Goals'
 
@@ -12,6 +16,10 @@ const BookClubCurrenBook = ({
 }) => {
   const [currentBook, setCurrentBook] = React.useState(null)
   const [goals, setGoals] = React.useState(null)
+  const [bookStatus, setBookStatus] = React.useState(null)
+  const [edit, setEdit] = React.useState(false)
+
+  const isAdmin = user && user.id === bookclub.admin.id
 
   React.useEffect(() => {
     const current = bookclub.bookclub_books.find(
@@ -19,9 +27,15 @@ const BookClubCurrenBook = ({
     )
 
     setCurrentBook(bookclub ? current : [])
+    setBookStatus(bookclub && current ? current.status : null)
 
-    setGoals(bookclub ? current.goals : [])
+    setGoals(bookclub && current ? current.goals : [])
   }, [bookclub])
+
+  //handle current book status modal
+  const [openModal, setOpenModal] = React.useState(false)
+  const handleOpenStatusModel = () => setOpenModal(true)
+  const handleCloseStatusModel = () => setOpenModal(false)
 
   return (
     <>
@@ -50,16 +64,32 @@ const BookClubCurrenBook = ({
             </Grid>
           ) : (
             <Grid item container flexDirection='column' spacing={6}>
+              {isAdmin && (
+                <Grid item textAlign='center'>
+                  <Button
+                    onClick={() => setEdit((prevEdit) => !prevEdit)}
+                    startIcon={edit ? <AssignmentTurnedInIcon /> : <EditIcon />}
+                    variant='contained'
+                    className='b-radius btn btn-lg'
+                    color='primary'>
+                    {edit ? 'Finish Edits' : 'Edit Page'}
+                  </Button>
+                </Grid>
+              )}
+
               <Grid item>
                 <BookOverview
                   book={currentBook.book}
-                  status={currentBook.status}
+                  status={bookStatus}
+                  setStatus={setBookStatus}
+                  edit={edit}
+                  handleOpenStatusModel={handleOpenStatusModel}
                   isCurrentBook={currentBook.current}
                 />
               </Grid>
               <Grid item>
                 <Goals
-                  isAdmin={user && user.id === bookclub.admin.id}
+                  edit={edit}
                   goals={goals}
                   setGoals={setGoals}
                   pagecount={currentBook.book.pages}
@@ -67,6 +97,14 @@ const BookClubCurrenBook = ({
                 />
               </Grid>
             </Grid>
+          )}
+          {edit && (
+            <BookStatusModal
+              openModal={openModal}
+              handleCloseStatusModel={handleCloseStatusModel}
+              currentBook={currentBook}
+              setStatus={setBookStatus}
+            />
           )}
         </Grid>
       )}

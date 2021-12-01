@@ -18,7 +18,7 @@ import GoalModal from '../form/GoalModal'
 
 const Goal = ({
   goal,
-  isAdmin,
+  edit,
   bookClubBookId,
   setGoals,
   goalNumber,
@@ -35,14 +35,14 @@ const Goal = ({
 
   return (
     <TimelineItem>
-      <TimelineOppositeContent sx={{ flex: 0 }}>
+      <TimelineOppositeContent sx={{ flex: 1, minWidth: '15%' }}>
         <Grid
           container
           spacing={1}
           flexDirection='column'
           justifyContent='flex-end'
           alignItem='center'>
-          <Grid item xs='auto'>
+          <Grid item xs={12}>
             <Typography
               component='p'
               variant='subtitle1'
@@ -50,7 +50,7 @@ const Goal = ({
               Goal {goalNumber + 1}
             </Typography>
           </Grid>
-          {isAdmin && (
+          {edit && (
             <Grid item xs='auto'>
               <Button
                 onClick={() => deleteGoal(goal.id)}
@@ -76,7 +76,7 @@ const Goal = ({
         )}
         <TimelineConnector />
       </TimelineSeparator>
-      <TimelineContent color='text.secondary'>
+      <TimelineContent color='text.secondary' sx={{ flex: 2 }}>
         <Grid container spacing={1} flexDirection='column' sx={{ pb: 3 }}>
           <Grid item container justifyContent='space-between'>
             <Grid item sx='auto'>
@@ -84,7 +84,7 @@ const Goal = ({
                 by: {formattedDate}
               </Typography>
             </Grid>
-            {isAdmin && (
+            {edit && (
               <Grid item sx='auto'>
                 <Tooltip title='Edit Goal'>
                   <Fab

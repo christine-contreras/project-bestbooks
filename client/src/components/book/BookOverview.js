@@ -1,14 +1,22 @@
 import * as React from 'react'
 import '../../css/Book.css'
-import { Grid, Typography, Button } from '@mui/material'
+import { Grid, Typography, Button, Fab, Tooltip } from '@mui/material'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
+import EditIcon from '@mui/icons-material/Edit'
 import { useLocation } from 'react-router-dom'
 
-const BookOverview = ({ book, handleOpenModel, status, isCurrentBook }) => {
-  console.log(book)
+const BookOverview = ({
+  book,
+  handleOpenModel,
+  status,
+  edit,
+  handleOpenStatusModel,
+  isCurrentBook,
+  user,
+}) => {
   let location = useLocation()
   const [readMore, setReadMore] = React.useState(false)
 
@@ -96,6 +104,19 @@ const BookOverview = ({ book, handleOpenModel, status, isCurrentBook }) => {
                   flexDirection='column'
                   alignItem='center'
                   justifyContent='center'>
+                  {edit && (
+                    <Grid item textAlign='center'>
+                      <Tooltip title='Edit Status'>
+                        <Fab
+                          size='small'
+                          color='primary'
+                          aria-label='edit'
+                          onClick={handleOpenStatusModel}>
+                          <EditIcon />
+                        </Fab>
+                      </Tooltip>
+                    </Grid>
+                  )}
                   <Grid item>
                     <Typography
                       component='p'
@@ -168,7 +189,7 @@ const BookOverview = ({ book, handleOpenModel, status, isCurrentBook }) => {
                 </Grid>
               ))}
             </Grid>
-            {location.pathname.includes('/book/') && (
+            {location.pathname.includes('/book/') && user && (
               <Grid item sx={{ pt: 3 }}>
                 <Button
                   onClick={handleOpenModel}
