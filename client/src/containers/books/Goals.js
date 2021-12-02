@@ -4,7 +4,6 @@ import { Grid, Typography, Button } from '@mui/material'
 import { Timeline } from '@mui/lab'
 import Goal from '../../components/book/Goal'
 import GoalModal from '../../components/form/GoalModal'
-import GuideQuestions from './GuideQuestions'
 
 const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
   //handle modal
@@ -12,7 +11,7 @@ const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
   const handleOpenModel = () => setOpenModal(true)
   const handleCloseModel = () => setOpenModal(false)
 
-  const deleteGoal = (goalId) => {
+  const handleDeleteGoal = (goalId) => {
     fetch(`/api/goals/${goalId}`, {
       method: 'DELETE',
     })
@@ -56,7 +55,7 @@ const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
                     edit={edit}
                     bookClubBookId={bookClubBookId}
                     setGoals={setGoals}
-                    deleteGoal={deleteGoal}
+                    handleDeleteGoal={handleDeleteGoal}
                   />
                 )
               })}

@@ -14,6 +14,24 @@ const GuideQuestions = ({
   const handleOpenQuestionModel = () => setOpenQuestionModal(true)
   const handleCloseQuestionModel = () => setOpenQuestionModal(false)
 
+  const handleDeleteQuestion = (questionId) => {
+    fetch(`/api/guide_questions/${questionId}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        console.log(response)
+        if (response.ok) {
+          const newQuestionList = guideQuestions.filter(
+            (g) => g.id !== questionId
+          )
+          setGuideQuestions(newQuestionList)
+        }
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
   return (
     <Grid item container flexDirection='column' spacing={4} sx={{ pb: 4 }}>
       <Grid item>
@@ -28,23 +46,22 @@ const GuideQuestions = ({
           </Typography>
         </Grid>
       ) : (
-        <Grid item container flexDirection='column'>
-          {/* {questions
-                .sort((a, b) => parseDate(a.deadline) - parseDate(b.deadline))
-                .map((question, index) => {
-                  return (
-                    <Question
-                      key={`question-${question.id}`}
-                      question={question}
-                      questions={questions}
-                      questionNumber={index}
-                      edit={edit}
-                      bookClubBookId={bookClubBookId}
-                      setGoals={setGoals}
-                      deleteGoal={deleteGoal}
-                    />
-                  )
-                })} */}
+        <Grid item container flexDirection='column' spacing={4}>
+          {guideQuestions
+            .sort((a, b) => a.chapter - b.chapter)
+            .map((question) => {
+              return (
+                <Question
+                  key={`question-${question.id}`}
+                  guideQuestion={question}
+                  guideQuestions={guideQuestions}
+                  edit={edit}
+                  bookClubBookId={bookClubBookId}
+                  setGuideQuestions={setGuideQuestions}
+                  handleDeleteQuestion={handleDeleteQuestion}
+                />
+              )
+            })}
         </Grid>
       )}
       {edit && (

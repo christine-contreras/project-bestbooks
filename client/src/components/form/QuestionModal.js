@@ -7,6 +7,7 @@ const QuestionModal = ({
   handleCloseQuestionModel,
   bookClubBookId,
   guideQuestions,
+  guideQuestion,
   setGuideQuestions,
   isNew,
 }) => {
@@ -22,6 +23,7 @@ const QuestionModal = ({
         guideQuestions={guideQuestions}
         setGuideQuestions={setGuideQuestions}
         isNew={isNew}
+        guideQuestion={guideQuestion}
         bookClubBookId={bookClubBookId}
       />
     </Modal>

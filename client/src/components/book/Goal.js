@@ -23,7 +23,7 @@ const Goal = ({
   setGoals,
   goalNumber,
   goals,
-  deleteGoal,
+  handleDeleteGoal,
 }) => {
   const { deadline, complete, meetingURL, notes, pages } = goal
   const formattedDate = changeDate(deadline)
@@ -53,7 +53,7 @@ const Goal = ({
           {edit && (
             <Grid item xs='auto'>
               <Button
-                onClick={() => deleteGoal(goal.id)}
+                onClick={() => handleDeleteGoal(goal.id)}
                 variant='text'
                 className='b-radius'
                 color='error'

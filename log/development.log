@@ -31836,3 +31836,346 @@ Processing by Api::GuideQuestionsController#create as */*
 Completed 201 Created in 20481ms (Views: 1.0ms | ActiveRecord: 4.0ms | Allocations: 40704)
 
 
+Started GET "/api/me" for 127.0.0.1 at 2021-12-02 11:38:34 -0600
+Started GET "/api/bookclubs/16" for 127.0.0.1 at 2021-12-02 11:38:34 -0600
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::UsersController#show as */*
+Processing by Api::BookclubsController#show as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Parameters: {"id"=>"16"}
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (2.4ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_users" ON "bookclubs"."id" = "bookclub_users"."bookclub_id" WHERE "bookclub_users"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mBookclub Load (0.8ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" WHERE "bookclubs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/bookclubs_controller.rb:90:in `set_bookclub'
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (0.9ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 17]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (6.9ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 17]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mBookclubUser Load (0.4ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mBookclubBook Load (12.9ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (0.7ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (202.95ms)
+Completed 200 OK in 308ms (Views: 200.5ms | ActiveRecord: 49.0ms | Allocations: 48641)
+
+
+[active_model_serializers]   [1m[36mBook Load (3.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGoal Load (1.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (0.8ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGoal Load (8.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (2.4ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookclubSerializer with ActiveModelSerializers::Adapter::Attributes (362.75ms)
+Completed 200 OK in 453ms (Views: 282.8ms | ActiveRecord: 99.9ms | Allocations: 67540)
+
+
+Started GET "/api/bookclubs/16" for 127.0.0.1 at 2021-12-02 11:42:46 -0600
+Started GET "/api/me" for 127.0.0.1 at 2021-12-02 11:42:46 -0600
+Processing by Api::BookclubsController#show as */*
+Processing by Api::UsersController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+[active_model_serializers]   [1m[36mBookclub Load (0.8ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_users" ON "bookclubs"."id" = "bookclub_users"."bookclub_id" WHERE "bookclub_users"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+  [1m[36mBookclub Load (8.5ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" WHERE "bookclubs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/bookclubs_controller.rb:90:in `set_bookclub'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 17]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (1.6ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (1.7ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 17]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mBookclubBook Load (2.9ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   [1m[36mBookclubUser Load (0.6ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mBookclubUser Load (7.4ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mBook Load (8.7ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (65.39ms)
+Completed 200 OK in 78ms (Views: 46.2ms | ActiveRecord: 20.6ms | Allocations: 16022)
+
+
+[active_model_serializers]   [1m[36mGoal Load (7.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (2.4ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBook Load (1.9ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGoal Load (1.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (3.0ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookclubSerializer with ActiveModelSerializers::Adapter::Attributes (99.21ms)
+Completed 200 OK in 111ms (Views: 65.6ms | ActiveRecord: 42.7ms | Allocations: 22772)
+
+
+Started GET "/api/me" for 127.0.0.1 at 2021-12-02 11:53:55 -0600
+Started GET "/api/bookclubs/16" for 127.0.0.1 at 2021-12-02 11:53:55 -0600
+Processing by Api::UsersController#show as */*
+Processing by Api::BookclubsController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mBookclub Load (0.8ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" WHERE "bookclubs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/bookclubs_controller.rb:90:in `set_bookclub'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+[active_model_serializers]   [1m[36mBookclubUser Load (1.6ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mBookclub Load (2.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" INNER JOIN "bookclub_users" ON "bookclubs"."id" = "bookclub_users"."bookclub_id" WHERE "bookclub_users"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 17]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/controllers/api/users_controller.rb:23:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (0.4ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 17]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mBookclubBook Load (2.2ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBookclubUser Load (3.2ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mBook Load (5.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mBookclubUser Load (2.5ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 15]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (54.77ms)
+Completed 200 OK in 122ms (Views: 38.9ms | ActiveRecord: 40.8ms | Allocations: 22747)
+
+
+[active_model_serializers]   [1m[36mGoal Load (5.0ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (6.1ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBook Load (2.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGoal Load (2.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (2.1ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookclubSerializer with ActiveModelSerializers::Adapter::Attributes (96.84ms)
+Completed 200 OK in 136ms (Views: 65.8ms | ActiveRecord: 45.3ms | Allocations: 28855)
+
+
+Started DELETE "/api/goals/16" for 127.0.0.1 at 2021-12-02 12:14:04 -0600
+Processing by Api::GoalsController#destroy as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/goals_controller.rb:37:in `set_goal'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Destroy (2.5ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = $1[0m  [["id", 16]]
+  ↳ app/controllers/api/goals_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/goals_controller.rb:25:in `destroy'
+Completed 204 No Content in 31ms (ActiveRecord: 15.9ms | Allocations: 5770)
+
+
+Started POST "/api/goals" for 127.0.0.1 at 2021-12-02 12:14:16 -0600
+Processing by Api::GoalsController#create as */*
+  Parameters: {"bookclub_book_id"=>11, "complete"=>false, "notes"=>"Reading Chapters 3- 7. No meeting.", "meetingURL"=>"", "deadline"=>"2021-12-10", "pages"=>[50, 100], "goal"=>{"bookclub_book_id"=>11, "pages"=>[50, 100], "deadline"=>"2021-12-10", "complete"=>false, "notes"=>"Reading Chapters 3- 7. No meeting.", "meetingURL"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mBookclubBook Load (1.2ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/goals_controller.rb:6:in `create'
+[31mUnpermitted parameters: :bookclub_book_id, :goal[0m
+[active_model_serializers] Rendered GoalSerializer with ActiveModelSerializers::Adapter::Attributes (0.51ms)
+Completed 201 Created in 19ms (Views: 2.5ms | ActiveRecord: 1.6ms | Allocations: 2177)
+
+
+Started DELETE "/api/guide_questions/1" for 127.0.0.1 at 2021-12-02 12:20:04 -0600
+Processing by Api::GuideQuestionsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mGuideQuestion Load (0.6ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:36:in `set_question'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:24:in `destroy'
+  [1m[36mGuideQuestion Destroy (0.6ms)[0m  [1m[31mDELETE FROM "guide_questions" WHERE "guide_questions"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:24:in `destroy'
+Completed 204 No Content in 33ms (ActiveRecord: 11.4ms | Allocations: 5636)
+
+
+Started GET "/api/bookclubs/16" for ::1 at 2021-12-02 12:20:10 -0600
+Processing by Api::BookclubsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mBookclub Load (0.6ms)[0m  [1m[34mSELECT "bookclubs".* FROM "bookclubs" WHERE "bookclubs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/bookclubs_controller.rb:90:in `set_bookclub'
+[active_model_serializers]   [1m[36mBookclubUser Load (1.1ms)[0m  [1m[34mSELECT "bookclub_users".* FROM "bookclub_users" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:9:in `admin'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/bookclub_serializer.rb:11:in `admin'
+[active_model_serializers]   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "bookclub_users" ON "users"."id" = "bookclub_users"."user_id" WHERE "bookclub_users"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBookclubBook Load (0.8ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."bookclub_id" = $1[0m  [["bookclub_id", 16]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGoal Load (0.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (0.3ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 12]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mGuideQuestion Load (0.5ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."bookclub_book_id" = $1[0m  [["bookclub_book_id", 11]]
+[active_model_serializers]   ↳ app/controllers/api/bookclubs_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookclubSerializer with ActiveModelSerializers::Adapter::Attributes (73.87ms)
+Completed 200 OK in 81ms (Views: 71.3ms | ActiveRecord: 7.4ms | Allocations: 11578)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-12-02 12:20:11 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/guide_questions" for 127.0.0.1 at 2021-12-02 12:20:44 -0600
+Processing by Api::GuideQuestionsController#create as */*
+  Parameters: {"bookclub_book_id"=>11, "chapter"=>1, "question"=>"What are the similarities and differences between East Egg and West Egg and the people who live there?", "guide_question"=>{"question"=>"What are the similarities and differences between East Egg and West Egg and the people who live there?", "chapter"=>1, "bookclub_book_id"=>11}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mBookclubBook Load (0.6ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:6:in `create'
+[31mUnpermitted parameters: :bookclub_book_id, :guide_question[0m
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+  [1m[36mGuideQuestion Create (11.7ms)[0m  [1m[32mINSERT INTO "guide_questions" ("question", "chapter", "bookclub_book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question", "What are the similarities and differences between East Egg and West Egg and the people who live there?"], ["chapter", 1], ["bookclub_book_id", 11], ["created_at", "2021-12-02 18:20:44.663791"], ["updated_at", "2021-12-02 18:20:44.663791"]]
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+[active_model_serializers] Rendered GuideQuestionSerializer with ActiveModelSerializers::Adapter::Attributes (1.23ms)
+Completed 201 Created in 74ms (Views: 1.9ms | ActiveRecord: 18.6ms | Allocations: 3484)
+
+
+Started POST "/api/guide_questions" for 127.0.0.1 at 2021-12-02 12:21:23 -0600
+Processing by Api::GuideQuestionsController#create as */*
+  Parameters: {"bookclub_book_id"=>11, "chapter"=>2, "question"=>"How does Fitzgerald’s writing style mimic Nick’s state of mind?  How does this impact Nick’s reliability as a narrator?", "guide_question"=>{"question"=>"How does Fitzgerald’s writing style mimic Nick’s state of mind?  How does this impact Nick’s reliability as a narrator?", "chapter"=>2, "bookclub_book_id"=>11}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mBookclubBook Load (1.0ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:6:in `create'
+[31mUnpermitted parameters: :bookclub_book_id, :guide_question[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+  [1m[36mGuideQuestion Create (0.7ms)[0m  [1m[32mINSERT INTO "guide_questions" ("question", "chapter", "bookclub_book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question", "How does Fitzgerald’s writing style mimic Nick’s state of mind?  How does this impact Nick’s reliability as a narrator?"], ["chapter", 2], ["bookclub_book_id", 11], ["created_at", "2021-12-02 18:21:23.101857"], ["updated_at", "2021-12-02 18:21:23.101857"]]
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+[active_model_serializers] Rendered GuideQuestionSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 201 Created in 16ms (Views: 1.3ms | ActiveRecord: 2.9ms | Allocations: 3274)
+
+
+Started POST "/api/guide_questions" for 127.0.0.1 at 2021-12-02 12:23:04 -0600
+Processing by Api::GuideQuestionsController#create as */*
+  Parameters: {"bookclub_book_id"=>11, "chapter"=>4, "question"=>"What does Jordan’s take on car accidents and careless people (Fitzgerald 58) say about her as a character? What does it imply about her social class?", "guide_question"=>{"question"=>"What does Jordan’s take on car accidents and careless people (Fitzgerald 58) say about her as a character? What does it imply about her social class?", "chapter"=>4, "bookclub_book_id"=>11}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mBookclubBook Load (0.5ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:6:in `create'
+[31mUnpermitted parameters: :bookclub_book_id, :guide_question[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+  [1m[36mGuideQuestion Create (3.1ms)[0m  [1m[32mINSERT INTO "guide_questions" ("question", "chapter", "bookclub_book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question", "What does Jordan’s take on car accidents and careless people (Fitzgerald 58) say about her as a character? What does it imply about her social class?"], ["chapter", 4], ["bookclub_book_id", 11], ["created_at", "2021-12-02 18:23:04.594844"], ["updated_at", "2021-12-02 18:23:04.594844"]]
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:7:in `create'
+[active_model_serializers] Rendered GuideQuestionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 201 Created in 17ms (Views: 1.7ms | ActiveRecord: 4.6ms | Allocations: 3282)
+
+
+Started PATCH "/api/guide_questions/5" for 127.0.0.1 at 2021-12-02 12:39:07 -0600
+Processing by Api::GuideQuestionsController#update as JSON
+  Parameters: {"bookclub_book_id"=>11, "chapter"=>3, "question"=>"What does Jordan’s take on car accidents and careless people (Fitzgerald 58) say about her as a character? What does it imply about her social class?", "id"=>"5", "guide_question"=>{"question"=>"What does Jordan’s take on car accidents and careless people (Fitzgerald 58) say about her as a character? What does it imply about her social class?", "chapter"=>3, "bookclub_book_id"=>11}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mGuideQuestion Load (0.7ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:17:in `update'
+[31mUnpermitted parameters: :bookclub_book_id, :id, :guide_question[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+  [1m[36mBookclubBook Load (0.9ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+  [1m[36mGuideQuestion Update (1.3ms)[0m  [1m[33mUPDATE "guide_questions" SET "chapter" = $1, "updated_at" = $2 WHERE "guide_questions"."id" = $3[0m  [["chapter", 3], ["updated_at", "2021-12-02 18:39:08.000102"], ["id", 5]]
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+[active_model_serializers] Rendered GuideQuestionSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 202 Accepted in 12140ms (Views: 2.4ms | ActiveRecord: 15.6ms | Allocations: 71742)
+
+
+Started PATCH "/api/guide_questions/5" for 127.0.0.1 at 2021-12-02 12:39:38 -0600
+Processing by Api::GuideQuestionsController#update as JSON
+  Parameters: {"bookclub_book_id"=>11, "chapter"=>3, "question"=>"What does Jordan’s take on car accidents and careless people say about her as a character? What does it imply about her social class?", "id"=>"5", "guide_question"=>{"question"=>"What does Jordan’s take on car accidents and careless people say about her as a character? What does it imply about her social class?", "chapter"=>3, "bookclub_book_id"=>11}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize'
+  [1m[36mGuideQuestion Load (0.5ms)[0m  [1m[34mSELECT "guide_questions".* FROM "guide_questions" WHERE "guide_questions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:17:in `update'
+[31mUnpermitted parameters: :bookclub_book_id, :id, :guide_question[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+  [1m[36mBookclubBook Load (0.7ms)[0m  [1m[34mSELECT "bookclub_books".* FROM "bookclub_books" WHERE "bookclub_books"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+  [1m[36mGuideQuestion Update (4.0ms)[0m  [1m[33mUPDATE "guide_questions" SET "question" = $1, "updated_at" = $2 WHERE "guide_questions"."id" = $3[0m  [["question", "What does Jordan’s take on car accidents and careless people say about her as a character? What does it imply about her social class?"], ["updated_at", "2021-12-02 18:39:38.797118"], ["id", 5]]
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/guide_questions_controller.rb:18:in `update'
+[active_model_serializers] Rendered GuideQuestionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 202 Accepted in 5445ms (Views: 0.8ms | ActiveRecord: 7.1ms | Allocations: 21607)
+
+
