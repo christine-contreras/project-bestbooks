@@ -152,17 +152,21 @@ const FormQuestion = ({
       <Grid item>
         <Stack sx={{ width: '100%' }} spacing={2} className='padding-top'>
           {errors.map((error) => (
-            <Alert severity='error' key={error}>
+            <Alert severity='error' variant='filled' key={error}>
               {error}
             </Alert>
           ))}
           {loading && (
-            <Alert severity='info'>
+            <Alert severity='info' variant='filled'>
               {isNew ? 'Creating' : 'Updating'} Question... Do Not Refresh Page
             </Alert>
           )}
 
-          {updated && <Alert severity='success'>Goal Updated</Alert>}
+          {updated && (
+            <Alert severity='success' variant='filled'>
+              Goal Updated
+            </Alert>
+          )}
         </Stack>
       </Grid>
     </Grid>

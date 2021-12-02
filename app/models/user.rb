@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
     has_many :bookclub_users, dependent: :destroy
     has_many :bookclubs, through: :bookclub_users
+    has_many :comments, dependent: :destroy
 end

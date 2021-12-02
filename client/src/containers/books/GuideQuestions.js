@@ -8,6 +8,8 @@ const GuideQuestions = ({
   edit,
   guideQuestions,
   bookClubBookId,
+  isMember,
+  user,
 }) => {
   //handle create question modal
   const [openQuestionModal, setOpenQuestionModal] = React.useState(false)
@@ -56,9 +58,11 @@ const GuideQuestions = ({
                   guideQuestion={question}
                   guideQuestions={guideQuestions}
                   edit={edit}
+                  isMember={isMember}
                   bookClubBookId={bookClubBookId}
                   setGuideQuestions={setGuideQuestions}
                   handleDeleteQuestion={handleDeleteQuestion}
+                  user={user}
                 />
               )
             })}

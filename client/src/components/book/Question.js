@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import ClearIcon from '@mui/icons-material/Clear'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import QuestionModal from '../form/QuestionModal'
+import Comments from '../../containers/books/Comments'
 
 const Question = ({
   guideQuestion,
@@ -12,7 +13,15 @@ const Question = ({
   setGuideQuestions,
   handleDeleteQuestion,
   bookClubBookId,
+  isMember,
+  user,
 }) => {
+  const [comments, setComments] = React.useState([])
+
+  React.useEffect(() => {
+    setComments(guideQuestion ? guideQuestion.comments : [])
+  }, [guideQuestion])
+
   //handle edit question modal
   const [openQuestionModal, setOpenQuestionModal] = React.useState(false)
   const handleOpenQuestionModel = () => setOpenQuestionModal(true)
@@ -37,57 +46,71 @@ const Question = ({
           <BookmarkIcon sx={{ fontSize: '3em' }} color='primary' />
         </Grid>
       </Grid>
-      <Grid item container xs={9} lg={12} alignItems='center'>
-        <Grid item xs={12} lg={10}>
-          <Typography component='p' paddingBottom>
-            {guideQuestion.question}
-          </Typography>
-        </Grid>
-        {edit && (
-          <Grid
-            item
-            container
-            xs={12}
-            lg={2}
-            spacing={2}
-            wrap='nowrap'
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='center'>
-            <Grid item xs={12}>
-              <Tooltip title='Edit Goal'>
-                <Fab
-                  size='small'
-                  color='primary'
-                  aria-label='edit'
-                  onClick={handleOpenQuestionModel}>
-                  <EditIcon />
-                </Fab>
-              </Tooltip>
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                onClick={() => handleDeleteQuestion(guideQuestion.id)}
-                variant='text'
-                className='b-radius'
-                color='error'
-                startIcon={<ClearIcon />}>
-                Delete
-              </Button>
-            </Grid>
+      <Grid item container xs={9} lg={12} flexDirection='column'>
+        <Grid item container alignItems='center'>
+          <Grid item xs={12} lg={10}>
+            <Typography component='p' paddingBottom>
+              {guideQuestion.question}
+            </Typography>
           </Grid>
-        )}
-      </Grid>
+          {edit && (
+            <Grid
+              item
+              container
+              xs={12}
+              lg={2}
+              spacing={2}
+              wrap='nowrap'
+              flexDirection='column'
+              justifyContent='center'
+              alignItems='center'>
+              <Grid item xs={12}>
+                <Tooltip title='Edit Goal'>
+                  <Fab
+                    size='small'
+                    color='primary'
+                    aria-label='edit'
+                    onClick={handleOpenQuestionModel}>
+                    <EditIcon />
+                  </Fab>
+                </Tooltip>
+              </Grid>
+              <Grid item xs={12}>
+                <Tooltip title='delete question'>
+                  <Button
+                    onClick={() => handleDeleteQuestion(guideQuestion.id)}
+                    variant='text'
+                    className='b-radius'
+                    color='error'
+                    startIcon={<ClearIcon />}>
+                    Delete
+                  </Button>
+                </Tooltip>
+              </Grid>
+            </Grid>
+          )}
+          <QuestionModal
+            openQuestionModal={openQuestionModal}
+            handleCloseQuestionModel={handleCloseQuestionModel}
+            setGuideQuestions={setGuideQuestions}
+            bookClubBookId={bookClubBookId}
+            isNew={false}
+            guideQuestions={guideQuestions}
+            guideQuestion={guideQuestion}
+          />
+        </Grid>
 
-      <QuestionModal
-        openQuestionModal={openQuestionModal}
-        handleCloseQuestionModel={handleCloseQuestionModel}
-        setGuideQuestions={setGuideQuestions}
-        bookClubBookId={bookClubBookId}
-        isNew={false}
-        guideQuestions={guideQuestions}
-        guideQuestion={guideQuestion}
-      />
+        <Grid item container flexDirection='column' wrap='nowrap'>
+          <Comments
+            comments={comments}
+            setComments={setComments}
+            isMember={isMember}
+            edit={edit}
+            guideQuestionId={guideQuestion.id}
+            user={user}
+          />
+        </Grid>
+      </Grid>
     </Grid>
   )
 }

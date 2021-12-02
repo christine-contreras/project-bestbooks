@@ -10,7 +10,7 @@ class Api::BookclubsController < ApplicationController
 
     def show 
         bookclub = @bookclub
-        render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions'], status: :ok
+        render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :ok
         # render json: @bookclub, status: :ok
     end
 
@@ -21,7 +21,7 @@ class Api::BookclubsController < ApplicationController
         bookclub_user.isAdmin = true
         bookclub_user.save
         
-        render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions'], status: :created
+        render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :created
 
     end
 
@@ -61,7 +61,7 @@ class Api::BookclubsController < ApplicationController
             end
         end
 
-        render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions'], status: :accepted
+        render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
     end
 
 
@@ -77,7 +77,7 @@ class Api::BookclubsController < ApplicationController
 
         bookclub = @bookclub
 
-        render bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions'], status: :accepted
+        render bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
     end
 
     private 
@@ -85,7 +85,7 @@ class Api::BookclubsController < ApplicationController
     def bookclub_params
         params.permit(:name)
     end
-    
+
     def set_bookclub 
         @bookclub = Bookclub.find(params[:id])
     end

@@ -171,15 +171,21 @@ const FormProfile = ({ user, handleCheckLogin }) => {
         spacing={2}
         className='padding-top'>
         {errors.map((error) => (
-          <Alert severity='error' key={error}>
+          <Alert severity='error' variant='filled' key={error}>
             {error}
           </Alert>
         ))}
         {loading && (
-          <Alert severity='info'>Updating... Do Not Refresh Page</Alert>
+          <Alert severity='info' variant='filled'>
+            Updating... Do Not Refresh Page
+          </Alert>
         )}
 
-        {updated && <Alert severity='success'>Profile Updated</Alert>}
+        {updated && (
+          <Alert severity='success' variant='filled'>
+            Profile Updated
+          </Alert>
+        )}
       </Stack>
     </form>
   )

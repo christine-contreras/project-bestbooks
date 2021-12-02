@@ -109,7 +109,7 @@ const FormSignup = ({ onLogin }) => {
 
       <Stack sx={{ width: '100%' }} spacing={2} className='padding-top'>
         {errors.map((error) => (
-          <Alert severity='error' key={error}>
+          <Alert severity='error' variant='filled' key={error}>
             {error}
           </Alert>
         ))}

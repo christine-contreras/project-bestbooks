@@ -230,17 +230,21 @@ const FormGoal = ({
         <Grid item>
           <Stack sx={{ width: '100%' }} spacing={2} className='padding-top'>
             {errors.map((error) => (
-              <Alert severity='error' key={error}>
+              <Alert severity='error' key={error} variant='filled'>
                 {error}
               </Alert>
             ))}
             {loading && (
-              <Alert severity='info'>
+              <Alert severity='info' variant='filled'>
                 {!newGoal ? 'Updating' : 'Creating'} Goal... Do Not Refresh Page
               </Alert>
             )}
 
-            {updated && <Alert severity='success'>Goal Updated</Alert>}
+            {updated && (
+              <Alert severity='success' variant='filled'>
+                Goal Updated
+              </Alert>
+            )}
           </Stack>
         </Grid>
       </Grid>

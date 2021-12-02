@@ -80,15 +80,21 @@ const FormStatusChange = ({ currentBook, setStatus }) => {
         spacing={2}
         className='padding-top'>
         {errors.map((error) => (
-          <Alert severity='error' key={error}>
+          <Alert severity='error' variant='filled' key={error}>
             {error}
           </Alert>
         ))}
         {loading && (
-          <Alert severity='info'>Updating... Do Not Refresh Page</Alert>
+          <Alert severity='info' variant='filled'>
+            Updating... Do Not Refresh Page
+          </Alert>
         )}
 
-        {updated && <Alert severity='success'>Status Updated</Alert>}
+        {updated && (
+          <Alert severity='success' variant='filled'>
+            Status Updated
+          </Alert>
+        )}
       </Stack>
     </form>
   )

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :goals, only: [:show, :create, :update, :destroy]
 
     resources :guide_questions, only: [:show, :create, :update, :destroy]
+
+    resources :comments, only: [:create, :destroy]
     
   end
 

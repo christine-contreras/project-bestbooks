@@ -8,6 +8,7 @@ import GuideQuestions from '../books/GuideQuestions'
 
 import Loading from '../../components/Loading'
 import Goals from '../books/Goals'
+import userEvent from '@testing-library/user-event'
 
 const BookClubCurrenBook = ({
   bookclub,
@@ -20,19 +21,26 @@ const BookClubCurrenBook = ({
   const [guideQuestions, setGuideQuestions] = React.useState([])
   const [bookStatus, setBookStatus] = React.useState(null)
   const [edit, setEdit] = React.useState(false)
-
-  const isAdmin = user && user.id === bookclub.admin.id
+  const [isAdmin, setIsAdmin] = React.useState(false)
+  const [isMember, setIsMember] = React.useState(false)
 
   React.useEffect(() => {
-    const current = bookclub.bookclub_books.find(
-      (book) => book.current === true
-    )
+    if (bookclub) {
+      const current = bookclub.bookclub_books.find(
+        (book) => book.current === true
+      )
+      setCurrentBook(current)
+      setBookStatus(current ? current.status : null)
+      setGoals(current ? current.goals : [])
+      setGuideQuestions(current ? current.guide_questions : [])
 
-    setCurrentBook(bookclub ? current : [])
-    setBookStatus(bookclub && current ? current.status : null)
-    setGoals(bookclub && current ? current.goals : [])
-    setGuideQuestions(bookclub && current ? current.guide_questions : [])
-  }, [bookclub])
+      if (user) {
+        const member = bookclub.users.find((member) => member.id === user.id)
+        setIsAdmin(user.id === bookclub.admin.id)
+        setIsMember(member ? true : false)
+      }
+    }
+  }, [bookclub, user])
 
   //handle current book status modal
   const [openModal, setOpenModal] = React.useState(false)
@@ -66,7 +74,7 @@ const BookClubCurrenBook = ({
             </Grid>
           ) : (
             <Grid item container flexDirection='column' spacing={6}>
-              {isAdmin && (
+              {user && isAdmin && (
                 <Grid item textAlign='center'>
                   <Button
                     onClick={() => setEdit((prevEdit) => !prevEdit)}
@@ -105,6 +113,8 @@ const BookClubCurrenBook = ({
                   guideQuestions={guideQuestions}
                   setGuideQuestions={setGuideQuestions}
                   bookClubBookId={currentBook.id}
+                  isMember={isMember}
+                  user={user}
                 />
               </Grid>
             </Grid>
