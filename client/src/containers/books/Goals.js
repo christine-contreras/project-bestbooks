@@ -5,7 +5,7 @@ import { Timeline } from '@mui/lab'
 import Goal from '../../components/book/Goal'
 import GoalModal from '../../components/form/GoalModal'
 
-const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
+const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals, user }) => {
   //handle modal
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModel = () => setOpenModal(true)
@@ -62,7 +62,7 @@ const Goals = ({ goals, edit, pagecount, bookClubBookId, setGoals }) => {
           </Timeline>
         </Grid>
       )}
-      {edit && (
+      {user && edit && (
         <Grid item textAlign='center'>
           <Button
             onClick={handleOpenModel}

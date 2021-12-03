@@ -68,7 +68,7 @@ const GuideQuestions = ({
             })}
         </Grid>
       )}
-      {edit && (
+      {user && edit && (
         <Grid item textAlign='center'>
           <Button
             onClick={handleOpenQuestionModel}

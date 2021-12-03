@@ -112,6 +112,7 @@ const BookClubCurrenBook = ({
                   status={bookStatus}
                   setStatus={setBookStatus}
                   edit={edit}
+                  user={user}
                   handleOpenStatusModel={handleOpenStatusModel}
                   isCurrentBook={currentBook.current}
                 />
@@ -119,6 +120,7 @@ const BookClubCurrenBook = ({
               <Grid item>
                 <Goals
                   edit={edit}
+                  user={user}
                   goals={goals}
                   setGoals={setGoals}
                   pagecount={currentBook.book.pages}

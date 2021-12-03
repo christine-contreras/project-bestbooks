@@ -47,7 +47,7 @@ const Comments = ({
         </Grid>
       )}
 
-      {addCommentForm && (
+      {user && addCommentForm && (
         <CommentForm
           guideQuestionId={guideQuestionId}
           userId={user.id}

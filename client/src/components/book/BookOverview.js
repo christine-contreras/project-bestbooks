@@ -104,7 +104,7 @@ const BookOverview = ({
                   flexDirection='column'
                   alignItem='center'
                   justifyContent='center'>
-                  {edit && (
+                  {user && edit && (
                     <Grid item textAlign='center'>
                       <Tooltip title='Edit Status'>
                         <Fab
