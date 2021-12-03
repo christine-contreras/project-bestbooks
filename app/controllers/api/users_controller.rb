@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
 
     def show 
         user = @current_user
-        render json: user, include: ['bookclubs', 'bookclubs.users']
+        render json: user, include: ['bookclubs', 'bookclubs.users', 'bookclubs.bookclub_books', 'bookclubs.bookclub_books.book']
         # render json: user
     end
 

@@ -66,23 +66,23 @@ function App() {
   }
 
   const handleFetchRecommendations = () => {
-    // fetch('https://goodreads-books.p.rapidapi.com/lists?page=1', {
-    //   method: 'GET',
-    //   headers: {
-    //     'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
-    //     'x-rapidapi-key': apiKey,
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setRecommendationLists(data)
-    //   })
-    //   .catch((err) => {
-    //     console.error(err)
-    //   })
+    fetch('https://goodreads-books.p.rapidapi.com/lists?page=1', {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'goodreads-books.p.rapidapi.com',
+        'x-rapidapi-key': apiKey,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setRecommendationLists(data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
 
     //fake data
-    setRecommendationLists(data)
+    // setRecommendationLists(data)
   }
 
   const handleListSearch = (listId) => {
@@ -296,6 +296,7 @@ function App() {
                       <BookClubWishlist
                         bookclub={currentBookclub}
                         user={user}
+                        setCurrentBookclub={setCurrentBookclub}
                         setCurrentBook={setCurrentBook}
                         handleFetchBookClub={handleFetchBookClub}
                       />
@@ -307,6 +308,7 @@ function App() {
                       <BookClubHistory
                         bookclub={currentBookclub}
                         user={user}
+                        setCurrentBookclub={setCurrentBookclub}
                         handleFetchBookClub={handleFetchBookClub}
                       />
                     }

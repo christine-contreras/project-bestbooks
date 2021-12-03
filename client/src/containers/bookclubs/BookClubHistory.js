@@ -1,10 +1,22 @@
 import * as React from 'react'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Snackbar, Alert } from '@mui/material'
 import ArchivedBook from '../books/ArchivedBook'
 
-const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
+const BookClubHistory = ({
+  bookclub,
+  user,
+  handleFetchBookClub,
+  setCurrentBookclub,
+}) => {
   const [archivedBooks, setArchivedBooks] = React.useState([])
   const [loading, setLoading] = React.useState(false)
+  const [successMessage, setSuccessMessage] = React.useState(false)
+  const handleOpenSuccessMessage = () => setSuccessMessage(true)
+  const handleCloseSuccessMessage = () => setSuccessMessage(false)
+
+  const [successDeleteMessage, setSuccessDeleteMessage] = React.useState(false)
+  const handleOpenSuccessDeleteMessage = () => setSuccessDeleteMessage(true)
+  const handleCloseSuccessDeleteMessage = () => setSuccessDeleteMessage(false)
 
   React.useEffect(() => {
     setArchivedBooks(
@@ -23,7 +35,10 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
       setLoading(false)
       if (response.ok) {
         filterOutBook(bookClubBookId)
-        handleFetchBookClub(bookclub.id)
+        handleOpenSuccessDeleteMessage()
+        setTimeout(() => {
+          handleFetchBookClub(bookclub.id)
+        }, 3000)
       }
     })
   }
@@ -44,7 +59,10 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
       setLoading(false)
       if (response.ok) {
         filterOutBook(bookClubBookId)
-        handleFetchBookClub(bookclub.id)
+        handleOpenSuccessMessage()
+        setTimeout(() => {
+          handleFetchBookClub(bookclub.id)
+        }, 2000)
       }
     })
   }
@@ -97,6 +115,32 @@ const BookClubHistory = ({ bookclub, user, handleFetchBookClub }) => {
           })}
         </Grid>
       )}
+
+      <Snackbar
+        open={successMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseSuccessMessage}>
+        <Alert
+          variant='filled'
+          onClose={handleCloseSuccessMessage}
+          severity='success'
+          sx={{ width: '100%' }}>
+          Book Successfully Moved To Wishlist
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={successDeleteMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseSuccessDeleteMessage}>
+        <Alert
+          variant='filled'
+          onClose={handleCloseSuccessDeleteMessage}
+          severity='info'
+          sx={{ width: '100%' }}>
+          Book Successfully Deleted
+        </Alert>
+      </Snackbar>
     </Grid>
   )
 }

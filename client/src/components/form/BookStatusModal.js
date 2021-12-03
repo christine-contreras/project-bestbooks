@@ -7,6 +7,10 @@ const BookStatusModal = ({
   handleCloseStatusModel,
   currentBook,
   setStatus,
+  setCurrentBook,
+  bookClubId,
+  handleOpenSuccessDeleteMessage,
+  handleFetchBookClub,
 }) => {
   return (
     <Modal
@@ -27,7 +31,14 @@ const BookStatusModal = ({
         </Grid>
 
         <Grid item>
-          <FormStatusChange setStatus={setStatus} currentBook={currentBook} />
+          <FormStatusChange
+            setStatus={setStatus}
+            currentBook={currentBook}
+            setCurrentBook={setCurrentBook}
+            bookClubId={bookClubId}
+            handleOpenSuccessDeleteMessage={handleOpenSuccessDeleteMessage}
+            handleFetchBookClub={handleFetchBookClub}
+          />
         </Grid>
       </Grid>
     </Modal>

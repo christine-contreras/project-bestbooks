@@ -8,11 +8,22 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  FormGroup,
+  Grid,
+  FormControlLabel,
+  Switch,
 } from '@mui/material'
 
-const FormStatusChange = ({ currentBook, setStatus }) => {
+const FormStatusChange = ({
+  currentBook,
+  setStatus,
+  setCurrentBook,
+  bookClubId,
+  handleOpenSuccessDeleteMessage,
+  handleFetchBookClub,
+}) => {
   const [newStatus, setNewStatus] = React.useState('Not Started')
-
+  const [complete, setComplete] = React.useState(false)
   const [errors, setErrors] = React.useState([])
   const [updated, setUpdated] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
@@ -27,21 +38,41 @@ const FormStatusChange = ({ currentBook, setStatus }) => {
     setLoading(true)
     setUpdated(false)
 
+    let updates
+
+    if (complete) {
+      updates = {
+        status: newStatus,
+        current: false,
+        archived: true,
+      }
+    } else {
+      updates = {
+        status: newStatus,
+      }
+    }
+
     fetch(`/api/bookclub_books/${currentBook.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify({
-        status: newStatus,
-      }),
+      body: JSON.stringify(updates),
     })
       .then((response) => response.json())
       .then((data) => {
         setLoading(false)
         setUpdated(true)
-        setStatus(data.status)
+        if (complete) {
+          setCurrentBook(null)
+          handleOpenSuccessDeleteMessage()
+          setTimeout(() => {
+            handleFetchBookClub(bookClubId)
+          }, 3000)
+        } else {
+          setStatus(data.status)
+        }
       })
       .catch((err) => {
         setLoading(false)
@@ -53,6 +84,23 @@ const FormStatusChange = ({ currentBook, setStatus }) => {
 
   return (
     <form onSubmit={handleSubmit} className='form'>
+      <Grid container justifyContent='flex-end'>
+        <Grid item>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={complete}
+                  color='primary'
+                  onChange={(e) => setComplete(e.target.checked)}
+                />
+              }
+              label='Completed'
+            />
+          </FormGroup>
+        </Grid>
+      </Grid>
+
       <FormControl className='form-lists'>
         <InputLabel id='status-options'>Status</InputLabel>
         <Select

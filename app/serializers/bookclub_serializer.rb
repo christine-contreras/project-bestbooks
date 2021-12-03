@@ -19,5 +19,7 @@ class BookclubSerializer < ActiveModel::Serializer
       }
     end
    
-end
+  end
+
+  
 end

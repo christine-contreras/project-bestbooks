@@ -15,6 +15,16 @@ const WishlistBook = ({
   handleMakeCurrentBook,
   loading,
 }) => {
+  const [isAdmin, setisAdmin] = React.useState(false)
+  const [canArchive, setCanArchive] = React.useState(false)
+
+  React.useEffect(() => {
+    if (user) {
+      setisAdmin(adminId === user.id)
+      setCanArchive(user.full_name === recommender)
+    }
+  }, [user])
+
   return (
     <>
       {loading ? (
@@ -37,7 +47,7 @@ const WishlistBook = ({
             xs={12}
             lg={4}
             alignItems='center'>
-            {adminId === user.id && (
+            {user && isAdmin && (
               <Grid item>
                 <Button
                   variant='contained'
@@ -49,7 +59,7 @@ const WishlistBook = ({
                 </Button>
               </Grid>
             )}
-            {user.full_name === recommender || adminId === user.id ? (
+            {user && (isAdmin || canArchive) ? (
               <Grid item>
                 <Button
                   variant='text'

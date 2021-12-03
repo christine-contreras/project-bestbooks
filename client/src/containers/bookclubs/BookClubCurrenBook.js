@@ -1,21 +1,22 @@
 import * as React from 'react'
-import { Grid, Typography, Button } from '@mui/material'
+import { Grid, Typography, Button, Snackbar, Alert } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn'
 import BookOverview from '../../components/book/BookOverview'
 import BookStatusModal from '../../components/form/BookStatusModal'
 import GuideQuestions from '../books/GuideQuestions'
-
+import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/Loading'
 import Goals from '../books/Goals'
-import userEvent from '@testing-library/user-event'
 
 const BookClubCurrenBook = ({
   bookclub,
   user,
-  handleFetchBookClub,
   loading,
+  handleFetchBookClub,
 }) => {
+  let navigate = useNavigate()
+
   const [currentBook, setCurrentBook] = React.useState(null)
   const [goals, setGoals] = React.useState([])
   const [guideQuestions, setGuideQuestions] = React.useState([])
@@ -23,6 +24,11 @@ const BookClubCurrenBook = ({
   const [edit, setEdit] = React.useState(false)
   const [isAdmin, setIsAdmin] = React.useState(false)
   const [isMember, setIsMember] = React.useState(false)
+
+  // handle snackbar message book completed
+  const [successDeleteMessage, setSuccessDeleteMessage] = React.useState(false)
+  const handleOpenSuccessDeleteMessage = () => setSuccessDeleteMessage(true)
+  const handleCloseSuccessDeleteMessage = () => setSuccessDeleteMessage(false)
 
   React.useEffect(() => {
     if (bookclub) {
@@ -63,14 +69,27 @@ const BookClubCurrenBook = ({
             </Typography>
           </Grid>
           {!currentBook ? (
-            <Grid item>
-              <Typography
-                component='p'
-                variant='subtitle1'
-                align='center'
-                paddingTop>
-                No Current Book
-              </Typography>
+            <Grid item container flexDirection='column' spacing={4}>
+              <Grid item>
+                <Typography
+                  component='p'
+                  variant='subtitle1'
+                  align='center'
+                  paddingTop>
+                  No Current Book
+                </Typography>
+              </Grid>
+              {isAdmin && (
+                <Grid item textAlign='center'>
+                  <Button
+                    onClick={() => navigate('/search')}
+                    variant='contained'
+                    className='b-radius btn btn-lg'
+                    color='primary'>
+                    Search Books
+                  </Button>
+                </Grid>
+              )}
             </Grid>
           ) : (
             <Grid item container flexDirection='column' spacing={6}>
@@ -119,16 +138,33 @@ const BookClubCurrenBook = ({
               </Grid>
             </Grid>
           )}
-          {edit && (
+          {edit && bookclub && (
             <BookStatusModal
               openModal={openModal}
               handleCloseStatusModel={handleCloseStatusModel}
               currentBook={currentBook}
+              setCurrentBook={setCurrentBook}
+              handleFetchBookClub={handleFetchBookClub}
+              bookClubId={bookclub.id}
               setStatus={setBookStatus}
+              handleOpenSuccessDeleteMessage={handleOpenSuccessDeleteMessage}
             />
           )}
         </Grid>
       )}
+
+      <Snackbar
+        open={successDeleteMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseSuccessDeleteMessage}>
+        <Alert
+          variant='filled'
+          onClose={handleCloseSuccessDeleteMessage}
+          severity='info'
+          sx={{ width: '100%' }}>
+          Book Successfully Archived
+        </Alert>
+      </Snackbar>
     </>
   )
 }

@@ -1,13 +1,13 @@
 class Api::BookclubBooksController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    before_action :set_bookclub_book, only: [:destroy]
 
     def index 
         render json: BookclubBook.all
     end
 
     def destroy 
-        @bookclub_book.destroy
+        bookclub_book = BookclubBook.find(params[:id])
+        bookclub_book.destroy
         head :no_content
     end
 
@@ -24,10 +24,6 @@ class Api::BookclubBooksController < ApplicationController
 
     def bookclub_book_params 
         params.permit(:bookclub_id, :book_id, :archived, :status, :current, :suggested_by)
-    end
-
-    def set_bookclub_book
-        @bookclub_book = BookclubBook.find(params[:id])
     end
 
     def render_not_found_response

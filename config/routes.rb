@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
-    resources :bookclubs
     patch "/bookclubs/:id/current-book", to: "bookclubs#current_book"
+    resources :bookclubs
+    
 
     resources :books, only: [:show, :create, :destroy]
     

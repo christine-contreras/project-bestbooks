@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Grid, Typography, Button } from '@mui/material'
+import { Grid, Typography, Button, Snackbar, Alert } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import WishlistBook from '../books/WishlistBook'
 
@@ -8,13 +8,21 @@ const BookClubWishlist = ({
   user,
   handleFetchBookClub,
   setCurrentBook,
+  setCurrentBookclub,
 }) => {
   let navigate = useNavigate()
   const [wishListBooks, setWishListBooks] = React.useState([])
   const [loading, setLoading] = React.useState(false)
+  const [successMessage, setSuccessMessage] = React.useState(false)
+  const handleOpenSuccessMessage = () => setSuccessMessage(true)
+  const handleCloseSuccessMessage = () => setSuccessMessage(false)
+
+  const [successDeleteMessage, setSuccessDeleteMessage] = React.useState(false)
+  const handleOpenSuccessDeleteMessage = () => setSuccessDeleteMessage(true)
+  const handleCloseSuccessDeleteMessage = () => setSuccessDeleteMessage(false)
 
   const access = !user ? false : bookclub.users.find((u) => u.id === user.id)
-  console.log(access)
+
   React.useEffect(() => {
     setWishListBooks(
       bookclub
@@ -41,7 +49,10 @@ const BookClubWishlist = ({
       setLoading(false)
       if (response.ok) {
         filterOutBook(bookClubBookId)
-        handleFetchBookClub(bookclub.id)
+        handleOpenSuccessDeleteMessage()
+        setTimeout(() => {
+          handleFetchBookClub(bookclub.id)
+        }, 3000)
       }
     })
   }
@@ -58,16 +69,18 @@ const BookClubWishlist = ({
       body: JSON.stringify({
         new_bookclub_book_id: bookClubBookId,
       }),
-    }).then((response) => {
-      setLoading(false)
-      if (response.ok) {
-        response.json().then((data) => {
-          console.log(data)
-          filterOutBook(bookClubBookId)
-          setCurrentBook(data)
-        })
-      }
     })
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false)
+        filterOutBook(bookClubBookId)
+        setCurrentBookclub(data)
+        handleOpenSuccessMessage()
+      })
+      .catch((err) => {
+        setLoading(false)
+        console.log(err)
+      })
   }
 
   const filterOutBook = (bookClubBookId) => {
@@ -130,6 +143,32 @@ const BookClubWishlist = ({
           </Button>
         </Grid>
       )}
+
+      <Snackbar
+        open={successMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseSuccessMessage}>
+        <Alert
+          variant='filled'
+          onClose={handleCloseSuccessMessage}
+          severity='success'
+          sx={{ width: '100%' }}>
+          Book Successfully Moved To Currently Reading
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={successDeleteMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseSuccessDeleteMessage}>
+        <Alert
+          variant='filled'
+          onClose={handleCloseSuccessDeleteMessage}
+          severity='info'
+          sx={{ width: '100%' }}>
+          Book Successfully Archived
+        </Alert>
+      </Snackbar>
     </Grid>
   )
 }

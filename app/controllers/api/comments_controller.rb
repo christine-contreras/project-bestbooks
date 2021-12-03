@@ -19,8 +19,6 @@ class Api::CommentsController < ApplicationController
         params.permit(:comment, :user_id, :guide_question_id)
     end
 
-
-
     def render_not_found_response
         render json: { error: 'Comment Not Found' }, status: :not_found
     end
