@@ -1,0 +1,17 @@
+.MuiGrid-container.hero {
+   height: 40vh;
+   min-height: 600px;
+   background: url('https://images.unsplash.com/photo-1569937301527-9336e27c357c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format') no-repeat center;
+   background-size: cover;
+   width: 100%;
+   margin: 0;
+   
+}
+
+.hero .MuiPaper-root {
+    padding: 2em;
+    background-color: rgb(248 244 239 / 90%);
+    display: flex;
+    align-items: center;
+    
+}

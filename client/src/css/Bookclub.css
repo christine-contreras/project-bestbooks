@@ -1,0 +1,10 @@
+.bookclub-card{
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: space-between;
+}
+
+.bookclub-container{
+    height: 100%;
+}

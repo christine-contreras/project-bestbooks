@@ -1,0 +1,35 @@
+.book {
+    box-shadow: 18px 13px 10px -4px rgb(189 189 189 / 83%);
+    width: 100%;
+    max-width: 400px;
+}
+
+.book.book-sm{
+    max-width: 250px;
+}
+
+.recommendation .book {
+    max-width: 150px;
+}
+
+@media (min-width: 600px) {
+    .book-info{
+        justify-content: space-between;
+    }
+}
+
+.MuiTypography-root.genre{
+    font-weight: bold;
+    position: relative;
+}
+
+.genre::after {
+    content: '';
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #004d41;
+    position: absolute;
+}

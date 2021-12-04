@@ -1,0 +1,61 @@
+.form {
+    text-align: center;
+}
+
+.form .MuiFormControl-root{
+    width: 100%;
+    max-width: 800px;
+    padding: 1em 0;
+}
+
+.img-background{
+    padding: 0;
+    
+}
+
+@media (min-width: 1200px) {
+    .img-background {
+        background: url('https://images.unsplash.com/photo-1548191194-b3d4f051fd7d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format') no-repeat center;
+    background-size: cover;
+    }
+    
+}
+
+
+.form-lists {
+    width: 100%;
+    max-width: 600px;
+    
+}
+
+.form-search {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    
+}
+
+.form-search .search-bar{
+    flex-grow: 1;
+}
+
+.form-search .search-bar .MuiInputBase-root{
+    border-radius: 32px;
+    /* background-color: #f8f4ef; */
+    margin-right: 1em;
+}
+
+/* .form-search .search-bar .MuiInputBase-root::before, .form-search .search-bar .MuiInputBase-root::after{
+    width: 96%;
+    left: 2%;
+} */
+
+@media (max-width: 700px) {
+    
+    .form-search .MuiButton-root.btn{
+        min-width: auto;
+    }
+}

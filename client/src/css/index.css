@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Montserrat:wght@400;500;600&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+a, a:hover, a:visited {
+  color: inherit;
+}
+
+a:hover, a:active {
+  opacity: .8;
+}
+
+.img-responsive {
+  width: 100%;
+}
+
+.MuiPaper-rounded.container-paper{
+  display: flex;
+  flex-direction: column;
+  border-radius: 32px;
+  padding: 1em;
+}
+
+.b-radius, .b-radius.MuiPaper-root, .MuiButton-root.b-radius{
+  border-radius: 32px;
+}
+
+.b-radius-sm, .b-radius-sm.MuiPaper-root{
+  border-radius: 10px;
+}
+
+.padding-top{
+  padding-top: 2em;
+}
+
+.padding-top-sm {
+  padding-top: 1em;
+}
+
+.padding-bottom{
+  padding-bottom: 2em;
+}
+
+.padding-bottom-lg{
+  padding-bottom: 3em;
+}
+
+.padding {
+  padding: 2em;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex.row{
+  flex-flow: row wrap;
+}
+
+.flex.column{
+  flex-flow: column wrap;
+}
+
+.MuiButton-root.btn{
+  min-width: 200px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.MuiButton-root.btn.btn-lg{
+  min-width: 300px;
+  padding: 20px;
+}
+
+.MuiButtonGroup-root .btn {
+  padding: 20px;
+  min-width: 50%;
+}
+
+.MuiButton-containedSecondary.btn{
+  color: #3e2723;
+}
+
+/* .MuiPaper-root{
+  width: 100%;
+} */
+
+@media (min-width: 1200px) {
+  .hero-container {
+      min-height: 50vh;
+  }
+  
+}
+
+.hidden {
+  display: none;
+}

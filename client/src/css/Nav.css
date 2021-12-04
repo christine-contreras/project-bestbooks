@@ -1,0 +1,60 @@
+.MuiToolbar-regular.flex {
+    justify-content: space-between;
+}
+
+.search-bar {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.search-bar .MuiTextField-root {
+    width: 70%;
+}
+
+.nav-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 20%;
+}
+
+.logo{
+    margin-left: -1.75em;
+}
+
+.logo::first-letter {
+    color: #fff;
+    padding-right: 11px;
+}
+
+.MuiToolbar-root a, .MuiToolbar-root a:hover, .MuiToolbar-root a:visited{
+    text-decoration: none;
+}
+
+
+
+.side-menu .MuiMenuItem-root{
+    padding: 1em;
+    margin-bottom: 1em;
+    
+}
+
+.side-menu .MuiMenuItem-root.active {
+    background-color: rgba(0, 0, 0, 0.04);
+    font-weight: bold;
+}
+
+.side-menu .MuiMenuItem-root a {
+    text-decoration: none;
+}
+
+@media (min-width: 900px) {
+    .side-menu {
+        justify-content: 'stretch';
+    }
+
+    .side-menu .MuiPaper-root{
+        height: 100%;
+    }
+
+}
