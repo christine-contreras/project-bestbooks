@@ -1,0 +1,32 @@
+{
+  "name": "best-books-app",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npm install --prefix client && npm run build --prefix client",
+    "clean": "rm -rf public",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christine-contreras/project-bestbooks.git"
+  },
+  "dependencies": {
+    "n": "^8.0.0",
+    "stable": "^0.1.8"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christine-contreras/project-bestbooks/issues"
+  },
+  "homepage": "https://github.com/christine-contreras/project-bestbooks#readme",
+  "keywords": []
+}
