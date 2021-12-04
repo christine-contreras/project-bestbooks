@@ -90,12 +90,12 @@ const CreateBookclubModal = ({
 
           <Stack sx={{ width: '100%' }} spacing={2} className='padding-top'>
             {errors.map((error) => (
-              <Alert severity='error' key={error}>
+              <Alert severity='error' key={error} variant='filled'>
                 {error}
               </Alert>
             ))}
             {loading && (
-              <Alert severity='info'>
+              <Alert severity='info' variant='filled'>
                 Creating Book Club... Do Not Refresh Page
               </Alert>
             )}
