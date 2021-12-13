@@ -1,12 +1,24 @@
-# Best Books API
+# Best Books | A Full Stack App
 
-This API is a simple web API where you make CRUD calls to a server to organize a book clubs app.
+This app lets you create book clubs with your friends where you can track goals, create discussion questions, and comment on the discussion questions.
 
-## Front-end Project Task Management Interface
+## Backend and Front-end Interfaces
 
-You can use this API in conjunction with my front-end project management app [see the repo](https://github.com/christine-contreras/project-bestbooks-client)
+You can use this API alone: [see the repo](https://github.com/christine-contreras/best-books-api)
 
-## Technologies Used in API
+You can use this front-end app alone: [see the repo](https://github.com/christine-contreras/project-bestbooks-client)
+
+## Technologies Used
+
+Front-end
+
+- JavaScript
+- React
+- Mui
+- React Router
+- Goodreads API
+
+Backend
 
 - Ruby on Rails
 - ActiveRecord
@@ -29,11 +41,53 @@ rails db:seed
 
 # start server
 rails s
+
+npm install --prefix client
+
+npm start --prefix client
 ```
 
-RoR uses port 3000 by default
+RoR uses port 3000 by default. React app will open up on port 4000.
 
-## Relationships within Database
+## Features
+
+### App
+
+- customize theme with Mui
+- ability to add users and login
+- persistent login using cookies
+- ability to update user information and icon color
+- ability to delete your own profile
+- responsive design
+
+### Book Clubs
+
+- Create a book club
+- Edit a book clubs info and users if you are the admin
+- Delete a book club
+- View all book clubs you are a part of
+- View book club archived books, wishlist books, and currently reading book
+
+### Books
+
+- Search for books using the Goodreads API
+- Search popular lists of books using the Goodreads API
+- View books images, author, description, and genres
+- Select a book and add it to a book clubs wishlist
+- Move the book to wishlist, archived books, or currently reading
+
+### Currently Reading
+
+- Search for books using the Goodreads API
+- Comment on guide questions if you are a part of the book club
+- If you are an admin you can:
+  - Edit the current books progress
+  - Move book to completed and archived books
+  - Create, edit, and delete goals
+  - Create, edit, and delete guide questions
+  - Create, edit, and delete all comments left
+
+## Backend Relationships
 
 ```rb
                                                           :deadline
