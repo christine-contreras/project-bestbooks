@@ -30,6 +30,15 @@ const BookClubCurrenBook = ({
   const handleOpenSuccessDeleteMessage = () => setSuccessDeleteMessage(true)
   const handleCloseSuccessDeleteMessage = () => setSuccessDeleteMessage(false)
 
+  const handleEditing = () => {
+    if (edit) {
+      setEdit(false)
+      handleFetchBookClub(bookclub.id)
+    } else {
+      setEdit(true)
+    }
+  }
+
   React.useEffect(() => {
     if (bookclub) {
       const current = bookclub.bookclub_books.find(
@@ -96,7 +105,7 @@ const BookClubCurrenBook = ({
               {user && isAdmin && (
                 <Grid item textAlign='center'>
                   <Button
-                    onClick={() => setEdit((prevEdit) => !prevEdit)}
+                    onClick={handleEditing}
                     startIcon={edit ? <AssignmentTurnedInIcon /> : <EditIcon />}
                     variant='contained'
                     className='b-radius btn btn-lg'
