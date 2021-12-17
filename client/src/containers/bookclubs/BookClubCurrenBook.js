@@ -53,6 +53,9 @@ const BookClubCurrenBook = ({
         const member = bookclub.users.find((member) => member.id === user.id)
         setIsAdmin(user.id === bookclub.admin.id)
         setIsMember(member ? true : false)
+      } else {
+        setIsAdmin(false)
+        setIsMember(false)
       }
     }
   }, [bookclub, user])
