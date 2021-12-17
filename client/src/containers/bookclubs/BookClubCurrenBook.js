@@ -110,7 +110,7 @@ const BookClubCurrenBook = ({
                     variant='contained'
                     className='b-radius btn btn-lg'
                     color='primary'>
-                    {edit ? 'Finish Edits' : 'Edit Page'}
+                    {edit ? 'Save Edits' : 'Edit Page'}
                   </Button>
                 </Grid>
               )}
