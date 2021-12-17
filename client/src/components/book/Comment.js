@@ -15,8 +15,10 @@ const Comment = ({ comment, user, edit, handleDeleteComment }) => {
   React.useEffect(() => {
     if (user) {
       setCanDelete(edit || user.id === comment.user_id)
+    } else {
+      setCanDelete(false)
     }
-  }, [])
+  }, [user])
 
   return (
     <Grid item>
