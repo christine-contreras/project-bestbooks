@@ -2,6 +2,8 @@
 
 This app lets you create book clubs with your friends where you can track goals, create discussion questions, and comment on the discussion questions.
 
+[demo here](https://project-bestbooks-client.herokuapp.com/)
+
 ## Backend and Front-end Interfaces
 
 You can use this API alone: [see the repo](https://github.com/christine-contreras/best-books-api)
